@@ -225,55 +225,12 @@
       createOrder: (data, actions) => actions.order.create({
         purchase_units: [{ amount: { value: selectedPrice } }]
       }),
-      onApprove: function(data, actions) {
-  return actions.order.capture().then(function(details) {
-    const nome = details.payer.name.given_name;
-
-    // Crea stile per animazione se non esiste già
-    if (!document.getElementById("stile-popup-successo")) {
-      const stile = document.createElement("style");
-      stile.id = "stile-popup-successo";
-      stile.innerHTML = `
-        @keyframes fadeInOut {
-          0% { opacity: 0; transform: scale(0.9); }
-          10% { opacity: 1; transform: scale(1); }
-          90% { opacity: 1; transform: scale(1); }
-          100% { opacity: 0; transform: scale(0.9); }
-        }
-      `;
-      document.head.appendChild(stile);
-    }
-
-    // Crea popup
-    const messaggio = document.createElement("div");
-    messaggio.style.position = "fixed";
-    messaggio.style.top = "50%";
-    messaggio.style.left = "50%";
-    messaggio.style.transform = "translate(-50%, -50%)";
-    messaggio.style.background = "#111";
-    messaggio.style.color = "#fff";
-    messaggio.style.padding = "30px 40px";
-    messaggio.style.borderRadius = "20px";
-    messaggio.style.boxShadow = "0 0 30px red";
-    messaggio.style.zIndex = "9999";
-    messaggio.style.textAlign = "center";
-    messaggio.style.animation = "fadeInOut 5s ease forwards";
-
-    messaggio.innerHTML = `
-      <div style="font-size: 50px; color: lime; margin-bottom: 10px;">✓</div>
-      <h2 style="margin-bottom: 10px;">Pagamento completato</h2>
-      <p>Grazie <strong>${details.payer.name.given_name}</strong> per il tuo acquisto,sarai contattato a breve! 🔥</p>
-    `;
-
-    document.body.appendChild(messaggio);
-
-    // Rimuove dopo l'animazione (5s)
-    setTimeout(() => {
-      messaggio.remove();
-    }, 5000);
-  });
-      }
-      )
+      onApprove: (data, actions) => actions.order.capture().then(details => {
+  const name = details.payer.name.given_name;
+  popupTitle.textContent = "✅ Pagamento completato";
+  popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
+  popup.style.display = 'flex';
+});
     }).render('#paypal-button-container');
 
    document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
