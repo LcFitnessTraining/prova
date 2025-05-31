@@ -233,9 +233,11 @@
 });
     }).render('#paypal-button-container');
 
-   document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
-      .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
-
+document.addEventListener("DOMContentLoaded", () => {
+  // Fade-in per i servizi, titoli e contatti
+  document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+    .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+});
 
     // Audio
      document.addEventListener("DOMContentLoaded", () => {
