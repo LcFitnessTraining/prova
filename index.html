@@ -11,7 +11,7 @@
       font-family: 'Montserrat', sans-serif;
       background: #000; color: #fff;
       scroll-behavior: smooth;
-      }
+    }
 
     .radial-glow, .fog-layer {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -21,118 +21,131 @@
                   radial-gradient(circle at 70% 70%, rgba(255, 50, 0, 0.15) 0%, transparent 60%);
       animation: pulseRadial 10s ease-in-out infinite;
     }
+
     .fog-layer {
       background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
       animation: moveFog 30s linear infinite;
     }
+
     @keyframes pulseRadial { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.1);opacity:.8} }
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
+
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
       background: rgba(12,1,1,0.93); border-radius: 15px;
       box-shadow: 0 0 20px red; position: relative; z-index: 1;
     }
-    ul li:hover {
-  background: rgba(255, 0, 0, 0.1);
-  transition: background 0.3s ease;
-}
 
     .logo {
       max-width: 150px; margin-bottom: 20px; border-radius: 50%;
       animation: firePulse 2s infinite;
     }
+
     @keyframes firePulse {
       0%,100%{box-shadow:0 0 10px red,0 0 20px orange}
       50%{box-shadow:0 0 20px red,0 0 30px orange}
     }
+
     h1.typing {
       font-size: 1.8rem; margin: 0 auto 20px; white-space: nowrap;
       overflow: hidden; width: 100%; letter-spacing: 1.2px;
       animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;
       text-shadow: 0 0 8px rgba(255,0,0,.8);
     }
+
     @keyframes typing { from{width:0} to{width:100%} }
     @keyframes pulseGlow { from{text-shadow:0 0 8px red} to{text-shadow:0 0 20px red} }
+
     select, label {
       display: block; width: 100%;
       font-size: 1rem; margin-bottom: 20px;
       text-align: left;
     }
+
     select {
       padding: 14px; background: #1c1c1c; color: #fff;
       border: 2px solid red; border-radius: 8px;
       box-shadow: 0 0 10px red;
     }
+
     .separator {
       width: 100px; height: 4px; background: red;
       margin: 30px auto; animation: pulse 2s infinite;
     }
+
     @keyframes pulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(1.5)} }
+
     h2 { text-shadow: 0 0 8px rgba(255, 0, 0, 0.8); letter-spacing: 1.2px; font-size: 1.5rem; }
+
     ul { list-style: none; padding: 0; text-align: left; }
+
     ul li {
       opacity: 0; transition: 0.5s; padding: 10px;
       transform: translateX(-20px); border-bottom: 1px solid #ccc;
       position: relative; cursor: pointer;
     }
-    ul#servizi-list li::after {
-  display: none;  /* nasconde la lente + scritta */
-}
-.servizi small {
-  display: block;
-  font-size: 0.85rem;
-  color: #f88;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  font-style: italic;
-}
-    ul li.visible { opacity: 1; transform: translateX(0); }
-    .popup {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.5s ease forwards;
-}
-.popup-content {
-  animation: popupZoom 0.4s ease forwards;
-  transform: scale(0.8) rotate(-3deg);
-  opacity: 0;
-}
 
+    ul li.visible { opacity: 1; transform: translateX(0); }
+
+    ul li:hover {
+      background: rgba(255, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    ul#servizi-list li::after { display: none; }
+
+    .servizi small {
+      display: block;
+      font-size: 0.85rem;
+      color: #f88;
+      margin-top: -15px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .popup-content {
+      background: #111; padding: 30px;
+      border-radius: 15px; max-width: 500px;
+      text-align: center; color: #fff;
+      box-shadow: 0 0 20px red;
+      animation: popupZoom 0.4s ease forwards;
+      transform: scale(0.8) rotate(-3deg); opacity: 0;
+    }
 
     @keyframes popupZoom {
-  to { transform: scale(1) rotate(0); opacity: 1; }
-}
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
+      to { transform: scale(1) rotate(0); opacity: 1; }
     }
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 20px red; }
-      50% { box-shadow: 0 0 30px orange; }
-    }
-    @keyframes sway {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
     .close-btn {
       float: right; font-size: 1.3rem;
       cursor: pointer; color: red;
     }
+
     .contatti ul, .contatti ul li {
       text-align: center; border: none; transform: none; opacity: 1;
     }
+
     .contatti a {
       color: #faf7f7; text-decoration: none; font-weight: bold;
       transition: color 0.3s ease;
     }
+
     .contatti a:hover { color: #ff0000; }
+
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
       .logo { max-width: 120px; }
@@ -145,10 +158,12 @@
 <body>
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
+
   <div class="container">
     <img src="logo.jpg" alt="Logo" class="logo">
     <h1 class="typing">Scegli il tuo piano</h1>
     <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
+
     <label for="durata">Durata:</label>
     <select id="durata">
       <option value="63">1 mese - €63</option>
@@ -160,13 +175,14 @@
       <option value="600">20 lezioni Coaching individuali - €600</option>
       <option value="33">Workout Singolo - €33</option>
     </select>
+
     <div id="paypal-button-container"></div>
     <div class="separator"></div>
 
     <div class="servizi">
-  <h2>I miei servizi</h2>
-  <small>clicca sul servizio per saperne di più</small>
-  <ul id="servizi-list">
+      <h2>I miei servizi</h2>
+      <small>clicca sul servizio per saperne di più</small>
+      <ul id="servizi-list">
         <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️ Workout Personalizzati</li>
         <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️ Alimentazione & integrazione</li>
         <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione">⭕️ Check metrici/plicometrici</li>
@@ -177,7 +193,7 @@
       </ul>
     </div>
 
-    <div class="separator"></div>
+       <div class="separator"></div>
     <div class="titoli">
       <h2>Titoli e certificazioni</h2>
       <ul id="titoli-list">
@@ -186,6 +202,7 @@
         <li>🥇 8° NAC WORLD Championship</li>
       </ul>
     </div>
+
     <div class="separator"></div>
     <div class="contatti">
       <h2>Contatti</h2>
@@ -226,24 +243,17 @@
         purchase_units: [{ amount: { value: selectedPrice } }]
       }),
       onApprove: (data, actions) => actions.order.capture().then(details => {
-  const name = details.payer.name.given_name;
-  popupTitle.textContent = "✅ Pagamento completato";
-  popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
-  popup.style.display = 'flex';
-});
+        const name = details.payer.name.given_name;
+        popupTitle.textContent = "✅ Pagamento completato";
+        popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
+        popup.style.display = 'flex';
+      })
     }).render('#paypal-button-container');
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Fade-in per i servizi, titoli e contatti
-  document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
-    .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
-});
-
     // Audio
-     document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       const music = document.getElementById("bg-music");
       const overlay = document.getElementById("audio-overlay");
-
       const fadeInMusic = () => {
         let volume = 0, step = 0.01;
         const fade = setInterval(() => {
@@ -251,20 +261,17 @@ document.addEventListener("DOMContentLoaded", () => {
           else clearInterval(fade);
         }, 200);
       };
-
       const enableAudio = () => {
         music.play().then(fadeInMusic).catch(console.log);
         overlay.remove();
       };
-
       overlay.addEventListener("click", enableAudio, { once: true });
       overlay.addEventListener("touchstart", enableAudio, { once: true });
     });
 
-    // Popup
+    // Popup Servizi
     const items = document.querySelectorAll('#servizi-list li');
     const popup = document.getElementById('popup');
-    const popupContent = popup.querySelector('.popup-content');
     const popupTitle = document.getElementById('popup-title');
     const popupText = document.getElementById('popup-text');
 
@@ -272,19 +279,24 @@ document.addEventListener("DOMContentLoaded", () => {
       item.addEventListener('click', () => {
         popupTitle.textContent = item.textContent;
         popupText.textContent = item.getAttribute('data-desc');
-        popup.classList.add('animate');
         popup.style.display = 'flex';
       });
     });
 
     function closePopup() {
-      popup.classList.remove('animate');
       popup.style.display = 'none';
     }
 
     window.onclick = function(event) {
       if (event.target === popup) closePopup();
     }
+
+    // Fade-in Animazioni
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+    });
   </script>
 </body>
 </html>
+ 
