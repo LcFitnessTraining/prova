@@ -11,7 +11,7 @@
       font-family: 'Montserrat', sans-serif;
       background: #000; color: #fff;
       scroll-behavior: smooth;
-    }
+      }
 
     .radial-glow, .fog-layer {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -21,143 +21,118 @@
                   radial-gradient(circle at 70% 70%, rgba(255, 50, 0, 0.15) 0%, transparent 60%);
       animation: pulseRadial 10s ease-in-out infinite;
     }
-
     .fog-layer {
       background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
       animation: moveFog 30s linear infinite;
     }
-
     @keyframes pulseRadial { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.1);opacity:.8} }
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
-
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
       background: rgba(12,1,1,0.93); border-radius: 15px;
       box-shadow: 0 0 20px red; position: relative; z-index: 1;
     }
-
     ul li:hover {
-      background: rgba(255, 0, 0, 0.1);
-      transition: background 0.3s ease;
-    }
+  background: rgba(255, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
 
     .logo {
       max-width: 150px; margin-bottom: 20px; border-radius: 50%;
       animation: firePulse 2s infinite;
     }
-
     @keyframes firePulse {
       0%,100%{box-shadow:0 0 10px red,0 0 20px orange}
       50%{box-shadow:0 0 20px red,0 0 30px orange}
     }
-
     h1.typing {
       font-size: 1.8rem; margin: 0 auto 20px; white-space: nowrap;
       overflow: hidden; width: 100%; letter-spacing: 1.2px;
       animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;
       text-shadow: 0 0 8px rgba(255,0,0,.8);
     }
-
     @keyframes typing { from{width:0} to{width:100%} }
     @keyframes pulseGlow { from{text-shadow:0 0 8px red} to{text-shadow:0 0 20px red} }
-
     select, label {
       display: block; width: 100%;
       font-size: 1rem; margin-bottom: 20px;
       text-align: left;
     }
-
     select {
       padding: 14px; background: #1c1c1c; color: #fff;
       border: 2px solid red; border-radius: 8px;
       box-shadow: 0 0 10px red;
     }
-
     .separator {
       width: 100px; height: 4px; background: red;
       margin: 30px auto; animation: pulse 2s infinite;
     }
-
     @keyframes pulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(1.5)} }
-
     h2 { text-shadow: 0 0 8px rgba(255, 0, 0, 0.8); letter-spacing: 1.2px; font-size: 1.5rem; }
-
     ul { list-style: none; padding: 0; text-align: left; }
-
     ul li {
       opacity: 0; transition: 0.5s; padding: 10px;
       transform: translateX(-20px); border-bottom: 1px solid #ccc;
       position: relative; cursor: pointer;
     }
-
-    ul#servizi-list li::after { display: none; }
-
-    .servizi small {
-      display: block;
-      font-size: 0.85rem;
-      color: #f88;
-      margin-top: -15px;
-      margin-bottom: 15px;
-      font-style: italic;
-    }
-
+    ul#servizi-list li::after {
+  display: none;  /* nasconde la lente + scritta */
+}
+.servizi small {
+  display: block;
+  font-size: 0.85rem;
+  color: #f88;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-style: italic;
+}
     ul li.visible { opacity: 1; transform: translateX(0); }
-
     .popup {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.5s ease forwards;
-    }
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease forwards;
+}
+.popup-content {
+  animation: popupZoom 0.4s ease forwards;
+  transform: scale(0.8) rotate(-3deg);
+  opacity: 0;
+}
 
-    .popup-content {
-      animation: popupZoom 0.4s ease forwards;
-      transform: scale(0.8) rotate(-3deg);
-      opacity: 0;
-    }
 
     @keyframes popupZoom {
-      to { transform: scale(1) rotate(0); opacity: 1; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
     }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px red; }
+      50% { box-shadow: 0 0 30px orange; }
+    }
+    @keyframes sway {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
     .close-btn {
       float: right; font-size: 1.3rem;
       cursor: pointer; color: red;
     }
-
     .contatti ul, .contatti ul li {
       text-align: center; border: none; transform: none; opacity: 1;
     }
-
     .contatti a {
       color: #faf7f7; text-decoration: none; font-weight: bold;
       transition: color 0.3s ease;
     }
-
     .contatti a:hover { color: #ff0000; }
-
-    #numero-casuale {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      color: #ff6666;
-      text-shadow: 0 0 10px red;
-      animation: pulseNum 2s infinite;
-    }
-
-    @keyframes pulseNum {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
       .logo { max-width: 120px; }
@@ -171,10 +146,55 @@
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
   <div class="container">
-    <!-- ...contenuto precedente mantenuto intatto... -->
+    <img src="logo.jpg" alt="Logo" class="logo">
+    <h1 class="typing">Scegli il tuo piano</h1>
+    <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
+    <label for="durata">Durata:</label>
+    <select id="durata">
+      <option value="63">1 mese - €63</option>
+      <option value="115">2 mesi - €115</option>
+      <option value="155">3 mesi - €155</option>
+      <option value="270">6 mesi - €270</option>
+      <option value="50">1 lezione Coaching individuale - €50</option>
+      <option value="400">10 lezioni Coaching individuali - €400</option>
+      <option value="600">20 lezioni Coaching individuali - €600</option>
+      <option value="33">Workout Singolo - €33</option>
+    </select>
+    <div id="paypal-button-container"></div>
+    <div class="separator"></div>
 
-    <!-- Aggiunta: Numero che cambia -->
-    <div id="numero-casuale">Numero: <span id="random-number">--</span></div>
+    <div class="servizi">
+  <h2>I miei servizi</h2>
+  <small>clicca sul servizio per saperne di più</small>
+  <ul id="servizi-list">
+        <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️ Workout Personalizzati</li>
+        <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️ Alimentazione & integrazione</li>
+        <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione">⭕️ Check metrici/plicometrici</li>
+        <li data-desc="LcFitnessTraining è un App app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, supporto multimediale e gestione integrata di allenamento, alimentazione e integrazione, consentendo un approccio strutturato, flessibile e scientificamente validato all’ottimizzazione della performance e del benessere fisico">⭕️ App L.C.Fitness Training per Workout</li>
+        <li data-desc="App Coach Plus è un app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi, offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️ App Coach Plus Per Piani Alimentari</li>
+        <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l’efficacia e la sostenibilità del piano individuale.">⭕️ Supporto del tuo Coach h24 7/7</li>
+        <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️ Coaching individuale e dal vivo One to One(opzionale)</li>
+      </ul>
+    </div>
+
+    <div class="separator"></div>
+    <div class="titoli">
+      <h2>Titoli e certificazioni</h2>
+      <ul id="titoli-list">
+        <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
+        <li>🏆 1° NAC ITALY Championship</li>
+        <li>🥇 8° NAC WORLD Championship</li>
+      </ul>
+    </div>
+    <div class="separator"></div>
+    <div class="contatti">
+      <h2>Contatti</h2>
+      <ul>
+        <li><a href="mailto:LcFitnessTrainingPt@gmail.com">📧 Email</a></li>
+        <li><a href="https://www.instagram.com/luka_cupo/" target="_blank">📸 Instagram</a></li>
+        <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank">📘 Facebook</a></li>
+      </ul>
+    </div>
   </div>
 
   <!-- Popup -->
@@ -189,7 +209,7 @@
   <!-- Audio -->
   <audio id="bg-music" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
-    Il tuo browser non supporta l’audio HTML5.
+    Il tuo browser non supporta l'audio HTML5.
   </audio>
   <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;"></div>
 
@@ -197,7 +217,6 @@
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
 
   <script>
-    // PayPal
     let selectedPrice = document.getElementById('durata').value;
     document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
 
@@ -206,17 +225,63 @@
       createOrder: (data, actions) => actions.order.create({
         purchase_units: [{ amount: { value: selectedPrice } }]
       }),
-      onApprove: (data, actions) => actions.order.capture().then(details =>
-        alert(`Grazie per il pagamento, ${details.payer.name.given_name}! Sarai contattato a breve!!`)
+      onApprove: function(data, actions) {
+  return actions.order.capture().then(function(details) {
+    const nome = details.payer.name.given_name;
+
+    // Crea stile per animazione se non esiste già
+    if (!document.getElementById("stile-popup-successo")) {
+      const stile = document.createElement("style");
+      stile.id = "stile-popup-successo";
+      stile.innerHTML = `
+        @keyframes fadeInOut {
+          0% { opacity: 0; transform: scale(0.9); }
+          10% { opacity: 1; transform: scale(1); }
+          90% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0.9); }
+        }
+      `;
+      document.head.appendChild(stile);
+    }
+
+    // Crea popup
+    const messaggio = document.createElement("div");
+    messaggio.style.position = "fixed";
+    messaggio.style.top = "50%";
+    messaggio.style.left = "50%";
+    messaggio.style.transform = "translate(-50%, -50%)";
+    messaggio.style.background = "#111";
+    messaggio.style.color = "#fff";
+    messaggio.style.padding = "30px 40px";
+    messaggio.style.borderRadius = "20px";
+    messaggio.style.boxShadow = "0 0 30px red";
+    messaggio.style.zIndex = "9999";
+    messaggio.style.textAlign = "center";
+    messaggio.style.animation = "fadeInOut 5s ease forwards";
+
+    messaggio.innerHTML = `
+      <div style="font-size: 50px; color: lime; margin-bottom: 10px;">✓</div>
+      <h2 style="margin-bottom: 10px;">Pagamento completato</h2>
+      <p>Grazie <strong>${details.payer.name.given_name}</strong> per il tuo acquisto,sarai contattato a breve! 🔥</p>
+    `;
+
+    document.body.appendChild(messaggio);
+
+    // Rimuove dopo l'animazione (5s)
+    setTimeout(() => {
+      messaggio.remove();
+    }, 5000);
+  });
+      }
       )
     }).render('#paypal-button-container');
 
-    // Fade in servizi
-    document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+   document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
       .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
 
+
     // Audio
-    document.addEventListener("DOMContentLoaded", () => {
+     document.addEventListener("DOMContentLoaded", () => {
       const music = document.getElementById("bg-music");
       const overlay = document.getElementById("audio-overlay");
 
@@ -240,6 +305,7 @@
     // Popup
     const items = document.querySelectorAll('#servizi-list li');
     const popup = document.getElementById('popup');
+    const popupContent = popup.querySelector('.popup-content');
     const popupTitle = document.getElementById('popup-title');
     const popupText = document.getElementById('popup-text');
 
@@ -247,23 +313,19 @@
       item.addEventListener('click', () => {
         popupTitle.textContent = item.textContent;
         popupText.textContent = item.getAttribute('data-desc');
+        popup.classList.add('animate');
         popup.style.display = 'flex';
       });
     });
 
     function closePopup() {
+      popup.classList.remove('animate');
       popup.style.display = 'none';
     }
 
     window.onclick = function(event) {
       if (event.target === popup) closePopup();
     }
-
-    // Numero casuale ogni 3 secondi
-    setInterval(() => {
-      const number = Math.floor(Math.random() * 34) + 1;
-      document.getElementById('random-number').textContent = number;
-    }, 3000);
   </script>
 </body>
 </html>
