@@ -156,7 +156,7 @@
   </style>
 </head>
 <body>
-  <button id="audio-toggle" style="
+  <button id="audio-toggle" aria-label="Attiva o disattiva la musica di sottofondo">🔇 Audio</button>
   position: fixed; top: 20px; right: 20px; z-index: 10000;
   background: rgba(0,0,0,0.6); border: 2px solid red;
   color: white; padding: 10px 15px; border-radius: 8px;
@@ -243,7 +243,9 @@
   <script>
     let selectedPrice = document.getElementById('durata').value;
     document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
-
+body.popup-open {
+  overflow: hidden;
+}
     paypal.Buttons({
       style: { color: 'gold', shape: 'rect', label: 'paypal' },
       createOrder: (data, actions) => actions.order.create({
@@ -319,19 +321,35 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    function closePopup() {
-      popup.style.display = 'none';
-    }
+  function closePopup() {
+  popup.style.display = 'none';
+  document.body.classList.remove('popup-open');
+}
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    popupTitle.textContent = item.textContent;
+    popupText.textContent = item.getAttribute('data-desc');
+    popup.style.display = 'flex';
+    document.body.classList.add('popup-open');
+  });
+});
 
     window.onclick = function(event) {
       if (event.target === popup) closePopup();
     }
 
     // Fade-in Animazioni
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
-        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const serviceItems = document.querySelectorAll('#servizi-list li');
+  serviceItems.forEach((item, index) => {
+    setTimeout(() => item.classList.add("visible"), index * 200); // effetto sequenziale
+  });
+  });
   </script>
+  <noscript>
+  <div style="color: red; background: #111; padding: 20px; text-align: center;">
+    ⚠️ JavaScript è disabilitato nel tuo browser. Alcune funzionalità della pagina non funzioneranno correttamente.
+  </div>
+  </noscript>
 </body>
 </html>
