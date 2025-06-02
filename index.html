@@ -156,6 +156,15 @@
   </style>
 </head>
 <body>
+  <button id="audio-toggle" style="
+  position: fixed; top: 20px; right: 20px; z-index: 10000;
+  background: rgba(0,0,0,0.6); border: 2px solid red;
+  color: white; padding: 10px 15px; border-radius: 8px;
+  font-weight: bold; cursor: pointer; box-shadow: 0 0 10px red;
+">
+  🔇 Audio
+</button>
+
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
 
@@ -251,23 +260,52 @@
     }).render('#paypal-button-container');
 
     // Audio
-    document.addEventListener("DOMContentLoaded", () => {
-      const music = document.getElementById("bg-music");
-      const overlay = document.getElementById("audio-overlay");
-      const fadeInMusic = () => {
-        let volume = 0, step = 0.01;
-        const fade = setInterval(() => {
-          if (volume < 1) music.volume = volume += step;
-          else clearInterval(fade);
-        }, 200);
-      };
-      const enableAudio = () => {
-        music.play().then(fadeInMusic).catch(console.log);
-        overlay.remove();
-      };
-      overlay.addEventListener("click", enableAudio, { once: true });
-      overlay.addEventListener("touchstart", enableAudio, { once: true });
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const musicEl = document.getElementById("bg-music");
+  const toggleButton = document.getElementById("audio-toggle");
+  const overlay = document.getElementById("audio-overlay");
+
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const source = audioContext.createMediaElementSource(musicEl);
+  const gainNode = audioContext.createGain();
+  source.connect(gainNode).connect(audioContext.destination);
+  gainNode.gain.value = 0;
+
+  let isPlaying = false;
+
+  const fadeIn = () => {
+    gainNode.gain.cancelScheduledValues(audioContext.currentTime);
+    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 3); // 3 secondi di fade-in
+  };
+
+  const playMusic = () => {
+    musicEl.play().then(() => {
+      fadeIn();
+      isPlaying = true;
+      toggleButton.textContent = "🔊 Audio";
+    }).catch(console.error);
+  };
+
+  const pauseMusic = () => {
+    musicEl.pause();
+    isPlaying = false;
+    toggleButton.textContent = "🔇 Audio";
+  };
+
+  toggleButton.addEventListener("click", () => {
+    if (isPlaying) pauseMusic();
+    else playMusic();
+  });
+
+  const enableAudio = () => {
+    audioContext.resume().then(playMusic);
+    overlay.remove();
+  };
+
+  overlay.addEventListener("click", enableAudio, { once: true });
+  overlay.addEventListener("touchstart", enableAudio, { once: true });
+});
 
     // Popup Servizi
     const items = document.querySelectorAll('#servizi-list li');
@@ -299,4 +337,3 @@
   </script>
 </body>
 </html>
- 
