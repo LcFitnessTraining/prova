@@ -241,37 +241,25 @@
 
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
-    <!-- Mantieni tutta la tua parte HTML e CSS invariata, arriva fino al blocco <script> -->
 
-<script>
-  let selectedPrice = document.getElementById('durata').value;
-  const popup = document.getElementById("popup");
-  const popupTitle = document.getElementById("popup-title");
-  const popupText = document.getElementById("popup-text");
+  <script>
+    let selectedPrice = document.getElementById('durata').value;
+    document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
 
-  document.getElementById('durata').addEventListener('change', e => {
-    selectedPrice = e.target.value;
-  });
-
-  paypal.Buttons({
-    style: { color: 'gold', shape: 'rect', label: 'paypal' },
-    createOrder: (data, actions) => {
-      return actions.order.create({
+    paypal.Buttons({
+      style: { color: 'gold', shape: 'rect', label: 'paypal' },
+      createOrder: (data, actions) => actions.order.create({
         purchase_units: [{ amount: { value: selectedPrice } }]
-      });
-    },
-    onApprove: (data, actions) => {
-      return actions.order.capture().then(details => {
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(details => {
         const name = details.payer.name.given_name;
         popupTitle.textContent = "✅ Pagamento completato";
         popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
         popup.style.display = 'flex';
-      });
-    }
-  }).render('#paypal-button-container');
-
-  // AUDIO
-  document.addEventListener("DOMContentLoaded", () => {
+      })
+    }).render('#paypal-button-container');
+    // AUDIO
+document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bg-music");
     const overlay = document.getElementById("audio-overlay");
     const toggleButton = document.getElementById("audio-toggle");
@@ -313,19 +301,33 @@
     });
   });
 
-  // POPUP HANDLING
-  function closePopup() {
+    // Popup Servizi
+    const items = document.querySelectorAll('#servizi-list li');
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupText = document.getElementById('popup-text');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        popupTitle.textContent = item.textContent;
+        popupText.textContent = item.getAttribute('data-desc');
+        popup.style.display = 'flex';
+      });
+    });
+
+ function closePopup() {
     popup.style.display = 'none';
   }
 
-  // SERVIZI CLICK POPUP
-  document.querySelectorAll('#servizi-list li').forEach(li => {
-    li.addEventListener('click', () => {
-      popupTitle.textContent = li.textContent;
-      popupText.textContent = li.getAttribute('data-desc');
-      popup.style.display = 'flex';
+    window.onclick = function(event) {
+      if (event.target === popup) closePopup();
+    }
+
+    // Fade-in Animazioni
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
     });
-  });
-</script>
+  </script>
 </body>
 </html>
