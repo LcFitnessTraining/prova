@@ -156,7 +156,7 @@
   </style>
 </head>
 <body>
-  <button id="audio-toggle" aria-label="Attiva o disattiva la musica di sottofondo">🔇 Audio</button>
+  <button id="audio-toggle" style="
   position: fixed; top: 20px; right: 20px; z-index: 10000;
   background: rgba(0,0,0,0.6); border: 2px solid red;
   color: white; padding: 10px 15px; border-radius: 8px;
@@ -233,123 +233,99 @@
   </div>
 
   <!-- Audio -->
-  <audio id="bg-music" src="musica.mp3" loop preload="auto"></audio>    
+  <audio id="bg-music" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'audio HTML5.
+  </audio>
   <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;"></div>
 
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
+    <!-- Mantieni tutta la tua parte HTML e CSS invariata, arriva fino al blocco <script> -->
 
-  <script>
-    let selectedPrice = document.getElementById('durata').value;
-    document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
-body.popup-open {
-  overflow: hidden;
-}
-    paypal.Buttons({
-      style: { color: 'gold', shape: 'rect', label: 'paypal' },
-      createOrder: (data, actions) => actions.order.create({
+<script>
+  let selectedPrice = document.getElementById('durata').value;
+  const popup = document.getElementById("popup");
+  const popupTitle = document.getElementById("popup-title");
+  const popupText = document.getElementById("popup-text");
+
+  document.getElementById('durata').addEventListener('change', e => {
+    selectedPrice = e.target.value;
+  });
+
+  paypal.Buttons({
+    style: { color: 'gold', shape: 'rect', label: 'paypal' },
+    createOrder: (data, actions) => {
+      return actions.order.create({
         purchase_units: [{ amount: { value: selectedPrice } }]
-      }),
-      onApprove: (data, actions) => actions.order.capture().then(details => {
+      });
+    },
+    onApprove: (data, actions) => {
+      return actions.order.capture().then(details => {
         const name = details.payer.name.given_name;
         popupTitle.textContent = "✅ Pagamento completato";
         popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
         popup.style.display = 'flex';
-      })
-    }).render('#paypal-button-container');
-
-    // Audio
-document.addEventListener("DOMContentLoaded", () => {
-  const musicEl = document.getElementById("bg-music");
-  const toggleButton = document.getElementById("audio-toggle");
-  const overlay = document.getElementById("audio-overlay");
-
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  const source = audioContext.createMediaElementSource(musicEl);
-  const gainNode = audioContext.createGain();
-  source.connect(gainNode).connect(audioContext.destination);
-  gainNode.gain.value = 0;
-
-  let isPlaying = false;
-
-  const fadeIn = () => {
-    gainNode.gain.cancelScheduledValues(audioContext.currentTime);
-    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 3); // 3 secondi di fade-in
-  };
-
-  const playMusic = () => {
-    musicEl.play().then(() => {
-      fadeIn();
-      isPlaying = true;
-      toggleButton.textContent = "🔊 Audio";
-    }).catch(console.error);
-  };
-
-  const pauseMusic = () => {
-    musicEl.pause();
-    isPlaying = false;
-    toggleButton.textContent = "🔇 Audio";
-  };
-
-  toggleButton.addEventListener("click", () => {
-    if (isPlaying) pauseMusic();
-    else playMusic();
-  });
-
-  const enableAudio = () => {
-    audioContext.resume().then(playMusic);
-    overlay.remove();
-  };
-
-  overlay.addEventListener("click", enableAudio, { once: true });
-  overlay.addEventListener("touchstart", enableAudio, { once: true });
-});
-
-    // Popup Servizi
-    const items = document.querySelectorAll('#servizi-list li');
-    const popup = document.getElementById('popup');
-    const popupTitle = document.getElementById('popup-title');
-    const popupText = document.getElementById('popup-text');
-
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        popupTitle.textContent = item.textContent;
-        popupText.textContent = item.getAttribute('data-desc');
-        popup.style.display = 'flex';
       });
+    }
+  }).render('#paypal-button-container');
+
+  // AUDIO
+  document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bg-music");
+    const overlay = document.getElementById("audio-overlay");
+    const toggleButton = document.getElementById("audio-toggle");
+    let isPlaying = false;
+
+    // Funzione per fade-in
+    const fadeInMusic = () => {
+      music.volume = 0;
+      music.play();
+      let volume = 0;
+      const fade = setInterval(() => {
+        if (volume < 1) {
+          volume += 0.05;
+          music.volume = Math.min(volume, 1);
+        } else {
+          clearInterval(fade);
+        }
+      }, 200);
+    };
+
+    overlay.addEventListener("click", () => {
+      if (!isPlaying) {
+        fadeInMusic();
+        toggleButton.textContent = "🔊 Audio";
+        isPlaying = true;
+      }
+      overlay.style.display = "none";
     });
 
+    toggleButton.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        toggleButton.textContent = "🔇 Audio";
+      } else {
+        music.play();
+        toggleButton.textContent = "🔊 Audio";
+      }
+      isPlaying = !isPlaying;
+    });
+  });
+
+  // POPUP HANDLING
   function closePopup() {
-  popup.style.display = 'none';
-  document.body.classList.remove('popup-open');
-}
-items.forEach(item => {
-  item.addEventListener('click', () => {
-    popupTitle.textContent = item.textContent;
-    popupText.textContent = item.getAttribute('data-desc');
-    popup.style.display = 'flex';
-    document.body.classList.add('popup-open');
-  });
-});
+    popup.style.display = 'none';
+  }
 
-    window.onclick = function(event) {
-      if (event.target === popup) closePopup();
-    }
-
-    // Fade-in Animazioni
-document.addEventListener("DOMContentLoaded", () => {
-  const serviceItems = document.querySelectorAll('#servizi-list li');
-  serviceItems.forEach((item, index) => {
-    setTimeout(() => item.classList.add("visible"), index * 200); // effetto sequenziale
+  // SERVIZI CLICK POPUP
+  document.querySelectorAll('#servizi-list li').forEach(li => {
+    li.addEventListener('click', () => {
+      popupTitle.textContent = li.textContent;
+      popupText.textContent = li.getAttribute('data-desc');
+      popup.style.display = 'flex';
+    });
   });
-  });
-  </script>
-  <noscript>
-  <div style="color: red; background: #111; padding: 20px; text-align: center;">
-    ⚠️ JavaScript è disabilitato nel tuo browser. Alcune funzionalità della pagina non funzioneranno correttamente.
-  </div>
-  </noscript>
+</script>
 </body>
 </html>
