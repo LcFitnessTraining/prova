@@ -260,46 +260,62 @@
     }).render('#paypal-button-container');
 
     // Audio
-    document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bg-music");
-    const overlay = document.getElementById("audio-overlay");
-    const toggleButton = document.getElementById("audio-toggle");
-    let isPlaying = false;
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bg-music");
+  const overlay = document.getElementById("audio-overlay");
+  const toggleButton = document.getElementById("audio-toggle");
+  let isPlaying = false;
+  let fadeInterval;
 
-    // Funzione per fade-in
-    const fadeInMusic = () => {
-      music.volume = 0;
-      music.play();
+  const fadeInMusic = () => {
+    clearInterval(fadeInterval);
+    music.volume = 0;
+    music.play().then(() => {
       let volume = 0;
-      const fade = setInterval(() => {
+      fadeInterval = setInterval(() => {
         if (volume < 1) {
           volume += 0.05;
           music.volume = Math.min(volume, 1);
         } else {
-          clearInterval(fade);
+          clearInterval(fadeInterval);
         }
-      }, 200);
-    };
+      }, 150);
+    }).catch(err => console.error("Autoplay bloccato:", err));
+  };
 
-    overlay.addEventListener("click", () => {
-      if (!isPlaying) {
-        fadeInMusic();
-        toggleButton.textContent = "🔊 Audio";
-        isPlaying = true;
-      }
-      overlay.style.display = "none";
-    });
-
-    toggleButton.addEventListener("click", () => {
-      if (isPlaying) {
-        music.pause();
-        toggleButton.textContent = "🔇 Audio";
+  const fadeOutMusic = () => {
+    clearInterval(fadeInterval);
+    let volume = music.volume;
+    fadeInterval = setInterval(() => {
+      if (volume > 0) {
+        volume -= 0.05;
+        music.volume = Math.max(volume, 0);
       } else {
-        music.play();
-        toggleButton.textContent = "🔊 Audio";
+        clearInterval(fadeInterval);
+        music.pause();
       }
-      isPlaying = !isPlaying;
-    });
+    }, 150);
+  };
+
+  const toggleAudio = () => {
+    if (isPlaying) {
+      fadeOutMusic();
+      toggleButton.innerText = "🔇 Audio";
+    } else {
+      fadeInMusic();
+      toggleButton.innerText = "🔊 Audio";
+    }
+    isPlaying = !isPlaying;
+  };
+
+  toggleButton.addEventListener("click", toggleAudio);
+  overlay.addEventListener("click", () => {
+    if (!isPlaying) toggleAudio();
+    overlay.style.display = "none";
+  });
+});
+
     // Popup Servizi
     const items = document.querySelectorAll('#servizi-list li');
     const popup = document.getElementById('popup');
