@@ -2,30 +2,46 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Piani personalizzati di allenamento e coaching. Allenati con un professionista del fitness con titoli nazionali e internazionali.">
+<meta name="keywords" content="Fitness, Coaching, Allenamento, Alimentazione, Personal Trainer, Workout, App Allenamento, App Nutrizione">
   <title>Pagamento con PayPal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<style>
+
+
     body {
       margin: 0; padding: 0; text-align: center;
       font-family: 'Montserrat', sans-serif;
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+   
+ #particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+ }
+ 
+    .radial-glow {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  animation: pulseRadial 10s ease-in-out infinite;
+}
 
-    .radial-glow, .fog-layer {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none; z-index: 0;
-      background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2) 0%, transparent 60%),
-                  radial-gradient(circle at 30% 30%, rgba(255, 100, 0, 0.1) 0%, transparent 70%),
-                  radial-gradient(circle at 70% 70%, rgba(255, 50, 0, 0.15) 0%, transparent 60%);
-      animation: pulseRadial 10s ease-in-out infinite;
-    }
 
     .fog-layer {
-      background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
-      animation: moveFog 30s linear infinite;
-    }
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  animation: moveFog 30s linear infinite;
+}
+
 
     @keyframes pulseRadial { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.1);opacity:.8} }
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
@@ -120,10 +136,17 @@
       border-radius: 15px; max-width: 500px;
       text-align: center; color: #fff;
       box-shadow: 0 0 20px red;
-      animation: popupZoom 0.4s ease forwards;
+      animation: popupZoom 0.8s ease forwards;
       transform: scale(0.8) rotate(-3deg); opacity: 0;
     }
 
+    .popup.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
     @keyframes popupZoom {
       to { transform: scale(1) rotate(0); opacity: 1; }
     }
@@ -156,6 +179,7 @@
   </style>
 </head>
 <body>
+
   <button id="audio-toggle" style="
   position: fixed; top: 20px; right: 20px; z-index: 10000;
   background: rgba(0,0,0,0.6); border: 2px solid red;
@@ -167,7 +191,7 @@
 
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
-
+  <div id="particles-js"></div>
   <div class="container">
     <img src="logo.jpg" alt="Logo" class="logo">
     <h1 class="typing">Scegli il tuo piano</h1>
@@ -193,10 +217,10 @@
       <small>clicca sul servizio per saperne di più</small>
       <ul id="servizi-list">
         <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️ Workout Personalizzati</li>
-        <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️ Alimentazione & integrazione</li>
+        <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l’apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️ Alimentazione & integrazione</li>
         <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione">⭕️ Check metrici/plicometrici</li>
-        <li data-desc="LcFitnessTraining è un App app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, supporto multimediale e gestione integrata di allenamento, alimentazione e integrazione, consentendo un approccio strutturato, flessibile e scientificamente validato all’ottimizzazione della performance e del benessere fisico">⭕️ App L.C.Fitness Training per Workout</li>
-        <li data-desc="App Coach Plus è un app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi, offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️ App Coach Plus Per Piani Alimentari</li>
+        <li data-desc="LcFitnessTraining è un'app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, supporto multimediale e gestione integrata di allenamento, alimentazione e integrazione, consentendo un approccio strutturato, flessibile e scientificamente validato all’ottimizzazione della performance e del benessere fisico">⭕️ App L.C.Fitness Training per Workout</li>
+        <li data-desc="App Coach Plus è un'app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi,offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️ App Coach Plus per Piani Alimentari</li>
         <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l’efficacia e la sostenibilità del piano individuale.">⭕️ Supporto del tuo Coach h24 7/7</li>
         <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️ Coaching individuale e dal vivo One to One(opzionale)</li>
       </ul>
@@ -241,16 +265,45 @@
 
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
+    window.addEventListener('scroll', () => {
+    document.querySelectorAll('.parallax').forEach(el => {
+      const speed = el.getAttribute('data-speed');
+      el.style.transform = `translateY(${window.scrollY * speed}px)`;
+    });
+  });
+
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80 },
+    "color": { "value": "#ff0000" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 3 },
+    "move": { "enable": true, "speed": 2 }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": { "enable": true, "mode": "repulse" }
+    }
+  }
+});
+
     let selectedPrice = document.getElementById('durata').value;
     document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
 
     paypal.Buttons({
-      style: { color: 'gold', shape: 'rect', label: 'paypal' },
-      createOrder: (data, actions) => actions.order.create({
-        purchase_units: [{ amount: { value: selectedPrice } }]
-      }),
+  createOrder: function(data, actions) {
+    const amount = document.getElementById("durata").value;
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          value: amount
+        }
+      }]
+    });
+  },
       onApprove: (data, actions) => actions.order.capture().then(details => {
         const name = details.payer.name.given_name;
         popupTitle.textContent = "✅ Pagamento completato";
@@ -260,78 +313,88 @@
     }).render('#paypal-button-container');
 
     // Audio
-    document.addEventListener("DOMContentLoaded", () => {
-  const music = document.getElementById("bg-music");
-  const overlay = document.getElementById("audio-overlay");
-  const toggleButton = document.getElementById("audio-toggle");
+   document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bg-music");
+  const audioOverlay = document.getElementById("audio-overlay");
+  const audioToggle = document.getElementById("audio-toggle");
+
   let isPlaying = false;
 
-  const fadeInMusic = () => {
-    let volume = 0;
-    music.volume = 0;
-    music.play();
-    const fade = setInterval(() => {
-      if (volume < 1) {
-        volume += 0.02;
-        music.volume = volume;
-      } else {
-        clearInterval(fade);
-      }
-    }, 100);
-    isPlaying = true;
-    toggleButton.textContent = "🔊 Audio";
-  };
-
-  const toggleMusic = () => {
-    if (isPlaying) {
-      music.pause();
-      toggleButton.textContent = "🔇 Audio";
-      isPlaying = false;
-    } else {
-      fadeInMusic();
+  // Avvio musica al primo clic sull’overlay (per policy browser)
+  audioOverlay.addEventListener("click", () => {
+    if (!isPlaying) {
+      audio.play();
+      isPlaying = true;
+      audioOverlay.style.display = "none";
+      audioToggle.textContent = "🔇 Disattiva Audio"; // Aggiorna bottone
     }
-  };
-
-  overlay.addEventListener("click", () => {
-    fadeInMusic();
-    overlay.style.display = "none";
   });
 
-  toggleButton.addEventListener("click", toggleMusic);
+  // Bottone ON/OFF Audio
+  audioToggle.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      audioToggle.textContent = "🔇 Disattiva Audio";
+    } else {
+      audio.pause();
+      audioToggle.textContent = "🔊 Attiva Audio";
+    }
+  });
+
+  // Popup Servizi
+  const items = document.querySelectorAll('#servizi-list li');
+  const popup = document.getElementById('popup');
+  const popupTitle = document.getElementById('popup-title');
+  const popupText = document.getElementById('popup-text');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      popupTitle.textContent = item.textContent;
+      popupText.textContent = item.getAttribute('data-desc');
+      popup.style.display = 'flex';
+    });
+  });
 });
-</script>
 
-<script>
-  // Popup servizi
-  const popup = document.getElementById("popup");
-  const popupTitle = document.getElementById("popup-title");
-  const popupText = document.getElementById("popup-text");
+// Funzione per chiudere il popup
+function closePopup() {
+  const popup = document.getElementById('popup');
+  popup.classList.add('fade-out');
+  setTimeout(() => {
+    popup.style.display = 'none';
+    popup.classList.remove('fade-out');
+  }, 500);
+}
 
-  function closePopup() {
-    popup.style.display = "none";
-  }
 
-  document.querySelectorAll("#servizi-list li").forEach(li => {
-    li.addEventListener("click", () => {
-      const desc = li.getAttribute("data-desc");
-      popupTitle.textContent = li.textContent.replace("⭕️", "").trim();
-      popupText.textContent = desc;
-      popup.style.display = "flex";
-    });
-  });
+    window.onclick = function(event) {
+      if (event.target === popup) closePopup();
+    }
 
-  // Animazione visibilità lista
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.1 }
-        document.addEventListener("DOMContentLoaded", () => {
+    // Fade-in Animazioni
+    document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
         .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
     });
+
   </script>
+
+  <footer style="
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  background: rgb(0, 0, 0);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px 1px 8px rgba(255, 0, 0, 0.8);
+  z-index: 10000;
+">
+  &copy; 2025 LcFitnessTraining. Tutti i diritti riservati.
+</footer>
 </body>
+   <section class="parallax" data-speed="0.1">&copy; 2025prova</section>
 </html>
