@@ -258,8 +258,9 @@
         popup.style.display = 'flex';
       })
     }).render('#paypal-button-container');
-    // AUDIO
-document.addEventListener("DOMContentLoaded", () => {
+
+    // Audio
+    document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bg-music");
     const overlay = document.getElementById("audio-overlay");
     const toggleButton = document.getElementById("audio-toggle");
@@ -299,8 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       isPlaying = !isPlaying;
     });
-  });
-
     // Popup Servizi
     const items = document.querySelectorAll('#servizi-list li');
     const popup = document.getElementById('popup');
@@ -315,9 +314,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
- function closePopup() {
-    popup.style.display = 'none';
-  }
+    function closePopup() {
+      popup.style.display = 'none';
+    }
 
     window.onclick = function(event) {
       if (event.target === popup) closePopup();
