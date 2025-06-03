@@ -186,7 +186,7 @@
   color: white; padding: 10px 15px; border-radius: 8px;
   font-weight: bold; cursor: pointer; box-shadow: 0 0 10px red;
 ">
-  🔇 Audio
+  🔇 Off
 </button>
 
   <div class="radial-glow"></div>
@@ -326,7 +326,7 @@ particlesJS("particles-js", {
       audio.play();
       isPlaying = true;
       audioOverlay.style.display = "none";
-      audioToggle.textContent = "🔇 Disattiva Audio"; // Aggiorna bottone
+      audioToggle.textContent = "🔇 Off"; // Aggiorna bottone
     }
   });
 
@@ -334,10 +334,10 @@ particlesJS("particles-js", {
   audioToggle.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
-      audioToggle.textContent = "🔇 Disattiva Audio";
+      audioToggle.textContent = "🔇 Off";
     } else {
       audio.pause();
-      audioToggle.textContent = "🔊 Attiva Audio";
+      audioToggle.textContent = "🔊 On";
     }
   });
 
@@ -378,23 +378,6 @@ function closePopup() {
     });
 
   </script>
-
-  <footer style="
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 12px;
-  background: rgb(0, 0, 0);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  text-shadow: 1px 1px 8px rgba(255, 0, 0, 0.8);
-  z-index: 10000;
-">
-  &copy; 2025 LcFitnessTraining. Tutti i diritti riservati.
-</footer>
 </body>
-   <section class="parallax" data-speed="0.1">&copy; 2025prova</section>
+   <section class="parallax" data-speed="0.1">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
 </html>
