@@ -260,89 +260,76 @@
     }).render('#paypal-button-container');
 
     // Audio
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
   const overlay = document.getElementById("audio-overlay");
   const toggleButton = document.getElementById("audio-toggle");
   let isPlaying = false;
-  let fadeInterval;
 
   const fadeInMusic = () => {
-    clearInterval(fadeInterval);
+    let volume = 0;
     music.volume = 0;
-    music.play().then(() => {
-      let volume = 0;
-      fadeInterval = setInterval(() => {
-        if (volume < 1) {
-          volume += 0.05;
-          music.volume = Math.min(volume, 1);
-        } else {
-          clearInterval(fadeInterval);
-        }
-      }, 150);
-    }).catch(err => console.error("Autoplay bloccato:", err));
-  };
-
-  const fadeOutMusic = () => {
-    clearInterval(fadeInterval);
-    let volume = music.volume;
-    fadeInterval = setInterval(() => {
-      if (volume > 0) {
-        volume -= 0.05;
-        music.volume = Math.max(volume, 0);
+    music.play();
+    const fade = setInterval(() => {
+      if (volume < 1) {
+        volume += 0.02;
+        music.volume = volume;
       } else {
-        clearInterval(fadeInterval);
-        music.pause();
+        clearInterval(fade);
       }
-    }, 150);
+    }, 100);
+    isPlaying = true;
+    toggleButton.textContent = "🔊 Audio";
   };
 
-  const toggleAudio = () => {
+  const toggleMusic = () => {
     if (isPlaying) {
-      fadeOutMusic();
-      toggleButton.innerText = "🔇 Audio";
+      music.pause();
+      toggleButton.textContent = "🔇 Audio";
+      isPlaying = false;
     } else {
       fadeInMusic();
-      toggleButton.innerText = "🔊 Audio";
     }
-    isPlaying = !isPlaying;
   };
 
-  toggleButton.addEventListener("click", toggleAudio);
   overlay.addEventListener("click", () => {
-    if (!isPlaying) toggleAudio();
+    fadeInMusic();
     overlay.style.display = "none";
   });
+
+  toggleButton.addEventListener("click", toggleMusic);
 });
+</script>
 
-    // Popup Servizi
-    const items = document.querySelectorAll('#servizi-list li');
-    const popup = document.getElementById('popup');
-    const popupTitle = document.getElementById('popup-title');
-    const popupText = document.getElementById('popup-text');
+<script>
+  // Popup servizi
+  const popup = document.getElementById("popup");
+  const popupTitle = document.getElementById("popup-title");
+  const popupText = document.getElementById("popup-text");
 
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        popupTitle.textContent = item.textContent;
-        popupText.textContent = item.getAttribute('data-desc');
-        popup.style.display = 'flex';
-      });
+  function closePopup() {
+    popup.style.display = "none";
+  }
+
+  document.querySelectorAll("#servizi-list li").forEach(li => {
+    li.addEventListener("click", () => {
+      const desc = li.getAttribute("data-desc");
+      popupTitle.textContent = li.textContent.replace("⭕️", "").trim();
+      popupText.textContent = desc;
+      popup.style.display = "flex";
     });
+  });
 
-    function closePopup() {
-      popup.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-      if (event.target === popup) closePopup();
-    }
-
-    // Fade-in Animazioni
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
-        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+  // Animazione visibilità lista
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
     });
-  </script>
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll("#servizi-list li").forEach(li => observer.observe(li));
+</script>
 </body>
 </html>
