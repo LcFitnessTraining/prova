@@ -23,6 +23,32 @@
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+.feedback-float {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 25px;
+  width: 100vw;
+  background: none;
+  color: #fff;
+  font-size: 1.2em;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 10000;
+  text-align: left;
+}
+
+.feedback-float span {
+  display: inline-block;
+  white-space: nowrap;
+  animation: float-marquee 25s linear infinite;
+  text-shadow: 0 2px 16px #000, 0 0 8px #ff0000;
+}
+
+@keyframes float-marquee {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
     #particles-js {
       position: fixed;
       top: 0; left: 0;
@@ -168,7 +194,9 @@
   </style>
 </head>
 <body>
-  
+  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 10px 15px; border-radius: 8px;">
+    🔇 Off
+  </button>
 
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
@@ -233,11 +261,8 @@
           Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo efficace e sicuro.
         </p>
       </section>
-      <div class="separator"></div>
-    <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="margin: 20px auto 0 auto; display: block; background: rgba(0,0,0,0.6); border: 2px solid red; color: white;">
-  🔇 Off
-</button>
-      <section class="parallax" data-speed="0.1" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
+  
+<section class="parallax" data-speed="0.1" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
     </div>
   </main>
 
@@ -358,7 +383,7 @@
   }),
   onCancel: function (data) {
     popupTitle.textContent = "❌ Pagamento annullato";
-    popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca di nuovo su acquista.";
+    popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
     popup.style.display = 'flex';
   },
   onError: function (err) {
@@ -386,5 +411,13 @@
       if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
     });
   </script>
+ <div class="feedback-float">
+  <span>
+    "Ottimo servizio, risultati garantiti!" — Marco&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    "Mi sento meglio e più in forma!" — Laura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    "Allenamenti personalizzati TOP!" — Giovanni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    "La scelta migliore per la mia salute!" — Sara
+  </span>
+</div>
 </body>
 </html>
