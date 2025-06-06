@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <title>L.C.FitnessTraining</title>
+  <title>L.C.FitnessTraining - Coaching, Allenamento e Nutrizione</title>
   <meta charset="UTF-8">
   <meta name="description" content="Piani personalizzati di allenamento e coaching. Allenati con un professionista del fitness con titoli nazionali e internazionali.">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">
   <meta name="twitter:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -45,6 +46,9 @@
     }
     @keyframes pulseRadial { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.1);opacity:.8} }
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
+    main {
+      display: block;
+    }
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
       background: rgba(12,1,1,0.93); border-radius: 15px;
@@ -53,6 +57,7 @@
     .logo {
       max-width: 150px; margin-bottom: 20px; border-radius: 50%;
       animation: firePulse 2s infinite;
+      width: 100%; height: auto;
     }
     @keyframes firePulse {
       0%,100%{box-shadow:0 0 10px red,0 0 20px orange}
@@ -163,38 +168,34 @@
   </style>
 </head>
 <body>
-
-  <button id="audio-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 10px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px red;">
-    🔇 Off
-  </button>
+  
 
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
   <div id="particles-js"></div>
-  <div class="container">
-    <img src="logo.jpg" alt="Logo LcFitnessTraining" class="logo">
-    <h1 class="typing">Scegli il tuo piano</h1>
-    <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
-
-    <label for="durata">Durata:</label>
-    <select id="durata">
-      <option value="63">1 mese - €63</option>
-      <option value="115">2 mesi - €115</option>
-      <option value="155">3 mesi - €155</option>
-      <option value="270">6 mesi - €270</option>
-      <option value="50">1 lezione Coaching individuale - €50</option>
-      <option value="400">10 lezioni Coaching individuali - €400</option>
-      <option value="600">20 lezioni Coaching individuali - €600</option>
-      <option value="33">Workout Singolo - €33</option>
-    </select>
-
-    <div id="paypal-button-container"></div>
-    <div class="separator"></div>
-
-    <div class="servizi">
-      <h2>I miei servizi</h2>
-      <small>clicca sul servizio per saperne di più</small>
-      <ul id="servizi-list">
+  <main>
+    <div class="container">
+      <img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo">
+      <h1 class="typing">Scegli il tuo piano</h1>
+      <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
+      <label for="durata">Durata:</label>
+      <select id="durata" required aria-required="true">
+        <option value="" disabled selected>Seleziona la durata</option>
+        <option value="63">1 mese - €63</option>
+        <option value="115">2 mesi - €115</option>
+        <option value="155">3 mesi - €155</option>
+        <option value="270">6 mesi - €270</option>
+        <option value="50">1 lezione Coaching individuale - €50</option>
+        <option value="400">10 lezioni Coaching individuali - €400</option>
+        <option value="600">20 lezioni Coaching individuali - €600</option>
+        <option value="33">Workout Singolo - €33</option>
+      </select>
+      <div id="paypal-button-container"></div>
+      <div class="separator"></div>
+      <section class="servizi" id="servizi">
+        <h2>I miei servizi</h2>
+        <small>clicca sul servizio per saperne di più</small>
+        <ul id="servizi-list">
         <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️Scheda di allenamento personalizzata</li>
         <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l’apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️Piano alimentare personalizzato</li>
         <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">⭕️Misurazioni antropometriche e plicometria</li>
@@ -202,46 +203,48 @@
         <li data-desc="App Coach Plus è un'app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi,offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️App Coach Plus</li>
         <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l’efficacia e la sostenibilità del piano individuale.">⭕️Supporto del Coach h24 7/7</li>
         <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️Lezione di coaching individuale</li>
-      </ul>
+        </ul>
+      </section>
+      <div class="separator"></div>
+      <section class="titoli" id="titoli">
+        <h2>Titoli e certificazioni</h2>
+        <ul id="titoli-list">
+          <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
+          <li>🏆 1° NAC ITALY Championship</li>
+          <li>🥇 8° NAC WORLD Championship</li>
+        </ul>
+      </section>
+      <div class="separator"></div>
+      <section class="contatti" id="contatti">
+        <h2>Contatti</h2>
+        <ul>
+          <li><a href="mailto:LcFitnessTrainingPt@gmail.com">📧 Email</a></li>
+          <li><a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener">📸 Instagram</a></li>
+          <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">📘 Facebook</a></li>
+        </ul>
+      </section>
+      <div class="separator"></div>
+      <section class="presentazione" id="presentazione">
+        <h2 class="typing">Chi sono</h2>
+        <p style="line-height: 1.6; margin-top: 10px;">
+          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze tecniche, passione e attenzione alla persona.
+        </p>
+        <p style="line-height: 1.6; margin-top: 15px;">
+          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo efficace e sicuro.
+        </p>
+      </section>
+      <div class="separator"></div>
+    <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="margin: 20px auto 0 auto; display: block; background: rgba(0,0,0,0.6); border: 2px solid red; color: white;">
+  🔇 Off
+</button>
+      <section class="parallax" data-speed="0.1" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
     </div>
-
-    <div class="separator"></div>
-    <div class="titoli">
-      <h2>Titoli e certificazioni</h2>
-      <ul id="titoli-list">
-        <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
-        <li>🏆 1° NAC ITALY Championship</li>
-        <li>🥇 8° NAC WORLD Championship</li>
-      </ul>
-    </div>
-
-    <div class="separator"></div>
-    <div class="contatti">
-      <h2>Contatti</h2>
-      <ul>
-        <li><a href="mailto:LcFitnessTrainingPt@gmail.com">📧 Email</a></li>
-        <li><a href="https://www.instagram.com/luka_cupo/" target="_blank">📸 Instagram</a></li>
-        <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank">📘 Facebook</a></li>
-      </ul>
-    </div>
-    <div class="separator"></div>
-    <div class="presentazione">
-      <h2 class="typing">Chi sono</h2>
-      <p style="line-height: 1.6; margin-top: 10px;">
-        Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze tecniche, aggiornamento costante e attenzione alle esigenze individuali per garantirti i migliori risultati.
-      </p>
-      <p style="line-height: 1.6; margin-top: 15px;">
-        Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere risultati concreti, duraturi e sostenibili.
-      </p>
-    </div>
-    <div class="separator"></div>
-    <section class="parallax" data-speed="0.1">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
-  </div>
+  </main>
 
   <!-- Popup -->
-  <div class="popup" id="popup">
+  <div class="popup" id="popup" aria-modal="true" role="dialog">
     <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <span class="close-btn" tabindex="0" onclick="closePopup()" aria-label="Chiudi popup">&times;</span>
       <h3 id="popup-title"></h3>
       <p id="popup-text"></p>
     </div>
@@ -258,6 +261,11 @@
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
+    // Variabili globali per popup
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupText = document.getElementById('popup-text');
+
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.parallax').forEach(el => {
         const speed = el.getAttribute('data-speed');
@@ -281,47 +289,22 @@
       }
     });
 
-    let selectedPrice = document.getElementById('durata').value;
-    document.getElementById('durata').addEventListener('change', e => selectedPrice = e.target.value);
-
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        const amount = document.getElementById("durata").value;
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: amount
-            }
-          }]
-        });
-      },
-      onApprove: (data, actions) => actions.order.capture().then(details => {
-        const name = details.payer.name.given_name;
-        popupTitle.textContent = "✅ Pagamento completato";
-        popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
-        popup.style.display = 'flex';
-      })
-    }).render('#paypal-button-container');
-
-    // Audio
     document.addEventListener("DOMContentLoaded", () => {
+      // Audio
       const audio = document.getElementById("bg-music");
       const audioOverlay = document.getElementById("audio-overlay");
       const audioToggle = document.getElementById("audio-toggle");
-
       let isPlaying = false;
 
-      // Avvio musica al primo clic sull’overlay (per policy browser)
       audioOverlay.addEventListener("click", () => {
         if (!isPlaying) {
           audio.play();
           isPlaying = true;
           audioOverlay.style.display = "none";
-          audioToggle.textContent = "🔇 Off"; // Aggiorna bottone
+          audioToggle.textContent = "🔇 Off";
         }
       });
 
-      // Bottone ON/OFF Audio
       audioToggle.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
@@ -334,10 +317,6 @@
 
       // Popup Servizi
       const items = document.querySelectorAll('#servizi-list li');
-      const popup = document.getElementById('popup');
-      const popupTitle = document.getElementById('popup-title');
-      const popupText = document.getElementById('popup-text');
-
       items.forEach(item => {
         item.addEventListener('click', () => {
           popupTitle.textContent = item.textContent;
@@ -345,11 +324,53 @@
           popup.style.display = 'flex';
         });
       });
+
+      // Fade-in Animazioni
+      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
     });
+
+    // Validazione select per PayPal
+    function isValidDurata() {
+      const durata = document.getElementById("durata");
+      return !!durata.value;
+    }
+
+    if(document.getElementById('paypal-button-container')) {
+      paypal.Buttons({
+  createOrder: function(data, actions) {
+    const amount = document.getElementById("durata").value;
+    if (!isValidDurata()) {
+      alert("Seleziona una durata valida prima di procedere all'acquisto.");
+      throw new Error("Durata non selezionata");
+    }
+    return actions.order.create({
+      purchase_units: [{
+        amount: { value: amount }
+      }]
+    });
+  },
+  onApprove: (data, actions) => actions.order.capture().then(details => {
+    const name = details.payer.name.given_name;
+    popupTitle.textContent = "✅ Pagamento completato";
+    popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
+    popup.style.display = 'flex';
+  }),
+  onCancel: function (data) {
+    popupTitle.textContent = "❌ Pagamento annullato";
+    popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca di nuovo su acquista.";
+    popup.style.display = 'flex';
+  },
+  onError: function (err) {
+    popupTitle.textContent = "⚠️ Errore durante il pagamento";
+    popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
+    popup.style.display = 'flex';
+  }
+}).render('#paypal-button-container');
+    }
 
     // Funzione per chiudere il popup
     function closePopup() {
-      const popup = document.getElementById('popup');
       popup.classList.add('fade-out');
       setTimeout(() => {
         popup.style.display = 'none';
@@ -357,14 +378,12 @@
       }, 500);
     }
 
+    // Chiudi popup cliccando fuori o con ESC
     window.onclick = function(event) {
       if (event.target === popup) closePopup();
     }
-
-    // Fade-in Animazioni
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
-        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+    document.addEventListener('keydown', function(e){
+      if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
     });
   </script>
 </body>
