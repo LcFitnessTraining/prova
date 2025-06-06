@@ -27,17 +27,18 @@
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 25px;
+  top: 0;
   width: 100vw;
-  background: none;
+  background: rgba(0,0,0,0.9);
   color: #fff;
   font-size: 1.2em;
   pointer-events: none;
   overflow: visible;
-  z-index: 10000;
+  z-index: 10001; /* Meno del tasto audio */
   text-align: left;
+  padding: 10px 0 10px 0;
+  box-shadow: 0 2px 15px #000;
 }
-
 .feedback-float span {
   display: inline-block;
   white-space: nowrap;
@@ -74,6 +75,7 @@
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
     main {
       display: block;
+       margin-top: 60px; /* Aggiungi questa riga */
     }
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
@@ -183,6 +185,7 @@
       color: #faf7f7; text-decoration: none; font-weight: bold;
       transition: color 0.3s ease;
     }
+  
     .contatti a:hover { color: #ff0000; }
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
@@ -194,7 +197,7 @@
   </style>
 </head>
 <body>
-  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 10px 15px; border-radius: 8px;">
+  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 8px 13px; border-radius: 6px;">
     🔇 Off
   </button>
 
@@ -419,5 +422,15 @@
     "La scelta migliore per la mia salute!" — Sara
   </span>
 </div>
+<script>
+  window.addEventListener('scroll', function() {
+    const feedbackBar = document.querySelector('.feedback-float');
+    if (window.scrollY > 80) { // puoi cambiare 80 per regolare quando nascondere
+      feedbackBar.style.display = 'none';
+    } else {
+      feedbackBar.style.display = 'block';
+    }
+  });
+</script>
 </body>
 </html>
