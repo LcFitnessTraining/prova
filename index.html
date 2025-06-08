@@ -17,39 +17,45 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    .fake-comments-marquee {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10001;
+  background: rgba(0,0,0,0.92);
+  color: #fff;
+  overflow: hidden;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid red;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 10px rgba(255,0,0,0.25);
+}
+.fake-comments-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-comments 25s linear infinite;
+}
+.fake-comments-track span {
+  display: inline-block;
+  margin: 0 45px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px #000;
+}
+@keyframes marquee-comments {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-50%);}
+}
+body { padding-top: 40px; } /* Per non nascondere il contenuto sotto la barra */
     body {
       margin: 0; padding: 0; text-align: center;
       font-family: 'Montserrat', sans-serif;
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
-.feedback-float {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100vw;
-  background: rgba(0,0,0,0.9);
-  color: #fff;
-  font-size: 1.2em;
-  pointer-events: none;
-  overflow: visible;
-  z-index: 10001; /* Meno del tasto audio */
-  text-align: left;
-  padding: 10px 0 10px 0;
-  box-shadow: 0 2px 15px #000;
-}
-.feedback-float span {
-  display: inline-block;
-  white-space: nowrap;
-  animation: float-marquee 25s linear infinite;
-  text-shadow: 0 2px 16px #000, 0 0 8px #ff0000;
-}
-
-@keyframes float-marquee {
-  0%   { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
-}
     #particles-js {
       position: fixed;
       top: 0; left: 0;
@@ -58,6 +64,16 @@
       z-index: 0;
       pointer-events: none;
     }
+    .feedback h2 {
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
+.feedback input, .feedback textarea {
+  margin-bottom: 10px;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+  background: #1c1c1c;
+  color: #fff;
+}
     .radial-glow {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none; z-index: 0;
@@ -75,7 +91,6 @@
     @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
     main {
       display: block;
-       margin-top: 60px; /* Aggiungi questa riga */
     }
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
@@ -185,7 +200,6 @@
       color: #faf7f7; text-decoration: none; font-weight: bold;
       transition: color 0.3s ease;
     }
-  
     .contatti a:hover { color: #ff0000; }
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
@@ -194,10 +208,36 @@
       select, label { font-size: 1.1rem; padding: 16px; }
       ul li { font-size: 0.95rem; padding: 8px; }
     }
+  #audio-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 12000; /* più alto di .fake-comments-marquee */
+  background: rgba(0,0,0,0.6);
+  border: 2px solid red;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
-  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 8px 13px; border-radius: 6px;">
+  <div class="fake-comments-marquee">
+  <div class="fake-comments-track">
+    <span>Marco-Coach super disponibile e sempre presente in ogni momento della giornata</span>
+    <span>Laura-Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo”</span>
+    <span>Giovanni-Allenamenti personalizzati al TOP!Non ho mai raggiunto questi risultati prima d ora ”</span>
+    <span>Paolo-Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+    <span>Simona-Consigliatissimo, super preparato e sempre disponibile”</span>
+    <span>Daniele-Un coach molto preprato dal punto di vista alimentare e di integrazione</span>
+    <span>Miky-Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+    <span>Sery-é la prima volta che riesco a superare i miei limiti</span>
+    <span>Dany-Amo la spiegazione scientifica di ogni singolo piano  </span>
+  </div>
+</div>
+  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 12000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 7px 12px; border-radius: 5px;">
     🔇 Off
   </button>
 
@@ -254,6 +294,7 @@
           <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">📘 Facebook</a></li>
         </ul>
       </section>
+      
       <div class="separator"></div>
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
@@ -264,8 +305,20 @@
           Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo efficace e sicuro.
         </p>
       </section>
-  
-<section class="parallax" data-speed="0.1" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
+      <div class="separator"></div>
+<section class="feedback" id="feedback">
+  <h2>Lascia un feedback</h2>
+  <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;">
+    <label for="commento">Feedback:</label>
+    <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;"></textarea>
+    <button type="submit" style="padding:10px 30px;background:red;color:#fff;border:none;border-radius:6px;margin-top:10px;cursor:pointer;">Invia</button>
+    <div id="msg-feedback" style="margin-top:10px;"></div>
+  </form>
+</section>
+      <div class="separator"></div>
+      <section class="parallax" data-speed="0.1" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
     </div>
   </main>
 
@@ -414,23 +467,26 @@
       if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
     });
   </script>
- <div class="feedback-float">
-  <span>
-    "Ottimo servizio, risultati garantiti!" — Marco&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    "Mi sento meglio e più in forma!" — Laura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    "Allenamenti personalizzati TOP!" — Giovanni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    "La scelta migliore per la mia salute!" — Sara
-  </span>
-</div>
-<script>
-  window.addEventListener('scroll', function() {
-    const feedbackBar = document.querySelector('.feedback-float');
-    if (window.scrollY > 80) { // puoi cambiare 80 per regolare quando nascondere
-      feedbackBar.style.display = 'none';
-    } else {
-      feedbackBar.style.display = 'block';
-    }
+  <script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var msgBox = document.getElementById('msg-feedback');
+  msgBox.textContent = 'Invio in corso...';
+  fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      nome: document.getElementById('nome').value,
+      commento: document.getElementById('commento').value
+    })
+  }).then(function(){
+    msgBox.textContent = 'Grazie per il tuo feedback!';
+    document.getElementById('feedbackForm').reset();
+  }).catch(function(){
+    msgBox.textContent = 'Errore nell\'invio. Riprova più tardi.';
   });
+});
 </script>
 </body>
 </html>
