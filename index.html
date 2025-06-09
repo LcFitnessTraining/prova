@@ -21,7 +21,7 @@
       position: fixed;
       bottom: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 32px;
       background: #111;
       color: #fff;
@@ -205,6 +205,7 @@
     .close-btn {
       float: right; font-size: 1.3rem;
       cursor: pointer; color: red;
+      background: none; border: none;
     }
     .contatti ul, .contatti ul li {
       text-align: center; border: none; transform: none; opacity: 1;
@@ -241,11 +242,22 @@
       padding: 7px 12px;
       cursor: pointer;
     }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body>
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">
-    🔇 Off
+    <span aria-hidden="true">🔊</span> <span class="visually-hidden">Audio acceso</span>
   </button>
 
   <div class="radial-glow"></div>
@@ -257,7 +269,7 @@
       <h1 class="typing">Scegli il tuo piano</h1>
       <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
       <label for="durata">Durata:</label>
-      <select id="durata" required aria-required="true">
+      <select id="durata" required aria-required="true" autocomplete="off">
         <option value="" disabled selected>Seleziona la durata</option>
         <option value="63">1 mese - €63</option>
         <option value="115">2 mesi - €115</option>
@@ -274,13 +286,13 @@
         <h2>I miei servizi</h2>
         <small>clicca sul servizio per saperne di più</small>
         <ul id="servizi-list">
-          <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi, livello di esperienza, disponibilità di attrezzatura e preferenze personali.">Scheda di Allenamento Personalizzata</li>
-          <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, con attenzione particolare alla varietà e qualità degli alimenti.">Piano Alimentare Personalizzato</li>
-          <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali massa grassa, massa magra e circonferenze.">Misurazioni antropometriche e plicometria</li>
-          <li data-desc="LcFitnessTraining è un'app per l’allenamento, rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, schede e video tutorial.">App Allenamento</li>
-          <li data-desc="App Coach Plus è un'app per l’alimentazione, uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il monitoraggio dei pasti e suggerimenti personalizzati.">App Nutrizione</li>
-          <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi e la motivazione costante.">Supporto continuo</li>
-          <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare i risultati.">Coaching Individuale</li>
+          <li data-desc="Scheda di allenamento personalizzata: protocollo di esercizi strutturato su parametri individuali come obiettivi, livello di fitness e disponibilità.">Scheda di allenamento personalizzata</li>
+          <li data-desc="Piano alimentare personalizzato: regime nutrizionale su misura per esigenze fisiologiche, metabolismo e obiettivi.">Piano alimentare personalizzato</li>
+          <li data-desc="Misurazioni antropometriche e plicometria: valutazione della composizione corporea tramite dati quantitativi e qualitativi.">Misurazioni antropometriche e plicometria</li>
+          <li data-desc="LcFitnessTraining App: programma di allenamento digitale per personalizzazione, monitoraggio e motivazione continua.">App Allenamento LcFitnessTraining</li>
+          <li data-desc="App Coach Plus: gestione digitale e personalizzata del piano nutrizionale con strumenti avanzati di monitoraggio.">App Coach Plus per alimentazione</li>
+          <li data-desc="Supporto continuo: coach disponibile 24/7 per adattamento programmi, risoluzione dubbi e motivazione costante.">Supporto continuo</li>
+          <li data-desc="Lezione di coaching individuale: sessione personalizzata con principi di fisiologia e biomeccanica per ottimizzare i risultati.">Lezione di coaching individuale</li>
         </ul>
       </section>
       <div class="separator"></div>
@@ -305,20 +317,20 @@
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
         <p style="line-height: 1.6; margin-top: 10px;">
-          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze scientifiche e pratiche per garantire risultati concreti e duraturi.
+          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce conoscenze scientifiche, passione e attenzione personalizzata verso ogni atleta.
         </p>
         <p style="line-height: 1.6; margin-top: 15px;">
-          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo efficace e sicuro.
+          Con titoli nazionali e internazionali e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> per raggiungere i tuoi risultati in modo efficace e sicuro.
         </p>
       </section>
       <div class="separator"></div>
       <section class="feedback" id="feedback">
         <h2>Lascia un feedback per migliorare i nostri servizi</h2>
-        <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;">
+        <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;" autocomplete="off">
           <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;">
+          <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;" autocomplete="name">
           <label for="commento">Feedback:</label>
-          <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;"></textarea>
+          <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;" autocomplete="off"></textarea>
           <button type="submit" style="padding:10px 30px;background:red;color:#fff;border:none;border-radius:6px;margin-top:10px;cursor:pointer;">Invia</button>
           <div id="msg-feedback" style="margin-top:10px;"></div>
         </form>
@@ -329,8 +341,10 @@
   <!-- Popup -->
   <div class="popup" id="popup" aria-modal="true" role="dialog">
     <div class="popup-content">
-      <span class="close-btn" tabindex="0" aria-label="Chiudi popup">&times;</span>
-      <h3 id="popup-title"></h3>
+      <button class="close-btn" tabindex="0" aria-label="Chiudi popup">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h3 id="popup-title"><span class="visually-hidden">Titolo popup</span></h3>
       <p id="popup-text"></p>
     </div>
   </div>
@@ -340,7 +354,7 @@
     <source src="musica.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'audio HTML5.
   </audio>
-  <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;" tabindex="0" aria-label="Attiva audio di sottofondo" role="button"></div>
+  <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
 
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
@@ -354,7 +368,7 @@
 
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.parallax').forEach(el => {
-        const speed = el.getAttribute('data-speed');
+        const speed = parseFloat(el.getAttribute('data-speed')) || 0.02;
         el.style.transform = `translateY(${window.scrollY * speed}px)`;
       });
     });
@@ -387,7 +401,7 @@
           audio.play();
           isPlaying = true;
           audioOverlay.style.display = "none";
-          audioToggle.textContent = "🔇 Off";
+          audioToggle.innerHTML = '<span aria-hidden="true">🔊</span> <span class="visually-hidden">Audio acceso</span>';
         }
       };
 
@@ -401,10 +415,10 @@
       audioToggle.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
-          audioToggle.textContent = "🔇 Off";
+          audioToggle.innerHTML = '<span aria-hidden="true">🔊</span> <span class="visually-hidden">Audio acceso</span>';
         } else {
           audio.pause();
-          audioToggle.textContent = "🔊 On";
+          audioToggle.innerHTML = '<span aria-hidden="true">🔇</span> <span class="visually-hidden">Audio spento</span>';
         }
       });
 
@@ -489,8 +503,6 @@
       msgBox.textContent = 'Invio in corso...';
       fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
         method: 'POST',
-        // Se il backend Google supporta CORS, togli la prossima riga:
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
           nome: document.getElementById('nome').value,
