@@ -18,47 +18,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     .copyright-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 32px;
-  background: #111;
-  color: #fff;
-  text-align: center;
-  line-height: 32px;
-  font-size: 1rem;
-  z-index: 10000; /* sotto la barra feedback */
-  box-shadow: 0 -1px 6px rgba(255,0,0,0.09);
-}
-.fake-comments-marquee {
-  background: rgba(0,0,0,0.92);
-  color: #fff;
-  overflow: hidden;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  border-top: 2px solid rgba(255, 0, 0, 0);
-  font-size: 1.05rem;
-  margin-bottom: 10px; /* per separarla dal copyright */
-  /* rimuovi: position, bottom, left, z-index, width, box-shadow */
-}
-.fake-comments-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee-comments 45s linear infinite;
-}
-.fake-comments-track span {
-  display: inline-block;
-  margin: 0 45px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 6px #000;
-}
-@keyframes marquee-comments {
-  0% { transform: translateX(0);}
-  100% { transform: translateX(-100%);}
-}
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 32px;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      line-height: 32px;
+      font-size: 1rem;
+      z-index: 10000;
+      box-shadow: 0 -1px 6px rgba(255,0,0,0.09);
+    }
+    .fake-comments-marquee {
+      background: rgba(0,0,0,0.92);
+      color: #fff;
+      overflow: hidden;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      border-top: 2px solid rgba(255, 0, 0, 0);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .fake-comments-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee-comments 45s linear infinite;
+    }
+    .fake-comments-track span {
+      display: inline-block;
+      margin: 0 45px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 6px #000;
+    }
+    @keyframes marquee-comments {
+      0% { transform: translateX(0);}
+      100% { transform: translateX(-100%);}
+    }
     body {
       margin: 0; padding: 0; text-align: center;
       font-family: 'Montserrat', sans-serif;
@@ -74,15 +73,15 @@
       pointer-events: none;
     }
     .feedback h2 {
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-}
-.feedback input, .feedback textarea {
-  margin-bottom: 10px;
-  border: 2px solid #ff0000;
-  border-radius: 5px;
-  background: #1c1c1c;
-  color: #fff;
-}
+      text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+    }
+    .feedback input, .feedback textarea {
+      margin-bottom: 10px;
+      border: 2px solid #ff0000;
+      border-radius: 5px;
+      background: #1c1c1c;
+      color: #fff;
+    }
     .radial-glow {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none; z-index: 0;
@@ -107,10 +106,10 @@
       box-shadow: 0 0 20px red; position: relative; z-index: 1;
     }
     input,
-textarea {
-  width: 100%;
-  box-sizing: border-box;
-}
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
     .logo {
       max-width: 150px; margin-bottom: 20px; border-radius: 50%;
       animation: firePulse 2s infinite;
@@ -221,34 +220,31 @@ textarea {
       h1.typing { font-size: 1.4rem; }
       select, label { font-size: 1.1rem; padding: 16px; }
       ul li { font-size: 0.95rem; padding: 8px; }
+      #feedbackForm {
+        margin: 10px 0 !important;
+        max-width: 100% !important;
+      }
+      .feedback input, .feedback textarea {
+        font-size: 1.1rem;
+      }
     }
-    @media (max-width:600px) {
-  #feedbackForm {
-    margin: 10px 0 !important;
-    max-width: 100% !important;
-  }
-  .feedback input, .feedback textarea {
-    font-size: 1.1rem;
-  }
-}
-  #audio-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 12000; /* più alto di .fake-comments-marquee */
-  background: rgba(0,0,0,0.6);
-  border: 2px solid red;
-  color: white;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  padding: 7px 12px;
-  cursor: pointer;
-}
+    #audio-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 12000;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid red;
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 5px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  
-  <button id="audio-toggle" aria-label="Attiva o disattiva audio" style="position: fixed; top: 20px; right: 20px; z-index: 12000; background: rgba(0,0,0,0.6); border: 2px solid red; color: white; padding: 7px 12px; border-radius: 5px;">
+  <button id="audio-toggle" aria-label="Attiva o disattiva audio">
     🔇 Off
   </button>
 
@@ -305,36 +301,35 @@ textarea {
           <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">📘 Facebook</a></li>
         </ul>
       </section>
-      
       <div class="separator"></div>
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
         <p style="line-height: 1.6; margin-top: 10px;">
-          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze tecniche, passione e attenzione alla persona.
+          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze scientifiche e pratiche per ottenere risultati concreti.
         </p>
         <p style="line-height: 1.6; margin-top: 15px;">
-          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo efficace e sicuro.
+          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi personali.
         </p>
       </section>
       <div class="separator"></div>
-<section class="feedback" id="feedback">
-  <h2>Lascia un feedback per migliorare i nostri servizi</h2>
-  <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;">
-    <label for="commento">Feedback:</label>
-    <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;"></textarea>
-    <button type="submit" style="padding:10px 30px;background:red;color:#fff;border:none;border-radius:6px;margin-top:10px;cursor:pointer;">Invia</button>
-    <div id="msg-feedback" style="margin-top:10px;"></div>
-  </form>
-</section>
-      
+      <section class="feedback" id="feedback">
+        <h2>Lascia un feedback per migliorare i nostri servizi</h2>
+        <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;">
+          <label for="commento">Feedback:</label>
+          <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;"></textarea>
+          <button type="submit" style="padding:10px 30px;background:red;color:#fff;border:none;border-radius:6px;margin-top:10px;cursor:pointer;">Invia</button>
+          <div id="msg-feedback" style="margin-top:10px;"></div>
+        </form>
+      </section>
+    </div>
   </main>
 
   <!-- Popup -->
   <div class="popup" id="popup" aria-modal="true" role="dialog">
     <div class="popup-content">
-      <span class="close-btn" tabindex="0" onclick="closePopup()" aria-label="Chiudi popup">&times;</span>
+      <span class="close-btn" tabindex="0" aria-label="Chiudi popup">&times;</span>
       <h3 id="popup-title"></h3>
       <p id="popup-text"></p>
     </div>
@@ -345,7 +340,7 @@ textarea {
     <source src="musica.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'audio HTML5.
   </audio>
-  <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;"></div>
+  <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
 
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
@@ -355,6 +350,7 @@ textarea {
     const popup = document.getElementById('popup');
     const popupTitle = document.getElementById('popup-title');
     const popupText = document.getElementById('popup-text');
+    const closeBtn = document.querySelector('.close-btn');
 
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.parallax').forEach(el => {
@@ -386,12 +382,19 @@ textarea {
       const audioToggle = document.getElementById("audio-toggle");
       let isPlaying = false;
 
-      audioOverlay.addEventListener("click", () => {
+      const startAudio = () => {
         if (!isPlaying) {
           audio.play();
           isPlaying = true;
           audioOverlay.style.display = "none";
           audioToggle.textContent = "🔇 Off";
+        }
+      };
+
+      audioOverlay.addEventListener("click", startAudio);
+      audioOverlay.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          startAudio();
         }
       });
 
@@ -418,6 +421,26 @@ textarea {
       // Fade-in Animazioni
       document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
         .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+
+      // Popup close logic
+      function closePopup() {
+        popup.classList.add('fade-out');
+        setTimeout(() => {
+          popup.style.display = 'none';
+          popup.classList.remove('fade-out');
+        }, 500);
+      }
+      closeBtn.addEventListener('click', closePopup);
+      closeBtn.addEventListener('keydown', function(e){
+        if(e.key === "Enter" || e.key === " ") closePopup();
+      });
+
+      window.onclick = function(event) {
+        if (event.target === popup) closePopup();
+      };
+      document.addEventListener('keydown', function(e){
+        if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
+      });
     });
 
     // Validazione select per PayPal
@@ -428,90 +451,71 @@ textarea {
 
     if(document.getElementById('paypal-button-container')) {
       paypal.Buttons({
-  createOrder: function(data, actions) {
-    const amount = document.getElementById("durata").value;
-    if (!isValidDurata()) {
-      alert("Seleziona una durata valida prima di procedere all'acquisto.");
-      throw new Error("Durata non selezionata");
+        createOrder: function(data, actions) {
+          const amount = document.getElementById("durata").value;
+          if (!isValidDurata()) {
+            alert("Seleziona una durata valida prima di procedere all'acquisto.");
+            throw new Error("Durata non selezionata");
+          }
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: amount }
+            }]
+          });
+        },
+        onApprove: (data, actions) => actions.order.capture().then(details => {
+          const name = details.payer.name.given_name;
+          popupTitle.textContent = "✅ Pagamento completato";
+          popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
+          popup.style.display = 'flex';
+        }),
+        onCancel: function (data) {
+          popupTitle.textContent = "❌ Pagamento annullato";
+          popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
+          popup.style.display = 'flex';
+        },
+        onError: function (err) {
+          popupTitle.textContent = "⚠️ Errore durante il pagamento";
+          popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
+          popup.style.display = 'flex';
+        }
+      }).render('#paypal-button-container');
     }
-    return actions.order.create({
-      purchase_units: [{
-        amount: { value: amount }
-      }]
-    });
-  },
-  onApprove: (data, actions) => actions.order.capture().then(details => {
-    const name = details.payer.name.given_name;
-    popupTitle.textContent = "✅ Pagamento completato";
-    popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
-    popup.style.display = 'flex';
-  }),
-  onCancel: function (data) {
-    popupTitle.textContent = "❌ Pagamento annullato";
-    popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
-    popup.style.display = 'flex';
-  },
-  onError: function (err) {
-    popupTitle.textContent = "⚠️ Errore durante il pagamento";
-    popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
-    popup.style.display = 'flex';
-  }
-}).render('#paypal-button-container');
-    }
-
-    // Funzione per chiudere il popup
-    function closePopup() {
-      popup.classList.add('fade-out');
-      setTimeout(() => {
-        popup.style.display = 'none';
-        popup.classList.remove('fade-out');
-      }, 500);
-    }
-
-    // Chiudi popup cliccando fuori o con ESC
-    window.onclick = function(event) {
-      if (event.target === popup) closePopup();
-    }
-    document.addEventListener('keydown', function(e){
-      if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
-    });
   </script>
   <script>
-document.getElementById('feedbackForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var msgBox = document.getElementById('msg-feedback');
-  msgBox.textContent = 'Invio in corso...';
-  fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      nome: document.getElementById('nome').value,
-      commento: document.getElementById('commento').value
-    })
-  }).then(function(){
-    msgBox.textContent = 'Grazie per il tuo feedback!';
-    document.getElementById('feedbackForm').reset();
-  }).catch(function(){
-    msgBox.textContent = 'Errore nell\'invio. Riprova più tardi.';
-  });
-});
-</script>
-<div class="fake-comments-marquee">
-  <div class="fake-comments-track">
-    <span>Marco-Coach super disponibile e sempre presente in ogni momento della giornata</span>
-    <span>Laura-Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-    <span>Giovanni-Allenamenti personalizzati al TOP!Non ho mai raggiunto questi risultati prima d ora </span>
-    <span>Paolo-Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
-    <span>Simona-Consigliatissimo, super preparato e sempre disponibile</span>
-    <span>Daniele-Un coach molto preprato dal punto di vista alimentare e di integrazione</span>
-    <span>Miky-Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-    <span>Sery-é la prima volta che riesco a superare i miei limiti</span>
-    <span>Dany-Amo la spiegazione scientifica di ogni singolo piano  </span>
-  </div>
-  </div>
-      <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var msgBox = document.getElementById('msg-feedback');
+      msgBox.textContent = 'Invio in corso...';
+      fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          nome: document.getElementById('nome').value,
+          commento: document.getElementById('commento').value
+        })
+      }).then(function(){
+        msgBox.textContent = 'Grazie per il tuo feedback!';
+        document.getElementById('feedbackForm').reset();
+      }).catch(function(){
+        msgBox.textContent = 'Errore nell\'invio. Riprova più tardi.';
+      });
+    });
+  </script>
+  <div class="fake-comments-marquee">
+    <div class="fake-comments-track">
+      <span>Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
+      <span>Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
+      <span>Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
+      <span>Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+      <span>Simona - Consigliatissimo, super preparato e sempre disponibile</span>
+      <span>Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
+      <span>Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+      <span>Sery - È la prima volta che riesco a superare i miei limiti</span>
+      <span>Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
     </div>
-    
+  </div>
+  <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
 </body>
 </html>
