@@ -16,25 +16,7 @@
   <meta name="robots" content="index, follow">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    .instagram-icon {
-  color: #000000;
-  background: radial-gradient(circle at 30% 110%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);
-  border-radius: 20%;
-  padding: 3px;
-}
-.facebook-icon {
-  color: #1877F3;
-}
-.gmail-icon {
-  color: #D44638;
-}
-.contatti i {
-  margin-right: 8px;
-  font-size: 1.3em;
-  vertical-align: middle;
-}
     .copyright-bar {
       position: fixed;
       bottom: 0;
@@ -308,30 +290,18 @@
           <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
           <li>🏆 1° NAC ITALY Championship</li>
           <li>🥇 8° NAC WORLD Championship</li>
-          </ul>
-          </section>
+        </ul>
+      </section>
       <div class="separator"></div>
       <section class="contatti" id="contatti">
-  <h2>Contatti</h2>
-  <ul>
-    <li>
-      <a href="mailto:LcFitnessTrainingPt@gmail.com">
-        <i class="fa-solid fa-envelope gmail-icon"></i> Gmail
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener">
-        <i class="fab fa-instagram instagram-icon"></i> Instagram
-      </a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">
-        <i class="fab fa-facebook facebook-icon"></i> Facebook
-      </a>
-    </li>
-  </ul>
-</section>
-<div class="separator"></div>
+        <h2>Contatti</h2>
+        <ul>
+          <li><a href="mailto:LcFitnessTrainingPt@gmail.com">📧 Email</a></li>
+          <li><a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener">📸 Instagram</a></li>
+          <li><a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">📘 Facebook</a></li>
+        </ul>
+      </section>
+      <div class="separator"></div>
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
         <p style="line-height: 1.6; margin-top: 10px;">
@@ -411,12 +381,6 @@
       const audioOverlay = document.getElementById("audio-overlay");
       const audioToggle = document.getElementById("audio-toggle");
       let isPlaying = false;
-      if (localStorage.getItem('paypalCancel') === '1') {
-  localStorage.removeItem('paypalCancel');
-  popupTitle.textContent = "❌ Pagamento annullato";
-  popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
-  popup.style.display = 'flex';
-}
 
       const startAudio = () => {
         if (!isPlaying) {
@@ -499,18 +463,17 @@
             }]
           });
         },
-         onApprove: (data, actions) => actions.order.capture().then(details => {
+        onApprove: (data, actions) => actions.order.capture().then(details => {
           const name = details.payer.name.given_name;
           popupTitle.textContent = "✅ Pagamento completato";
           popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
           popup.style.display = 'flex';
         }),
         onCancel: function (data) {
-  try {
-    localStorage.setItem('paypalCancel', '1');
-  } catch(e) {}
-  location.reload();
-},
+          popupTitle.textContent = "❌ Pagamento annullato";
+          popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
+          popup.style.display = 'flex';
+        },
         onError: function (err) {
           popupTitle.textContent = "⚠️ Errore durante il pagamento";
           popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
@@ -541,7 +504,7 @@
     });
   </script>
   <div class="testimonials-section">
-  <h2>Testimonianze</h2>
+  <h2>Percorsi reali</h2>
   <div class="feedback-carousel">
   <div class="fake-comments-marquee">
     <div class="fake-comments-track">
