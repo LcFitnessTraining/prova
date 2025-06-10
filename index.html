@@ -534,11 +534,39 @@
       </div>
     </div>
   </div>
-  <section class="parallax" data-speed="0.02" aria-label="Copyright">
-  &copy; 2025 LcFitnessTraining. Tutti i diritti riservati.
+<!-- FOOTER PARALLAX -->
+<section class="parallax" data-speed="0.02" aria-label="Copyright">
+  <div class="footer-content">
+    <p><span id="year"></span> &copy; LcFitnessTraining. Tutti i diritti riservati.</p>
+
+    <div class="footer-socials">
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <p><a href="#" onclick="document.getElementById('modal').style.display='block'">Privacy & Termini</a></p>
+  </div>
 </section>
 
+<!-- BOTTONE TORNA SU -->
+<button id="scrollTopBtn" title="Torna su">⬆️</button>
+
+<!-- MODAL PRIVACY -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span onclick="document.getElementById('modal').style.display='none'" class="close">&times;</span>
+    <h2>Privacy & Termini</h2>
+    <p>Inserisci qui le tue condizioni legali, politiche GDPR o disclaimer per i servizi di coaching.</p>
+  </div>
+</div>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- SCRIPT -->
 <script>
+  // Scroll parallax
   document.addEventListener('scroll', function () {
     document.querySelectorAll('.parallax').forEach(el => {
       const speed = parseFloat(el.getAttribute('data-speed'));
@@ -546,53 +574,112 @@
       el.style.transform = `translateY(${offset}px)`;
     });
   });
+
+  // Anno automatico
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Bottone scroll top
+  const btn = document.getElementById("scrollTopBtn");
+  window.onscroll = function () {
+    btn.style.display = window.scrollY > 300 ? "block" : "none";
+  };
+  btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
 
+<!-- STILI -->
 <style>
   .parallax {
     background: linear-gradient(-45deg, #1f1c2c, #928DAB);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    animation: gradientShift 15s ease infinite, heartbeat 2s infinite;
     color: white;
     text-align: center;
-    padding: 20px 0;
-    font-size: 0.9rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1.5s ease forwards;
-    animation-delay: 1.2s;
+    padding: 40px 20px;
+    font-size: 0.95rem;
     position: relative;
     overflow: hidden;
   }
 
-  .parallax::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 200%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 60%);
-    animation: waveMove 10s linear infinite;
-    pointer-events: none;
+  .footer-content p, .footer-socials {
+    margin: 10px 0;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  .footer-socials a:hover {
+    transform: scale(1.3);
+    color: #ff0040;
+  }
+
+  #scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background: #ff0040;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: none;
+    transition: background 0.3s;
+  }
+
+  #scrollTopBtn:hover {
+    background: #cc0033;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  .modal-content {
+    background-color: #222;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    color: white;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ff0040;
   }
 
   @keyframes gradientShift {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
   }
 
-  @keyframes waveMove {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
+
 </body>
 </html>
