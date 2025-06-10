@@ -534,6 +534,65 @@
       </div>
     </div>
   </div>
-  <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
+  <section class="parallax" data-speed="0.02" aria-label="Copyright">
+  &copy; 2025 LcFitnessTraining. Tutti i diritti riservati.
+</section>
+
+<script>
+  document.addEventListener('scroll', function () {
+    document.querySelectorAll('.parallax').forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed'));
+      const offset = window.scrollY * speed;
+      el.style.transform = `translateY(${offset}px)`;
+    });
+  });
+</script>
+
+<style>
+  .parallax {
+    background: linear-gradient(-45deg, #1f1c2c, #928DAB);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease forwards;
+    animation-delay: 1.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .parallax::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 60%);
+    animation: waveMove 10s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
 </body>
 </html>
