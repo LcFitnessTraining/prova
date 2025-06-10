@@ -17,6 +17,63 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    #theme-toggle {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 12000;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid red;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#theme-toggle:hover {
+  background: rgba(255, 0, 0, 0.7);
+}
+
+/* Modalità chiara */
+body.light-mode {
+  background: #fff;
+  color: #000;
+}
+
+body.light-mode .container,
+body.light-mode .popup-content,
+body.light-mode .modal-content {
+  background: #f5f5f5;
+  color: #000;
+  box-shadow: 0 0 20px #aaa;
+}
+
+body.light-mode .separator {
+  background: #000;
+}
+
+body.light-mode select,
+body.light-mode input,
+body.light-mode textarea {
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+
+body.light-mode .footer-socials a {
+  color: #000;
+}
+
+body.light-mode .parallax {
+  background: linear-gradient(45deg, #ddd, #bbb);
+  color: #000;
+}
+
+body.light-mode .close {
+  color: #900;
+}
     .copyright-bar {
       position: fixed;
       bottom: 0;
@@ -256,6 +313,9 @@
   </style>
 </head>
 <body>
+  <button id="theme-toggle" aria-label="Cambia tema">
+  🌙
+  </button>
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">
     <span aria-hidden="true">🔊</span> <span class="visually-hidden">Audio acceso</span>
   </button>
@@ -680,6 +740,22 @@
     to { opacity: 1; transform: translateY(0); }
   }
 </style>
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme');
 
+  if (currentTheme === 'light' || (!currentTheme && !prefersDark)) {
+    document.body.classList.add('light-mode');
+    themeToggle.textContent = '🌞';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    themeToggle.textContent = isLight ? '🌞' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
 </body>
 </html>
