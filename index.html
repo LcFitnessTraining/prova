@@ -303,63 +303,50 @@
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
-    .fake-comments-marquee {
+ .feedback-marquee-container {
+  width: 100%;
   overflow: hidden;
   position: relative;
-  height: 2.5em;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  padding: 10px 0;
 }
 
-.fake-comments-track {
-  display: flex;
-  animation: scrollComments 25s linear infinite;
-  gap: 100px;
-}
-
-.fake-comments-track span {
+.feedback-marquee-track {
+  display: inline-block;
   white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
+  animation: scrollFeedback 30s linear infinite;
 }
-@keyframes scrollComments {
+
+.feedback-item {
+  display: inline-block;
+  margin: 0 50px;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 4px #ff5555;
+  animation: appear 2s ease-in-out forwards;
+}
+
+@keyframes scrollFeedback {
   0% {
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-100%);
   }
 }
-    @keyframes marquee-comments {
-      0% { transform: translateX(0);}
-      100% { transform: translateX(-200%);}
-    }
-    
-.feedback-container {
-  overflow: hidden;
-  width: 400px; /* imposta la larghezza che vuoi */
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.feedback-track {
-  display: flex;
-  will-change: transform;
-}
-.feedback {
-  min-width: 200px; /* larghezza di ciascun feedback */
-  margin-right: 16px;
-}
-    /* --- Responsive --- */
-    @media (max-width:600px) {
-      .container { padding: 15px; margin: 20px; }
-      .logo { max-width: 120px; }
-      h1.typing { font-size: 1.4rem; }
-      select, label { font-size: 1.1rem; padding: 16px; }
-      ul li { font-size: 0.95rem; padding: 8px; }
-      #feedbackForm {
-        margin: 10px 0 !important;
-        max-width: 100% !important;
-      }
-      .feedback input, .feedback textarea {
-        font-size: 1.1rem;
-      }
-    }
     /* --- Audio toggle --- */
     #audio-toggle {
       position: fixed;
@@ -536,21 +523,17 @@
     
     </div>
     <!-- Testimonianze -->
-    <div class="testimonials-section">
-      <h2>Percorsi reali</h2>
-      
-        <div class="feedback-container"> <div class="feedback-track"> <div 
-            <span>💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
-            <span>💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-            <span>💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
-            <span>💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
-            <span>💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
-            <span>💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
-            <span>💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-            <span>💬Sery - È la prima volta che riesco a superare i miei limiti</span>
-            <span>💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
-          </div>
-        </div>
+    <div class="feedback-marquee-container">
+  <div class="feedback-marquee-track">
+    <span class="feedback-item">⭐ “Allenamenti personalizzati e motivanti!”</span>
+    <span class="feedback-item">⭐ “In sole 4 settimane ho visto risultati veri!”</span>
+    <span class="feedback-item">⭐ “Coach super disponibile e professionale.”</span>
+    <span class="feedback-item">⭐ “Programma semplice ma super efficace.”</span>
+    <span class="feedback-item">⭐ “Consiglio L.C. a chiunque voglia trasformarsi.”</span>
+  </div>
+</div>
+
+
       </div>
     </div>
     <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
@@ -751,33 +734,5 @@
   });
 </script>
 
-
-
-
-
-
-<script>
-const track = document.querySelector('.feedback-track');
-const feedbacks = Array.from(track.children);
-
-// Clona tutti i feedback solo per l’effetto scorrimento
-feedbacks.forEach(fb => {
-  const clone = fb.cloneNode(true);
-  track.appendChild(clone);
-});
-
-let scrollAmount = 0;
-
-function animate() {
-  scrollAmount += 1; // cambia la velocità qui
-  // Quando hai scrollato quanto la metà della track (dove iniziano i cloni), resetti
-  if (scrollAmount >= track.scrollWidth / 2) {
-    scrollAmount = 0;
-  }
-  track.style.transform = `translateX(-${scrollAmount}px)`;
-  requestAnimationFrame(animate);
-}
-animate();
-</script
 </body>
 </html>
