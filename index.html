@@ -332,6 +332,19 @@
       0% { transform: translateX(0);}
       100% { transform: translateX(-200%);}
     }
+    
+.feedback-container {
+  overflow: hidden;
+  width: 400px; /* imposta la larghezza che vuoi */
+}
+.feedback-track {
+  display: flex;
+  will-change: transform;
+}
+.feedback {
+  min-width: 200px; /* larghezza di ciascun feedback */
+  margin-right: 16px;
+}
     /* --- Responsive --- */
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
@@ -525,9 +538,8 @@
     <!-- Testimonianze -->
     <div class="testimonials-section">
       <h2>Percorsi reali</h2>
-      <div class="feedback-carousel">
-        <div class="fake-comments-marquee">
-          <div class="fake-comments-track">
+      
+        <div class="feedback-container"> <div class="feedback-track"> <div 
             <span>💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
             <span>💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
             <span>💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
@@ -739,5 +751,33 @@
   });
 </script>
 
+
+
+
+
+
+<script>
+const track = document.querySelector('.feedback-track');
+const feedbacks = Array.from(track.children);
+
+// Clona tutti i feedback solo per l’effetto scorrimento
+feedbacks.forEach(fb => {
+  const clone = fb.cloneNode(true);
+  track.appendChild(clone);
+});
+
+let scrollAmount = 0;
+
+function animate() {
+  scrollAmount += 1; // cambia la velocità qui
+  // Quando hai scrollato quanto la metà della track (dove iniziano i cloni), resetti
+  if (scrollAmount >= track.scrollWidth / 2) {
+    scrollAmount = 0;
+  }
+  track.style.transform = `translateX(-${scrollAmount}px)`;
+  requestAnimationFrame(animate);
+}
+animate();
+</script
 </body>
 </html>
