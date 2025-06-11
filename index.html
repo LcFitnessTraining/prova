@@ -25,6 +25,30 @@
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+.payment-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 999;
+  position: relative;
+}
+
+.payment-logos img {
+  height: 24px; /* Più sottile */
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.15));
+}
+
+.payment-logos img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+}
+
+
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
       background: rgba(12,1,1,0.93); border-radius: 15px;
@@ -203,28 +227,30 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
     .fake-comments-marquee {
-      background: rgba(0,0,0,0.92);
-      color: #fff;
-      overflow: hidden;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      border-top: 2px solid rgba(255, 0, 0, 0);
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-    .fake-comments-track {
-      display: inline-block;
-      white-space: nowrap;
-      animation: marquee-comments 45s linear infinite;
-    }
-    .fake-comments-track span {
-      display: inline-block;
-      margin: 0 45px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 6px #000;
-    }
+  overflow: hidden;
+  position: relative;
+  height: 2.5em;
+}
+
+.fake-comments-track {
+  display: flex;
+  animation: scrollComments 40s linear infinite;
+  gap: 100px;
+}
+
+.fake-comments-track span {
+  white-space: nowrap;
+  font-size: 1rem;
+  color: #fff;
+}
+@keyframes scrollComments {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
     @keyframes marquee-comments {
       0% { transform: translateX(0);}
       100% { transform: translateX(-100%);}
@@ -258,13 +284,36 @@
       padding: 7px 12px;
       cursor: pointer;
     }
-  </style>
+    #msg-feedback.loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  border: 2px solid #fff;
+  border-top-color: red;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+   </style>
 </head>
 <body>
+  <div class="payment-logos">
+  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" />
+  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="MasterCard" />
+  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro" />
+  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express" />
+  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" />
+  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay" />
+</div>
+
   <!-- Audio toggle -->
-  <button id="audio-toggle" aria-label="Attiva o disattiva audio">
-    🔇 Off
-  </button>
+  <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
   <!-- Effetti grafici -->
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
@@ -295,14 +344,13 @@
         <h2>I miei servizi</h2>
         <small>clicca sul servizio per saperne di più</small>
         <ul id="servizi-list">
-          <!-- Lasciati volutamente non chiusi come richiesto -->
-          <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi...">Scheda Allenamento Personalizzata
-          <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo,...">Piano Alimentare Personalizzato
-          <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali...">Plicometria & Misurazioni
-          <li data-desc="LcFitnessTraining è un'app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, s...">App Allenamento LcFitnessTraining
-          <li data-desc="App Coach Plus è un'app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il...">App Coach Plus Nutrizione
-          <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione ...">Supporto Continuo H24
-          <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzar...">Lezione Coaching Individuale
+        <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️Scheda di allenamento personalizzata</li>
+        <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l’apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️Piano alimentare personalizzato</li>
+        <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">⭕️Misurazioni antropometriche e plicometria</li>
+        <li data-desc="LcFitnessTraining è un'app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, supporto multimediale e gestione integrata di allenamento, alimentazione e integrazione, consentendo un approccio strutturato, flessibile e scientificamente validato all’ottimizzazione della performance e del benessere fisico.">⭕️App LcFitnessTraining</li>
+        <li data-desc="App Coach Plus è un'app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi,offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️App Coach Plus</li>
+        <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l’efficacia e la sostenibilità del piano individuale.">⭕️Supporto del Coach h24 7/7</li>
+        <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️Lezione di coaching individuale</li>
         </ul>
       </section>
       <div class="separator"></div>
@@ -320,32 +368,33 @@
       <section class="contatti" id="contatti">
         <h2>Contatti</h2>
         <ul>
-          <li>
-            <a href="mailto:LcFitnessTrainingPt@gmail.com">
-              <i class="fa-solid fa-envelope gmail-icon"></i> Gmail
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener">
-              <i class="fab fa-instagram instagram-icon"></i> Instagram
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener">
-              <i class="fab fa-facebook facebook-icon"></i> Facebook
-            </a>
-          </li>
-        </ul>
+  <li>
+    <a href="mailto:LcFitnessTrainingPt@gmail.com" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com">
+      <i class="fa-solid fa-envelope gmail-icon"></i> Gmail
+    </a>
+  </li>
+  <li>
+    <a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo">
+      <i class="fab fa-instagram instagram-icon"></i> Instagram
+    </a>
+  </li>
+  <li>
+    <a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo">
+      <i class="fab fa-facebook facebook-icon"></i> Facebook
+    </a>
+  </li>
+</ul>
+
       </section>
       <div class="separator"></div>
       <!-- Presentazione -->
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
         <p style="line-height: 1.6; margin-top: 10px;">
-          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenze scientifiche e passione per il benessere.
+          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenza scientifica e passione per ottenere risultati concreti.
         </p>
         <p style="line-height: 1.6; margin-top: 15px;">
-          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere la tua miglior forma.
+          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo sicuro e duraturo.
         </p>
       </section>
       <div class="separator"></div>
@@ -364,19 +413,19 @@
     </div>
     <!-- Testimonianze -->
     <div class="testimonials-section">
-      <h2>Testimonianze</h2>
+      <h2>Percorsi reali</h2>
       <div class="feedback-carousel">
         <div class="fake-comments-marquee">
           <div class="fake-comments-track">
-            <span>Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
-            <span>Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-            <span>Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
-            <span>Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
-            <span>Simona - Consigliatissimo, super preparato e sempre disponibile</span>
-            <span>Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
-            <span>Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-            <span>Sery - È la prima volta che riesco a superare i miei limiti</span>
-            <span>Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
+            <span>💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
+            <span>💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
+            <span>💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
+            <span>💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+            <span>💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
+            <span>💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
+            <span>💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+            <span>💬Sery - È la prima volta che riesco a superare i miei limiti</span>
+            <span>💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
           </div>
         </div>
       </div>
@@ -386,7 +435,7 @@
   <!-- Popup -->
   <div class="popup" id="popup" aria-modal="true" role="dialog">
     <div class="popup-content">
-      <span class="close-btn" tabindex="0" aria-label="Chiudi popup">&times;</span>
+      <span class="close-btn" tabindex="0" role="button" aria-label="Chiudi popup">&times;</span>
       <h3 id="popup-title"></h3>
       <p id="popup-text"></p>
     </div>
