@@ -303,20 +303,20 @@
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
- .feedback-marquee-container {
+.feedback-marquee-container {
   width: 100%;
   overflow: hidden;
-  position: relative;
   background: rgba(0, 0, 0, 0.3);
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   padding: 10px 0;
+  white-space: nowrap; /* forza riga singola */
 }
 
 .feedback-marquee-track {
   display: inline-block;
+  animation: scrollFeedback 30s linear 1 forwards;
   white-space: nowrap;
-  animation: scrollFeedback 30s linear infinite;
 }
 
 .feedback-item {
@@ -325,9 +325,9 @@
   font-size: 1.1rem;
   color: #fff;
   text-shadow: 0 0 4px #ff5555;
-  animation: appear 2s ease-in-out forwards;
 }
 
+/* ANIMAZIONE SCORRIMENTO */
 @keyframes scrollFeedback {
   0% {
     transform: translateX(100%);
@@ -337,14 +337,18 @@
   }
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
+/* Responsive per mobile */
+@media (max-width: 768px) {
+  .feedback-item {
+    font-size: 0.95rem;
+    margin: 0 30px;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .feedback-item {
+    font-size: 0.85rem;
+    margin: 0 20px;
   }
 }
     /* --- Audio toggle --- */
