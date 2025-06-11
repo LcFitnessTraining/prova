@@ -17,6 +17,17 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <div class="payment-logos animate-slide-down">
+
+  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard">
+  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro">
+  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express">
+  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
+  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay">
+</div>
+
+
   <style>
     /* --- Effetti grafici e layout --- */
     body {
@@ -25,28 +36,40 @@
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+
+
 .payment-logos {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 8px 0;
-  background: rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  z-index: 999;
-  position: relative;
+  gap: 20px;
+  padding: 2px 0;
+  background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid #faf8f800;
+  animation: slideDown 1.2s ease-out;
 }
 
 .payment-logos img {
-  height: 24px; /* Più sottile */
+  height: 28px;
+  opacity: 0.9;
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.15));
 }
 
 .payment-logos img:hover {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
 }
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 
     .container {
@@ -303,15 +326,6 @@
    </style>
 </head>
 <body>
-  <div class="payment-logos">
-  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" />
-  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="MasterCard" />
-  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro" />
-  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express" />
-  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" />
-  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay" />
-</div>
-
   <!-- Audio toggle -->
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
   <!-- Effetti grafici -->
@@ -353,7 +367,7 @@
         <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️Lezione di coaching individuale</li>
         </ul>
       </section>
-      <div class="separator"></div>
+<div class="separator"></div>
       <!-- Titoli e certificazioni -->
       <section class="titoli" id="titoli">
         <h2>Titoli e certificazioni</h2>
