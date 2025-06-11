@@ -303,36 +303,35 @@
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
-  /* CSS */
-.fake-comments-marquee {
+    .fake-comments-marquee {
   overflow: hidden;
-  width: 100%;
   position: relative;
   height: 2.5em;
-  background: transparent;
 }
+
 .fake-comments-track {
-  display: inline-block;
-  white-space: nowrap;
-  will-change: transform;
-  animation: scrollLeft linear infinite;
-  animation-duration: 30s; /* regola la velocità */
+  display: flex;
+  animation: scrollComments 10s linear infinite;
+  gap: 100px;
 }
+
 .fake-comments-track span {
-  display: inline-block;
-  margin-right: 100px;
+  white-space: nowrap;
   font-size: 1rem;
   color: #fff;
 }
-
-@keyframes scrollLeft {
+@keyframes scrollComments {
   0% {
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
   }
 }
+    @keyframes marquee-comments {
+      0% { transform: translateX(0);}
+      100% { transform: translateX(-100%);}
+    }
     /* --- Responsive --- */
     @media (max-width:600px) {
       .container { padding: 15px; margin: 20px; }
