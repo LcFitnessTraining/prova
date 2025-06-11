@@ -36,6 +36,16 @@
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+    .container {
+      max-width: 600px; margin: 60px auto; padding: 30px;
+      background: rgba(12,1,1,0.93); border-radius: 15px;
+      box-shadow: 0 0 20px red; position: relative; z-index: 1;
+    }
+    .logo {
+      max-width: 150px; margin-bottom: 20px; border-radius: 50%;
+      animation: firePulse 2s infinite;
+      width: 100%; height: auto;
+    }
 
 .faq-section {
   max-width: 800px;
@@ -123,19 +133,6 @@
     opacity: 1;
   }
 }
-
-
-
-    .container {
-      max-width: 600px; margin: 60px auto; padding: 30px;
-      background: rgba(12,1,1,0.93); border-radius: 15px;
-      box-shadow: 0 0 20px red; position: relative; z-index: 1;
-    }
-    .logo {
-      max-width: 150px; margin-bottom: 20px; border-radius: 50%;
-      animation: firePulse 2s infinite;
-      width: 100%; height: auto;
-    }
     @keyframes firePulse {
       0%,100%{box-shadow:0 0 10px red,0 0 20px orange}
       50%{box-shadow:0 0 20px red,0 0 30px orange}
@@ -307,8 +304,7 @@
   width: 100%;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;
+  border:none;
   padding: 10px 0;
   white-space: nowrap; /* forza riga singola */
 }
