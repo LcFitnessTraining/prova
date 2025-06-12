@@ -47,7 +47,7 @@
 }
 .feedback-marquee-track {
   display: inline-block;
-  animation: scrollFeedback 50s linear infinite;
+  animation: scrollFeedback 35s linear infinite;
   animation-delay: 0s;
   white-space: nowrap;
 }
@@ -735,6 +735,16 @@
     });
   });
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const marquee = document.querySelector('.feedback-marquee-track');
+  if (marquee) {
+    marquee.style.animation = 'none';
+    // Forza il reflow per riavviare l'animazione
+    void marquee.offsetWidth;
+    marquee.style.animation = '';
+  }
+});
+</script>
 </body>
 </html>
