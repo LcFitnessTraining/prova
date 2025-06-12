@@ -17,9 +17,288 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <div class="payment-logos animate-slide-down">
+
+  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard">
+  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro">
+  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express">
+  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
+  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay">
+</div>
+
+
+  <style>
+    /* --- Effetti grafici e layout --- */
+    body {
+      margin: 0; padding: 0; text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      background: #000; color: #fff;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 600px; margin: 60px auto; padding: 30px;
+      background: rgba(12,1,1,0.93); border-radius: 15px;
+      box-shadow: 0 0 20px red; position: relative; z-index: 1;
+    }
+    .logo {
+      max-width: 150px; margin-bottom: 20px; border-radius: 50%;
+      animation: firePulse 2s infinite;
+      width: 100%; height: auto;
+    }
+
+.faq-section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.486);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 0 8px #f00;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background-color: #222;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: #ddd;
+  padding: 0 15px;
+  border-radius: 0 0 8px 8px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 15px;
+  max-height: 300px;
+}
+
+.payment-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 2px 0;
+  background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid #faf8f800;
+  animation: slideDown 1.2s ease-out;
+}
+
+.payment-logos img {
+  height: 28px;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.payment-logos img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+    @keyframes firePulse {
+      0%,100%{box-shadow:0 0 10px red,0 0 20px orange}
+      50%{box-shadow:0 0 20px red,0 0 30px orange}
+    }
+    .separator {
+      width: 100px; height: 4px; background: red;
+      margin: 30px auto; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(1.5)} }
+    .radial-glow {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+      animation: pulseRadial 10s ease-in-out infinite;
+    }
+    @keyframes pulseRadial { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.1);opacity:.8} }
+    .fog-layer {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+      animation: moveFog 30s linear infinite;
+    }
+    @keyframes moveFog { 0%{transform:translateX(0)} 100%{transform:translateX(-200px)} }
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .copyright-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 32px;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      line-height: 32px;
+      font-size: 1rem;
+      z-index: 10000;
+      box-shadow: 0 -1px 6px rgba(255,0,0,0.09);
+    }
+    /* --- Tipografia e animazioni titoli --- */
+    h1.typing {
+      font-size: 1.8rem; margin: 0 auto 20px; white-space: nowrap;
+      overflow: hidden; width: 100%; letter-spacing: 1.2px;
+      animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;
+      text-shadow: 0 0 8px rgba(255,0,0,.8);
+    }
+    h2.typing {
+      font-size: 1.5rem; white-space: nowrap; overflow: hidden;
+      width: 100%; letter-spacing: 1.2px;
+      animation: typing 2.5s steps(25,end), pulseGlow 2s alternate infinite;
+      text-shadow: 0 0 8px rgba(255,0,0,.8);
+    }
+    @keyframes typing { from{width:0} to{width:100%} }
+    @keyframes pulseGlow { from{text-shadow:0 0 8px red} to{text-shadow:0 0 20px red} }
+    h2 { text-shadow: 0 0 8px rgba(255, 0, 0, 0.8); letter-spacing: 1.2px; font-size: 1.5rem; }
+    /* --- Form e Select --- */
+    select, label {
+      display: block; width: 100%;
+      font-size: 1rem; margin-bottom: 20px;
+      text-align: left;
+    }
+    select {
+      padding: 14px; background: #1c1c1c; color: #fff;
+      border: 2px solid red; border-radius: 8px;
+      box-shadow: 0 0 10px red;
+    }
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .feedback input, .feedback textarea {
+      margin-bottom: 10px;
+      border: 2px solid #ff0000;
+      border-radius: 5px;
+      background: #1c1c1c;
+      color: #fff;
+    }
+    /* --- Liste servizi, titoli, contatti --- */
+    ul { list-style: none; padding: 0; text-align: left; }
+    ul li {
+      opacity: 0; transition: 0.5s; padding: 10px;
+      transform: translateX(-20px); border-bottom: 1px solid #ccc;
+      position: relative; cursor: pointer;
+    }
+    ul li.visible { opacity: 1; transform: translateX(0); }
+    ul li:hover {
+      background: rgba(255, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+    ul#servizi-list li::after { display: none; }
+    .servizi small {
+      display: block;
+      font-size: 0.85rem;
+      color: #f88;
+      margin-top: -15px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .contatti ul, .contatti ul li {
+      text-align: center; border: none; transform: none; opacity: 1;
+    }
+    .contatti a {
+      color: #faf7f7; text-decoration: none; font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .contatti a:hover { color: #ff0000; }
+    .contatti i {
+      margin-right: 8px;
+      font-size: 1.3em;
+      vertical-align: middle;
+    }
+    /* --- Icone --- */
+    .instagram-icon {
+      color: #000000;
+      background: radial-gradient(circle at 30% 110%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);
+      border-radius: 20%;
+      padding: 3px;
+    }
+    .facebook-icon {
+      color: #1877F3;
+    }
+    .gmail-icon {
+      color: #D44638;
+    }
+    /* --- Popup --- */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .popup-content {
+      background: #111; padding: 30px;
+      border-radius: 15px; max-width: 500px;
+      text-align: center; color: #fff;
+      box-shadow: 0 0 20px red;
+      animation: popupZoom 0.8s ease forwards;
+      transform: scale(0.8) rotate(-3deg); opacity: 0;
+    }
+    .popup.fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    .close-btn {
+      float: right; font-size: 1.3rem;
+      cursor: pointer; color: red;
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    @keyframes popupZoom {
+      to { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
 .feedback-marquee-container {
   width: 100%;
@@ -28,10 +307,12 @@
   border:none;
   padding: 10px 0;
   white-space: nowrap; /* forza riga singola */
+   width: 100vw;
 }
 .feedback-marquee-track {
   display: inline-block;
-  animation: scrollFeedback 30s linear infinite;
+  animation: scrollFeedback 50s linear infinite;
+  animation-delay: 0s;
   white-space: nowrap;
 }
 
@@ -60,57 +341,54 @@
     margin: 0 30px;
   }
 }
-  body {
-  margin: 0; padding: 0; text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  background: #000; color: #fff;
-  scroll-behavior: smooth;
-}
-.payment-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 2px 0;
-  background-color: rgb(0, 0, 0);
-  border-bottom: 1px solid #faf8f800;
-  animation: slideDown 1.2s ease-out;
-}
-.payment-logos img {height: 28px; opacity: 0.9; transition: transform 0.3s;}
-.payment-logos img:hover {transform: scale(1.1);}
-@keyframes slideDown {from{transform:translateY(-60px);opacity:0} to{transform:translateY(0);opacity:1}}
-.container {max-width: 600px; margin: 60px auto; padding: 30px; background: rgba(12,1,1,0.93); border-radius: 15px; box-shadow: 0 0 20px red;}
-.logo {max-width: 150px; margin-bottom: 20px; border-radius: 50%; animation: firePulse 2s infinite; width: 100%; height: auto;}
-@keyframes firePulse {0%,100%{box-shadow:0 0 10px red,0 0 20px orange} 50%{box-shadow:0 0 20px red,0 0 30px orange}}
-.separator {width: 100px; height: 4px; background: red; margin: 30px auto; animation: pulse 2s infinite;}
-@keyframes pulse {0%,100%{transform:scaleX(1)} 50%{transform:scaleX(1.5)}}
-.faq-section {max-width: 800px; margin: 60px auto; padding: 20px; background: rgba(0, 0, 0, 0.486); border-radius: 16px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);}
-.faq-title {text-align: center; font-size: 2rem; margin-bottom: 30px; color: #fff; text-shadow: 0 0 8px #f00;}
-.faq-item {margin-bottom: 15px;}
-.faq-question {width: 100%; padding: 15px; font-size: 1.1rem; background-color: #111; color: #fff; border: none; border-radius: 8px; text-align: left; cursor: pointer; position: relative; transition: background 0.3s;}
-.faq-question:hover {background-color: #222;}
-.faq-answer {max-height: 0; overflow: hidden; background-color: #1a1a1a; color: #ddd; padding: 0 15px; border-radius: 0 0 8px 8px; transition: max-height 0.4s ease, padding 0.4s ease;}
-.faq-item.active .faq-answer {padding: 15px; max-height: 300px;}
-/* ... Aggiungi qui altro CSS rilevante dalle sezioni che vuoi mantenere ... */
-  <!-- Payment logos: ora nel body -->
-  <div class="payment-logos animate-slide-down">
-    <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
-    <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard">
-    <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro">
-    <img src="https://img.icons8.com/color/48/amex.png" alt="American Express">
-    <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
-    <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay">
-  </div>
 
+
+    /* --- Audio toggle --- */
+    #audio-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 12000;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid red;
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 5px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+    #msg-feedback.loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  border: 2px solid #fff;
+  border-top-color: red;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+   </style>
+</head>
+<body>
+  <!-- Audio toggle -->
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
+  <!-- Effetti grafici -->
   <div class="radial-glow"></div>
   <div class="fog-layer"></div>
   <div id="particles-js"></div>
   <main>
     <div class="container">
+      <!-- Logo e Titolo -->
       <img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo">
       <h1 class="typing">Scegli il tuo piano</h1>
       <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
+      <!-- Selettore Durata e PayPal -->
       <label for="durata">Durata:</label>
       <select id="durata" required>
         <option value="" disabled selected>Seleziona la durata</option>
@@ -125,21 +403,22 @@
       </select>
       <div id="paypal-button-container"></div>
       <div class="separator"></div>
-
+      <!-- Servizi -->
       <section class="servizi" id="servizi">
         <h2>I miei servizi</h2>
         <small>clicca sul servizio per saperne di più</small>
         <ul id="servizi-list">
-          <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi…">Scheda di Allenamento Personalizzata</li>
-          <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo…">Piano Alimentare Personalizzato</li>
-          <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea…">Misurazioni e Plicometria</li>
-          <li data-desc="LcFitnessTraining è un'app per l’allenamento…">App Allenamento</li>
-          <li data-desc="App Coach Plus è un'app per l’alimentazione…">App Nutrizione</li>
-          <li data-desc="Il supporto continuo del coach…">Supporto continuo</li>
-          <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato…">Lezione Coaching Individuale</li>
+        <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell’elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l’efficacia del programma e minimizzare il rischio di infortuni.">⭕️Scheda di allenamento personalizzata</li>
+        <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell’individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l’obiettivo di ottimizzare l’apporto di macro e micronutrienti in modo funzionale e sostenibile,mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l’intento di supportare le prestazioni, il recupero e il benessere generale.">⭕️Piano alimentare personalizzato</li>
+        <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">⭕️Misurazioni antropometriche e plicometria</li>
+        <li data-desc="LcFitnessTraining è un'app per l’allenamento , rappresenta uno strumento digitale avanzato progettato per offrire programmi personalizzati, monitoraggio dei progressi, supporto multimediale e gestione integrata di allenamento, alimentazione e integrazione, consentendo un approccio strutturato, flessibile e scientificamente validato all’ottimizzazione della performance e del benessere fisico.">⭕️App LcFitnessTraining</li>
+        <li data-desc="App Coach Plus è un'app per l’alimentazione , uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l’integrazione con obiettivi fisici o sportivi,offrendo un supporto pratico e scientificamente fondato per l’ottimizzazione della salute e della composizione corporea.">⭕️App Coach Plus</li>
+        <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un’assistenza personalizzata in tempo reale per l’adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l’efficacia e la sostenibilità del piano individuale.">⭕️Supporto del Coach h24 7/7</li>
+        <li data-desc="La lezione di coaching individuale è un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell’esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l’esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l’ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell’atleta.">⭕️Lezione di coaching individuale</li>
         </ul>
       </section>
-      <div class="separator"></div>
+<div class="separator"></div>
+      <!-- Titoli e certificazioni -->
       <section class="titoli" id="titoli">
         <h2>Titoli e certificazioni</h2>
         <ul id="titoli-list">
@@ -149,69 +428,116 @@
         </ul>
       </section>
       <div class="separator"></div>
+      <!-- Contatti -->
       <section class="contatti" id="contatti">
         <h2>Contatti</h2>
         <ul>
-          <li>
-            <a href="mailto:LcFitnessTrainingPt@gmail.com" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com">
-              <i class="fa-solid fa-envelope gmail-icon"></i> Gmail
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo">
-              <i class="fab fa-instagram instagram-icon"></i> Instagram
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo">
-              <i class="fab fa-facebook facebook-icon"></i> Facebook
-            </a>
-          </li>
-        </ul>
+  <li>
+    <a href="mailto:LcFitnessTrainingPt@gmail.com" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com">
+      <i class="fa-solid fa-envelope gmail-icon"></i> Gmail
+    </a>
+  </li>
+  <li>
+    <a href="https://www.instagram.com/luka_cupo/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo">
+      <i class="fab fa-instagram instagram-icon"></i> Instagram
+    </a>
+  </li>
+  <li>
+    <a href="https://www.facebook.com/luca.cupo.1232/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo">
+      <i class="fab fa-facebook facebook-icon"></i> Facebook
+    </a>
+  </li>
+</ul>
+
       </section>
       <div class="separator"></div>
+      <!-- Presentazione -->
       <section class="presentazione" id="presentazione">
         <h2 class="typing">Chi sono</h2>
-        <p>Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica…</p>
-        <p>Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span>…</p>
+        <p style="line-height: 1.6; margin-top: 10px;">
+          Mi chiamo <strong>Luka</strong> e sono un <span style="color:red;">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenza scientifica e passione per ottenere risultati concreti.
+        </p>
+        <p style="line-height: 1.6; margin-top: 15px;">
+          Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span style="color:red;">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo sicuro e duraturo.
+        </p>
       </section>
       <div class="separator"></div>
+      <!-- Feedback -->
       <section class="feedback" id="feedback">
         <h2>Lascia un feedback per migliorare i nostri servizi</h2>
-        <form id="feedbackForm">
+        <form id="feedbackForm" style="text-align:left;max-width:400px;margin:20px auto;">
           <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required>
+          <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;">
           <label for="commento">Feedback:</label>
-          <textarea id="commento" name="commento" required></textarea>
-          <button type="submit">Invia</button>
-          <div id="msg-feedback"></div>
-        </form>
+          <textarea id="commento" name="commento" required style="width:100%;padding:8px;min-height:80px;"></textarea>
+          <button type="submit" style="padding:10px 30px;background:red;color:#fff;border:none;border-radius:6px;margin-top:10px;cursor:pointer;">Invia</button>
+          <div id="msg-feedback" style="margin-top:10px;"></div>
+          </form>
       </section>
       <div class="separator"></div>
       <section class="faq-section">
-        <h2 class="faq-title">Sezione FAQ</h2>
-        <div class="faq-item">
-          <button class="faq-question">Quanto dura ogni sessione di personal privato?</button>
-          <div class="faq-answer"><p>Ogni sessione avrà una durata media di 60 minuti…</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Devo avere attrezzature a casa?</button>
-          <div class="faq-answer"><p>No, i programmi sono adattabili anche a corpo libero…</p></div>
-        </div>
-        <!-- Altre FAQ come sopra -->
-      </section>
+  <h2 class="faq-title">Sezione FAQ</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Quanto dura ogni sessione di personal privato?</button>
+    <div class="faq-answer">
+      <p>Ogni sessione avverrà in un centro a tua scelta (previo appuntamento con il Coach) ed ha una durata media di 60 minuti, inclusa la parte di riscaldamento e defaticamento.Il tutto però varia in base alla programmazione in corso</p>
     </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Devo avere attrezzature a casa?</button>
+    <div class="faq-answer">
+      <p>No, i programmi sono adattabili anche a corpo libero. Se hai attrezzi,in casa o in una struttura, saranno integrati.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Come funziona dopo aver scelto il piano?</button>
+    <div class="faq-answer">
+      <p>Verrai contattato via email, nella quale riceverai un modulo anamnestico da compilare.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Come viene strutturato un piano di allenamento e/o alimentazione?</button>
+    <div class="faq-answer">
+      <p>Il piano alimentare e il programma di allenamento saranno formulati dopo aver compilato l anamnesi secondo metodologie consolidate e protocolli evidence-based, personalizzati in base alle tue esigenze specifiche.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Cos'è un piano di integrazione?</button>
+    <div class="faq-answer">
+      <p>L’integrazione sarà proposta in modo mirato, sulla base di eventuali carenze o necessità individuali emerse durante la valutazione.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Posso sospendere il mio piano?</button>
+    <div class="faq-answer">
+      <p>Certo,Hai la possibilità di sospendere il tuo piano a tua scelta ed in qualsiasi momento e di riattivarlo secondo le tue esigenze.</p>
+    </div>
+  </div>
+</section>
+
+    
+    </div>
+    <!-- Testimonianze -->
     <div class="feedback-marquee-container">
-      <div class="feedback-marquee-track">
-        <span class="feedback-item">⭐ “Allenamenti personalizzati e motivanti!”</span>
-        <span class="feedback-item">⭐ “In sole 4 settimane ho visto risultati veri!”</span>
-        <span class="feedback-item">⭐ “Coach super disponibile e professionale.”</span>
-        <span class="feedback-item">⭐ “Programma semplice ma super efficace.”</span>
-        <span class="feedback-item">⭐ “Consiglio L.C. a chiunque voglia trasformarsi.”</span>
+      <h2>Percorsi reali</h2>
+        <div class="feedback-marquee-track">
+           <span class="feedback-item">💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
+           <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
+           <span class="feedback-item">💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
+           <span class="feedback-item">💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+          <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
+         <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
+         <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+        <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
+       <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
+          </div>
+        </div>
       </div>
     </div>
-    <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
+       <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
   </main>
+  <!-- Popup -->
   <div class="popup" id="popup" aria-modal="true" role="dialog">
     <div class="popup-content">
       <span class="close-btn" tabindex="0" role="button" aria-label="Chiudi popup">&times;</span>
@@ -219,148 +545,193 @@
       <p id="popup-text"></p>
     </div>
   </div>
+  <!-- Audio -->
   <audio id="bg-music" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'audio HTML5.
   </audio>
-  <div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
-
+  <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
   <!-- PayPal SDK e librerie -->
   <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="main.js" defer></script>
-// Popup logic, animazioni, PayPal, feedback, FAQ e audio
-document.addEventListener("DOMContentLoaded", () => {
-  // Popup
-  const popup = document.getElementById('popup');
-  const popupTitle = document.getElementById('popup-title');
-  const popupText = document.getElementById('popup-text');
-  const closeBtn = document.querySelector('.close-btn');
-  closeBtn.addEventListener('click', closePopup);
-  function closePopup() {
-    popup.classList.add('fade-out');
-    setTimeout(() => {
-      popup.style.display = 'none';
-      popup.classList.remove('fade-out');
-    }, 500);
-  }
-  // Servizi popup
-  document.querySelectorAll('#servizi-list li').forEach(item => {
-    item.addEventListener('click', () => {
-      popupTitle.textContent = item.textContent;
-      popupText.textContent = item.getAttribute('data-desc');
-      popup.style.display = 'flex';
+  <script>
+    // Variabili globali per popup
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupText = document.getElementById('popup-text');
+    const closeBtn = document.querySelector('.close-btn');
+
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.parallax').forEach(el => {
+        const speed = el.getAttribute('data-speed');
+        el.style.transform = `translateY(${window.scrollY * speed}px)`;
+      });
     });
-  });
-  // FAQ Toggle
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-question').addEventListener('click', () => {
+
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#ff0000" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" }
+        }
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Audio
+      const audio = document.getElementById("bg-music");
+      const audioOverlay = document.getElementById("audio-overlay");
+      const audioToggle = document.getElementById("audio-toggle");
+      let isPlaying = false;
+      if (localStorage.getItem('paypalCancel') === '1') {
+        localStorage.removeItem('paypalCancel');
+        popupTitle.textContent = "❌ Pagamento annullato";
+        popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
+        popup.style.display = 'flex';
+      }
+
+      const startAudio = () => {
+        if (!isPlaying) {
+          audio.play();
+          isPlaying = true;
+          audioOverlay.style.display = "none";
+          audioToggle.textContent = "🔇 Off";
+        }
+      };
+
+      audioOverlay.addEventListener("click", startAudio);
+      audioOverlay.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          startAudio();
+        }
+      });
+
+      audioToggle.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          audioToggle.textContent = "🔇 Off";
+        } else {
+          audio.pause();
+          audioToggle.textContent = "🔊 On";
+        }
+      });
+
+      // Popup Servizi
+      const items = document.querySelectorAll('#servizi-list li');
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          popupTitle.textContent = item.textContent;
+          popupText.textContent = item.getAttribute('data-desc');
+          popup.style.display = 'flex';
+        });
+      });
+
+      // Fade-in Animazioni
+      document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li')
+        .forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
+
+      // Popup close logic
+      function closePopup() {
+        popup.classList.add('fade-out');
+        setTimeout(() => {
+          popup.style.display = 'none';
+          popup.classList.remove('fade-out');
+        }, 500);
+      }
+      closeBtn.addEventListener('click', closePopup);
+      closeBtn.addEventListener('keydown', function(e){
+        if(e.key === "Enter" || e.key === " ") closePopup();
+      });
+
+      window.onclick = function(event) {
+        if (event.target === popup) closePopup();
+      };
+      document.addEventListener('keydown', function(e){
+        if(e.key === "Escape" && popup.style.display === 'flex') closePopup();
+      });
+    });
+
+    // Validazione select per PayPal
+    function isValidDurata() {
+      const durata = document.getElementById("durata");
+      return !!durata.value;
+    }
+
+    if(document.getElementById('paypal-button-container')) {
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          const amount = document.getElementById("durata").value;
+          if (!isValidDurata()) {
+            alert("Seleziona una durata valida prima di procedere all'acquisto.");
+            throw new Error("Durata non selezionata");
+          }
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: amount }
+            }]
+          });
+        },
+        onApprove: (data, actions) => actions.order.capture().then(details => {
+          const name = details.payer.name.given_name;
+          popupTitle.textContent = "✅ Pagamento completato";
+          popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
+          popup.style.display = 'flex';
+        }),
+        onCancel: function (data) {
+          try {
+            localStorage.setItem('paypalCancel', '1');
+          } catch(e) {}
+          location.reload();
+        },
+        onError: function (err) {
+          popupTitle.textContent = "⚠️ Errore durante il pagamento";
+          popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
+          popup.style.display = 'flex';
+        }
+      }).render('#paypal-button-container');
+    }
+  </script>
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var msgBox = document.getElementById('msg-feedback');
+      msgBox.textContent = 'Invio in corso...';
+      fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          nome: document.getElementById('nome').value,
+          commento: document.getElementById('commento').value
+        })
+      }).then(function(){
+        msgBox.textContent = 'Grazie per il tuo feedback!';
+        document.getElementById('feedbackForm').reset();
+      }).catch(function(){
+        msgBox.textContent = 'Errore nell\'invio. Riprova più tardi.';
+      });
+    });
+  </script>
+  <script>
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
       item.classList.toggle('active');
-      document.querySelectorAll('.faq-item').forEach(other => {
+      faqItems.forEach(other => {
         if (other !== item) other.classList.remove('active');
       });
     });
   });
-  // Feedback form
-  document.getElementById('feedbackForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var msgBox = document.getElementById('msg-feedback');
-    msgBox.textContent = 'Invio in corso...';
-    fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        nome: document.getElementById('nome').value,
-        commento: document.getElementById('commento').value
-      })
-    }).then(function(){
-      msgBox.textContent = 'Grazie per il tuo feedback!';
-      document.getElementById('feedbackForm').reset();
-    }).catch(function(){
-      msgBox.textContent = 'Errore nell\'invio. Riprova più tardi.';
-    });
-  });
-  // Audio
-  const audio = document.getElementById("bg-music");
-  const audioOverlay = document.getElementById("audio-overlay");
-  const audioToggle = document.getElementById("audio-toggle");
-  let isPlaying = false;
-  const startAudio = () => {
-    if (!isPlaying) {
-      audio.play();
-      isPlaying = true;
-      audioOverlay.style.display = "none";
-      audioToggle.textContent = "🔇 Off";
-    }
-  };
-  audioOverlay.addEventListener("click", startAudio);
-  audioOverlay.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") startAudio();
-  });
-  audioToggle.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-      audioToggle.textContent = "🔇 Off";
-    } else {
-      audio.pause();
-      audioToggle.textContent = "🔊 On";
-    }
-  });
-  // Parallax
-  window.addEventListener('scroll', () => {
-    document.querySelectorAll('.parallax').forEach(el => {
-      const speed = el.getAttribute('data-speed');
-      el.style.transform = `translateY(${window.scrollY * speed}px)`;
-    });
-  });
-  // Particles.js
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#ff0000" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5 },
-      "size": { "value": 3 },
-      "move": { "enable": true, "speed": 2 }
-    },
-    "interactivity": {
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" }
-      }
-    }
-  });
-  // PayPal logic
-  if(document.getElementById('paypal-button-container')) {
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        const amount = document.getElementById("durata").value;
-        if (!amount) {
-          alert("Seleziona una durata valida prima di procedere all'acquisto.");
-          throw new Error("Durata non selezionata");
-        }
-        return actions.order.create({
-          purchase_units: [{ amount: { value: amount } }]
-        });
-      },
-      onApprove: (data, actions) => actions.order.capture().then(details => {
-        const name = details.payer.name.given_name;
-        popupTitle.textContent = "✅ Pagamento completato";
-        popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
-        popup.style.display = 'flex';
-      }),
-      onCancel: function () {
-        popupTitle.textContent = "❌ Pagamento annullato";
-        popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
-        popup.style.display = 'flex';
-      },
-      onError: function () {
-        popupTitle.textContent = "⚠️ Errore durante il pagamento";
-        popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
-        popup.style.display = 'flex';
-      }
-    }).render('#paypal-button-container');
-  }
-});
+</script>
+
 </body>
 </html>
