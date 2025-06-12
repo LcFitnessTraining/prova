@@ -374,20 +374,7 @@
    </style>
 </head>
 <body>
-  <div class="feedback-marquee-container">
-      <h2>Percorsi reali</h2>
-        <div class="feedback-marquee-track">
-           <span class="feedback-item">💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
-           <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-           <span class="feedback-item">💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
-           <span class="feedback-item">💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
-          <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
-         <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
-         <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-        <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
-       <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
-          </div>
-        </div>
+  
   <!-- Audio toggle -->
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
   <!-- Effetti grafici -->
@@ -531,7 +518,20 @@
     
     </div>
     <!-- Testimonianze -->
-    
+    <div class="feedback-marquee-container">
+      <h2>Percorsi reali</h2>
+        <div class="feedback-marquee-track">
+           <span class="feedback-item">💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
+           <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
+           <span class="feedback-item">💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
+           <span class="feedback-item">💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+          <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
+         <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
+         <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+        <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
+       <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
+          </div>
+        </div>
       </div>
     </div>
        <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
@@ -588,12 +588,16 @@
       const audio = document.getElementById("bg-music");
       const audioOverlay = document.getElementById("audio-overlay");
       const audioToggle = document.getElementById("audio-toggle");
+      const marquee = document.querySelector('.feedback-marquee-track');
       let isPlaying = false;
       if (localStorage.getItem('paypalCancel') === '1') {
         localStorage.removeItem('paypalCancel');
         popupTitle.textContent = "❌ Pagamento annullato";
         popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
         popup.style.display = 'flex';
+        marquee.style.animation = 'none';
+  void marquee.offsetWidth; // forza reflow
+  marquee.style.animation = '';
       }
 
       const startAudio = () => {
