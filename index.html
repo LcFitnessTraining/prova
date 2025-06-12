@@ -36,6 +36,47 @@
       background: #000; color: #fff;
       scroll-behavior: smooth;
     }
+    .feedback-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border:none;
+  padding: 10px 0;
+  white-space: nowrap; /* forza riga singola */
+   width: 100vw;
+}
+.feedback-marquee-track {
+  display: inline-block;
+  animation: scrollFeedback 50s linear infinite;
+  animation-delay: 0s;
+  white-space: nowrap;
+}
+
+.feedback-item {
+  display: inline-block;
+  margin: 0 50px;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 4px #ff5555;
+}
+
+/* ANIMAZIONE SCORRIMENTO */
+@keyframes scrollFeedback {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive per mobile */
+@media (max-width: 768px) {
+  .feedback-item {
+    font-size: 0.95rem;
+    margin: 0 30px;
+  }
+}
     .container {
       max-width: 600px; margin: 60px auto; padding: 30px;
       background: rgba(12,1,1,0.93); border-radius: 15px;
@@ -300,49 +341,6 @@
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     /* --- Fake comments/testimonials --- */
-.feedback-marquee-container {
-  width: 100%;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.3);
-  border:none;
-  padding: 10px 0;
-  white-space: nowrap; /* forza riga singola */
-   width: 100vw;
-}
-.feedback-marquee-track {
-  display: inline-block;
-  animation: scrollFeedback 50s linear infinite;
-  animation-delay: 0s;
-  white-space: nowrap;
-}
-
-.feedback-item {
-  display: inline-block;
-  margin: 0 50px;
-  font-size: 1.1rem;
-  color: #fff;
-  text-shadow: 0 0 4px #ff5555;
-}
-
-/* ANIMAZIONE SCORRIMENTO */
-@keyframes scrollFeedback {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Responsive per mobile */
-@media (max-width: 768px) {
-  .feedback-item {
-    font-size: 0.95rem;
-    margin: 0 30px;
-  }
-}
-
-
     /* --- Audio toggle --- */
     #audio-toggle {
       position: fixed;
@@ -376,6 +374,20 @@
    </style>
 </head>
 <body>
+  <div class="feedback-marquee-container">
+      <h2>Percorsi reali</h2>
+        <div class="feedback-marquee-track">
+           <span class="feedback-item">💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
+           <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
+           <span class="feedback-item">💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
+           <span class="feedback-item">💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
+          <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
+         <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
+         <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
+        <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
+       <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
+          </div>
+        </div>
   <!-- Audio toggle -->
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
   <!-- Effetti grafici -->
@@ -519,20 +531,7 @@
     
     </div>
     <!-- Testimonianze -->
-    <div class="feedback-marquee-container">
-      <h2>Percorsi reali</h2>
-        <div class="feedback-marquee-track">
-           <span class="feedback-item">💬Marco - Coach super disponibile e sempre presente in ogni momento della giornata</span>
-           <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-           <span class="feedback-item">💬Giovanni - Allenamenti personalizzati al TOP! Non ho mai raggiunto questi risultati prima d'ora</span>
-           <span class="feedback-item">💬Paolo - Professionalità e risultati garantiti! piani alimentari perfetti e calcolati nel dettaglio</span>
-          <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
-         <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
-         <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-        <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
-       <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
-          </div>
-        </div>
+    
       </div>
     </div>
        <section class="parallax" data-speed="0.02" aria-label="Copyright">&copy; 2025 LcFitnessTraining. Tutti i diritti riservati.</section>
