@@ -83,14 +83,13 @@
   align-items: center;
   gap: 20px;
   padding: 2px 0;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(68, 64, 64, 0);
   border-bottom: 1px solid #faf8f800;
   animation: slideDown 1.2s ease-out;
 }
 .payment-logos img {
-  height: 28px;
-  opacity: 0.9;
-  transition: transform 0.3s ease;
+  margin-right: 1px;
+  vertical-align: middle;
 }
 .payment-logos img:hover {
   transform: scale(1.1);
@@ -367,14 +366,7 @@
    </style>
 </head>
 <body>
-  <div class="payment-logos">
-  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
-  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard">
-  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro">
-  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express">
-  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
-  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay">
-</div>
+
   <!-- Audio toggle -->
   <button id="audio-toggle" aria-label="Attiva o disattiva audio">🔇 Off</button>
   <!-- Effetti grafici -->
@@ -386,6 +378,14 @@
       <!-- Logo e Titolo -->
       <img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo">
       <h1 class="typing">Scegli il tuo piano</h1>
+       <div class="payment-logos" style="margin-top:1px;">
+  <img src="https://img.icons8.com/color/48/visa.png" alt="Visa"height="30">
+  <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard"height="30">
+  <img src="https://img.icons8.com/color/48/maestro.png" alt="Maestro"height="30">
+  <img src="https://img.icons8.com/color/48/amex.png" alt="American Express"height="30">
+  <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal"height="30">
+  <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay"height="30">
+</div>
       <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite.</p>
       <!-- Selettore Durata e PayPal -->
       <label for="durata">Durata:</label>
