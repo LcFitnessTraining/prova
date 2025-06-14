@@ -401,6 +401,13 @@
         <option value="33">Workout Singolo - €33</option>
       </select>
       <div id="paypal-button-container"></div>
+      <div data-pp-message
+     data-pp-style-layout="text"
+     data-pp-style-logo-type="inline"
+     data-pp-style-text-color="white"
+     data-pp-amount="">
+</div>
+
       <div class="separator"></div>
       <!-- Servizi -->
       <section class="servizi" id="servizi">
@@ -549,7 +556,7 @@
   </audio>
   <div id="audio-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; background: transparent; cursor: pointer;" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
   <!-- PayPal SDK e librerie -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR&components=buttons,messages"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     // Variabili globali per popup
