@@ -405,7 +405,7 @@
      data-pp-style-layout="text"
      data-pp-style-logo-type="inline"
      data-pp-style-text-color="white"
-     data-pp-amount="select.value"
+     data-pp-amount=""
 </div>
 
       <div class="separator"></div>
@@ -730,20 +730,5 @@
   <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="e9I3gYRt7ypSDk28xJely";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
-  <script>
-  // Funzione che aggiorna il valore data-pp-amount in base alla selezione
-  function aggiornaImporto() {
-    var select = document.getElementById('durata');
-    var amount = select.value;
-    var paypalBtn = document.getElementById('paypal-btn');
-    paypalBtn.setAttribute('data-pp-amount', amount);
-  }
-
-  // Aggiorna subito il valore quando la pagina viene caricata
-  window.onload = aggiornaImporto;
-
-  // Aggiungi l’evento al cambio del select
-  document.getElementById('durata').addEventListener('change', aggiornaImporto);
-  </script>
 </body>
 </html>
