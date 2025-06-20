@@ -2,5 +2,12 @@ const popup=document.getElementById('popup'),popupTitle=document.getElementById(
 document.getElementById('feedbackForm').addEventListener('submit',function(e){e.preventDefault();var msgBox=document.getElementById('msg-feedback');msgBox.textContent='Invio in corso...';fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec',{method:'POST',mode:'cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({nome:document.getElementById('nome').value,commento:document.getElementById('commento').value})}).then(function(){msgBox.textContent='Grazie per il tuo feedback!';document.getElementById('feedbackForm').reset()}).catch(function(){msgBox.textContent="Errore nell'invio. Riprova più tardi."})})
 function openCopyrightPopup() {document.getElementById("copyrightPopup").style.display = "flex";}function closeCopyrightPopup() {document.getElementById("copyrightPopup").style.display = "none";}function closePopup(event) {if (event.target.id === "copyrightPopup") {closeCopyrightPopup();}}
 document.getElementById('menu-toggle').addEventListener('click', function () {
-document.getElementById('menu-list').classList.toggle('show');
+  document.getElementById('menu-list').classList.toggle('show');
+});
+
+// Chiudi menu dopo il clic su una voce
+document.querySelectorAll('#menu-list a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menu-list').classList.remove('show');
+  });
 });
