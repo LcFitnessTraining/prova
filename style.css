@@ -5,6 +5,9 @@ body {margin: 0;padding: 0;text-align: center;font-family: 'Montserrat', sans-se
 @keyframes pulse {0%, 100% { transform: scaleX(1); }50% { transform: scaleX(1.5); }}
 select {width: 100%;padding: 12px;margin: 15px 0;font-size: 1rem;background: #1c1c1c;color: #fff;border: 2px solid #ff0000;border-radius: 8px;box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);transition: all 0.3s ease;}
 select:focus {outline: none;box-shadow: 0 0 15px red;}
+@media (max-width: 768px) { /* stile per tablet */ }
+@media (max-width: 480px) { /* stile per smartphone */ }
+@media (min-width: 1200px) { /* stile per desktop */ }
 
 /* ----------------- LOGO E TIPOGRAFIA ----------------- */
 .logo {max-width: 150px;margin-bottom: 20px;border-radius: 50%;animation: firePulse 2s infinite;width: 100%;height: auto;}
