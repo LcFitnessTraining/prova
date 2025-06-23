@@ -1,8 +1,10 @@
+// === ELEMENTI GLOBALI POPUP E CHIUSURA ===
 const popup = document.getElementById('popup'),
-  popupTitle = document.getElementById('popup-title'),
-  popupText = document.getElementById('popup-text'),
-  closeBtn = document.querySelector('.close-btn');
+popupTitle = document.getElementById('popup-title'),
+popupText = document.getElementById('popup-text'),
+closeBtn = document.querySelector('.close-btn');
 
+// === PARALLAX SU SCROLL ===
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.parallax').forEach(el => {
     const speed = el.getAttribute('data-speed');
@@ -10,6 +12,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// === PARTICELLE ANIMATE (particles.js) ===
 particlesJS("particles-js", {
   particles: {
     number: { value: 80 },
@@ -26,6 +29,7 @@ particlesJS("particles-js", {
   }
 });
 
+// === SCRIPT PRINCIPALE AL CARICAMENTO DEL DOM ===
 document.addEventListener("DOMContentLoaded", () => {
   const faqItems = document.querySelectorAll('.faq-item'),
     audio = document.getElementById("bg-music"),
@@ -33,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     audioToggle = document.getElementById("audio-toggle");
   let isPlaying = false;
 
+   // === MESSAGGIO SE PAGAMENTO PAYPAL È STATO ANNULLATO ===
   if (localStorage.getItem('paypalCancel') === '1') {
     localStorage.removeItem('paypalCancel');
     popupTitle.textContent = "❌ Pagamento annullato";
@@ -40,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     popup.style.display = 'flex';
   }
 
+  // === FAQ TOGGLE ===
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
@@ -50,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // === GESTIONE AUDIO DI SFONDO ===
   const startAudio = () => {
     if (!isPlaying) {
       audio.play();
@@ -74,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+   // === POPUP SU CLICK SERVIZI ===
   const items = document.querySelectorAll('#servizi-list li');
   items.forEach(item => {
     item.addEventListener('click', () => {
@@ -83,8 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // === ANIMAZIONI DI ENTRATA LISTE SERVIZI, TITOLI, CONTATTI ===
   document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li').forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
 
+  // === FUNZIONE CHIUSURA POPUP ===
   function closePopup() {
     popup.classList.add('fade-out');
     setTimeout(() => {
@@ -107,11 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// === FUNZIONE DI UTILITÀ PER MOSTRARE IL POPUP ===
+function showPopup(title, htmlText) {
+  popupTitle.textContent = title;
+  popupText.innerHTML = htmlText;
+  popup.style.display = 'flex';
+}
+
+// === VALIDAZIONE PAYPAL: SE DURATA NON SELEZIONATA ===
 function isValidDurata() {
   const durata = document.getElementById("durata");
   return !!durata.value;
 }
 
+// === CONFIGURAZIONE PAYPAL BUTTON ===
 if (document.getElementById('paypal-button-container')) {
   paypal.Buttons({
     createOrder: function(data, actions) {
@@ -148,6 +167,7 @@ if (document.getElementById('paypal-button-container')) {
   }).render('#paypal-button-container');
 }
 
+// === FORM FEEDBACK (INVIO VIA APPS SCRIPT) ===
 document.getElementById('feedbackForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var msgBox = document.getElementById('msg-feedback');
@@ -170,6 +190,7 @@ document.getElementById('feedbackForm').addEventListener('submit', function(e) {
   });
 });
 
+// === GESTIONE COPYRIGHT POPUP ===
 function openCopyrightPopup() {
   document.getElementById("copyrightPopup").style.display = "flex";
 }
@@ -178,12 +199,13 @@ function closeCopyrightPopup() {
   document.getElementById("copyrightPopup").style.display = "none";
 }
 
-function closePopup(event) {
+function closeCopyrightPopupOnClick(event) {
   if (event.target.id === "copyrightPopup") {
     closeCopyrightPopup();
   }
 }
 
+// === MENU A TENDINA: TOGGLE E AUDIO ===
 document.querySelectorAll('#menu-list a').forEach(link => {
   link.addEventListener('click', () => {
     document.getElementById('menu-list').classList.remove('show');
