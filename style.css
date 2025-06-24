@@ -58,12 +58,15 @@ select:focus {outline: none;box-shadow: 0 0 15px red;}
 
 /* ----------------- LOGO E TIPOGRAFIA ----------------- */
 h2, .feedback-title {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   width: 100%;
   letter-spacing: 1.2px;
   animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);}
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  word-break: break-word;
+  text-align: center; /* opzionale per centrare */
+  }
 .logo {max-width: 150px;margin-bottom: 20px;border-radius: 50%;animation: firePulse 2s infinite;width: 100%;height: auto;}
 @keyframes firePulse {0%, 100% { box-shadow: 0 0 10px red, 0 0 20px orange; }50% { box-shadow: 0 0 20px red, 0 0 30px orange; }}
 h1.typing, h2.typing, h3.typing, h4.typing, h5.typing, h6.typing{white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, .8);}
