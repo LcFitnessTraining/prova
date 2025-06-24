@@ -95,13 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li').forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
 
   // === FUNZIONE CHIUSURA POPUP ===
-  function closePopup() {
-    popup.classList.add('fade-out');
-    setTimeout(() => {
-      popup.style.display = 'none';
-      popup.classList.remove('fade-out');
-    }, 500);
-  }
+ function closePopup() {
+  popup.classList.add('fade-out');
+  setTimeout(() => {
+    popup.style.display = 'none';
+    popup.classList.remove('fade-out');
+  }, 500);
+}
 
   closeBtn.addEventListener('click', closePopup);
   closeBtn.addEventListener('keydown', function(e) {
