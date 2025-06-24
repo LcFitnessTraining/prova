@@ -1,79 +1,14 @@
 /* ----------------- LAYOUT BASE ----------------- */
 body {margin: 0;padding: 0;text-align: center;font-family: 'Montserrat', sans-serif;background: #000;color: #fff;scroll-behavior: smooth;}
-.container {max-width: 600px;margin: 10px auto;padding: 30px;background: rgba(12, 1, 1, 0.808);border-radius: 15px;box-shadow: 0 0 20px red;position: relative;z-index: 1;min-height: 550px;}
 .separator {width: 100px;height: 4px;background: red;margin: 30px auto;animation: pulse 2s infinite;}
 @keyframes pulse {0%, 100% { transform: scaleX(1); }50% { transform: scaleX(1.5); }}
 select {width: 100%;padding: 12px;margin: 15px 0;font-size: 1rem;background: #1c1c1c;color: #fff;border: 2px solid #ff0000;border-radius: 8px;box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);transition: all 0.3s ease; appearance: none;}
 select:focus {outline: none;box-shadow: 0 0 15px red;}
-.select-container {
-  margin: 1rem 0;
-  color: white;
-  font-family: 'Arial', sans-serif;
-}
-
-.select-container label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  max-width: 300px;
-}
-
-.select-wrapper select {
-  width: 100%;
-  padding: 0.6rem 2.5rem 0.6rem 1rem;
-  border: 2px solid #ff0033;
-  border-radius: 8px;
-  background-color: #111;
-  color: white;
-  font-size: 1rem;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.select-wrapper select:focus {
-  outline: none;
-  box-shadow: 0 0 10px #ff0033;
-}
-
-.select-wrapper::after {
-  content: '▼';
-  font-size: 1rem;
-  color: #ff0033;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
 
 
 /* ----------------- LOGO E TIPOGRAFIA ----------------- */
-h2 {
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-  letter-spacing: 1.2px;
-  animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-  }
-.feedback-title {
-  white-space: normal;
-  overflow: hidden;
-  width: 100%;
-  letter-spacing: 1.2px;
-  animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-  font-size: 1.2rem;
-  }
+h2 {white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);}
+.feedback-title {white-space: normal;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);font-size: 1.2rem;}
 .logo {max-width: 150px;margin-bottom: 20px;border-radius: 50%;animation: firePulse 2s infinite;width: 100%;height: auto;}
 @keyframes firePulse {0%, 100% { box-shadow: 0 0 10px red, 0 0 20px orange; }50% { box-shadow: 0 0 20px red, 0 0 30px orange; }}
 h1.typing, h2.typing, h4.typing, h5.typing, h6.typing{white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, .8);}
@@ -149,7 +84,7 @@ ul#servizi-list li::after {display: none;}
 #menu-list a {display: block;padding: 10px 15px; color: #fff;text-decoration: none;transition: background 0.3s;}
 #menu-list a:hover {background: rgba(0, 0, 0, 0);color: #ffffff;}
 #menu-list.show {display: block;}
-body {padding-top: 70px; /* spazio per non coprire contenuti */}   
+body {padding-top: 50px; /* spazio per non coprire contenuti */}   
 .menu-container {display: flex;flex-direction: column;}
 
 /* ----------------- ANIMAZIONE CARICAMENTO ----------------- */
@@ -161,4 +96,3 @@ body {padding-top: 70px; /* spazio per non coprire contenuti */}
 @media (max-width: 768px) { /* stile per tablet */ }
 @media (max-width: 480px) { /* stile per smartphone */ }
 @media (min-width: 1200px) { /* stile per desktop */ }
-
