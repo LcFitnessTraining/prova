@@ -1,6 +1,6 @@
 /* ----------------- LAYOUT BASE ----------------- */
 body {margin: 0;padding: 0;text-align: center;font-family: 'Montserrat', sans-serif;background: #000;color: #fff;scroll-behavior: smooth;}
-.container {max-width: 100vw;margin: 10px auto;padding: 30px;background: rgba(12, 1, 1, 0.808);border-radius: 15px;box-shadow: 0 0 20px red;position: relative;z-index: 1;min-height: 550px;}
+.container {max-width: 100vw;margin: 10px auto;padding: 30px;background: rgba(0, 0, 0, 0);position: relative;z-index: 1;min-height: 550px;}
 .separator {width: 100px;height: 4px;background: red;margin: 30px auto;animation: pulse 2s infinite;}
 @keyframes pulse {0%, 100% { transform: scaleX(1); }50% { transform: scaleX(1.5); }}
 select {width: 100%;max-width: 100vw;padding: 12px;margin: 15px 0;font-size: 1rem;background: #1c1c1c;color: #fff;border: 2px solid #ff0000;border-radius: 8px;box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);transition: all 0.3s ease; appearance: none;}
@@ -74,9 +74,9 @@ ul#servizi-list li::after {display: none;}
 @keyframes fadeInUp {from { opacity: 0; transform: translateY(30px); }to { opacity: 1; transform: translateY(0); }}
 
 /* ----------------- PARTICELLE, GLOW E NEBBIA ----------------- */
-.radial-glow {position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;pointer-events: none;z-index: 0;background:radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 60%),radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 70%),radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15) 0%, transparent 60%);animation: pulseRadial 10s ease-in-out infinite;}
+.radial-glow {position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;pointer-events: none;z-index: 0;background:radial-gradient(circle at center, rgb(0, 0, 0) 0%, transparent 60%),radial-gradient(circle at 30% 30%, rgb(8, 1, 1) 0%, transparent 70%),radial-gradient(circle at 70% 70%, rgb(8, 0, 0) 0%, transparent 60%);animation: pulseRadial 10s ease-in-out infinite;}
 @keyframes pulseRadial {0%, 100% { transform: scale(1); opacity: .5; }50% { transform: scale(1.1); opacity: .8; }}
-.fog-layer {background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);animation: moveFog 30s linear infinite;}
+.fog-layer {background: radial-gradient(circle, rgb(0, 0, 0) 0%, transparent 70%);animation: moveFog 30s linear infinite;}
 @keyframes moveFog {0% { transform: translateX(0); }100% { transform: translateX(-200px); }}
 #particles-js {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;pointer-events: none;}
 
