@@ -4,13 +4,9 @@ body {margin: 0;padding: 0;text-align: center;font-family: 'Montserrat', sans-se
 .separator {width: 100px;height: 4px;background: red;margin: 30px auto;animation: pulse 2s infinite;}
 @keyframes pulse {0%, 100% { transform: scaleX(1); }50% { transform: scaleX(1.5); }}
 select {width: 100%;padding: 12px;margin: 15px 0;font-size: 1rem;background: #1c1c1c;color: #fff;border: 2px solid #ff0000;border-radius: 8px;box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);transition: all 0.3s ease; appearance: none;}
-select:focus {outline: none;box-shadow: 0 0 15px red;}
 .select-container {margin: 1rem 0;color: white;font-family: 'Arial', sans-serif;}
 .select-container label {display: block;margin-bottom: 0.5rem;font-size: 1rem;}
-.select-wrapper {position: relative;display: inline-block;width: 100%;max-width: 300px;}
-.select-wrapper select {width: 100%;padding: 0.6rem 2.5rem 0.6rem 1rem;border: 2px solid #ff0033;border-radius: 8px;background-color: #111;color: white;font-size: 1rem;appearance: none;-webkit-appearance: none;-moz-appearance: none;cursor: pointer;transition: 0.3s ease;}
-.select-wrapper select:focus {outline: none;box-shadow: 0 0 10px #ff0033;}
-.select-wrapper::after {content: '▼';font-size: 1rem;color: #ff0033;position: absolute;right: 1rem;top: 50%;transform: translateY(-50%);pointer-events: none;}
+select:focus {outline: none;box-shadow: 0 0 15px red;}
 
 /* ----------------- LOGO E TIPOGRAFIA ----------------- */
 h2 {white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);}
@@ -74,12 +70,8 @@ ul#servizi-list li::after {display: none;}
 @keyframes fadeInUp {from { opacity: 0; transform: translateY(30px); }to { opacity: 1; transform: translateY(0); }}
 
 /* ----------------- PARTICELLE, GLOW E NEBBIA ----------------- */
-.radial-glow {position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;pointer-events: none;z-index: 0;background:radial-gradient(circle at center, rgb(0, 0, 0) 0%, transparent 60%),radial-gradient(circle at 30% 30%, rgb(0, 0, 0) 0%, transparent 70%),radial-gradient(circle at 70% 70%, rgb(0, 0, 0) 0%, transparent 60%);animation: pulseRadial 10s ease-in-out infinite;}
 @keyframes pulseRadial {0%, 100% { transform: scale(1); opacity: .5; }50% { transform: scale(1.1); opacity: .8; }}
-.fog-layer {background: radial-gradient(circle, rgb(255, 15, 15) 0%, transparent 70%);animation: moveFog 30s linear infinite;}
-@keyframes moveFog {0% { transform: translateX(0); }100% { transform: translateX(-200px); }}
 #particles-js {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;pointer-events: none;}
-
 /* ----------------- NAVBAR E AUDIO ----------------- */
 #audio-toggle,#menu-toggle {margin-left: auto;background: rgb(0, 0, 0);color: rgb(199, 12, 12);border: none;padding: 5px 15px;font-weight: bold;border-radius: 6px;cursor: pointer;margin-right:10px;}
 .hidden {display: none;}
@@ -99,6 +91,3 @@ body {padding-top: 50px; /* spazio per non coprire contenuti */}
 
 /* ----------------- MEDIA QUERY ----------------- */
 @media (max-width: 600px) {#copyright {font-size: .9rem;padding: 20px 10px;text-shadow: 0 0 3px red;}}
-@media (max-width: 768px) { /* stile per tablet */ }
-@media (max-width: 480px) { /* stile per smartphone */ }
-@media (min-width: 1200px) { /* stile per desktop */ }
