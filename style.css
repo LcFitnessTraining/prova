@@ -90,7 +90,7 @@ ul#servizi-list li::after {display: none;}
 #menu-list a {display: block;padding: 10px 15px; color: #fff;text-decoration: none;transition: background 0.3s;}
 #menu-list a:hover {background: rgba(0, 0, 0, 0);color: #ffffff;}
 #menu-list.show {display: block;}
-body {padding-top: 40px; /* spazio per non coprire contenuti */}   
+body {padding-top: 50px; /* spazio per non coprire contenuti */}   
 .menu-container {display: flex;flex-direction: column;}
 
 /* ----------------- ANIMAZIONE CARICAMENTO ----------------- */
