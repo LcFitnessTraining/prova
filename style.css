@@ -1,26 +1,25 @@
 /* ----------------- LAYOUT BASE ----------------- */
 body {margin: 0;padding: 0;text-align: center;font-family: 'Montserrat', sans-serif;background: #000;color: #fff;scroll-behavior: smooth;}
-.container {margin: 0px auto;padding: 0px;background: rgba(0, 0, 0, 0);position: relative;z-index: 1;min-height: 550px;}
+.container {margin: 0px auto;padding: 10px;background: rgba(0, 0, 0, 0);position: relative;z-index: 1;min-height: 550px;}
 .separator {width: 100px;height: 4px;background: red;margin: 30px auto;animation: pulse 2s infinite;}
-@keyframes pulse {0%, 100% { transform: scaleX(1); }50% { transform: scaleX(1.5); }}
 select {width: 100%;padding: 12px;margin: 15px 0;font-size: 1rem;background: #1c1c1c;color: #fff;border: 2px solid #ff0000;border-radius: 8px;box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);transition: all 0.3s ease; appearance: none;}
+select:focus {outline: none;box-shadow: 0 0 15px red;}
 .select-container {margin: 1rem 0;color: white;font-family: 'Arial', sans-serif;}
 .select-container label {display: block;margin-bottom: 0.5rem;font-size: 1rem;}
-select:focus {outline: none;box-shadow: 0 0 15px red;}
+.select-wrapper {position: relative;display: inline-block;width: 100%;max-width: 300px;}
+.select-wrapper select {width: 100%;padding: 0.6rem 2.5rem 0.6rem 1rem;border: 2px solid #ff0033;border-radius: 8px;background-color: #111;color: white;font-size: 1rem;appearance: none;-webkit-appearance: none;-moz-appearance: none;cursor: pointer;transition: 0.3s ease;}
+.select-wrapper select:focus {outline: none;box-shadow: 0 0 10px #ff0033;}
 
 /* ----------------- LOGO E TIPOGRAFIA ----------------- */
-h2 {white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);}
 .feedback-title {white-space: normal;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30, end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);font-size: 1.2rem;}
 .logo {max-width: 150px;margin-bottom: 20px;border-radius: 50%;animation: firePulse 2s infinite;width: 100%;height: auto;}
 @keyframes firePulse {0%, 100% { box-shadow: 0 0 10px red, 0 0 20px orange; }50% { box-shadow: 0 0 20px red, 0 0 30px orange; }}
-h1.typing, h2.typing, h4.typing, h5.typing, h6.typing{white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, .8);}
-h1.typing {font-size: 1.8rem;margin: 0 auto 20px;}
-h2.typing,  h4.typing, h5.typing, h6.typing {font-size: 1.5rem;}
+h1.typing, h2.typing, h3.typing, h4.typing, h5.typing {white-space: nowrap;overflow: hidden;width: 100%;letter-spacing: 1.2px;animation: typing 3s steps(30,end), pulseGlow 2s alternate infinite;text-shadow: 0 0 8px rgba(255, 0, 0, .8);font-size: 1.8rem;margin: 0 auto 20px;}
 @keyframes typing {from { width: 0; }to { width: 100%; }}
 @keyframes pulseGlow {from { text-shadow: 0 0 8px red; }to { text-shadow: 0 0 20px red; }}
 
 /* ----------------- FAQ ----------------- */
-.faq-title {text-align: center;font-size: 2rem;margin-bottom: 30px;color: #fff;text-shadow: 0 0 8px #f00;}
+
 .faq-item {margin-bottom: 15px;}
 .faq-question {width: 100%;padding: 15px;font-size: 1.1rem;background-color: #111;color: #fff;border: none;border-radius: 8px;text-align: left;cursor: pointer;transition: background .3s;}
 .faq-question:hover {background-color: #222;}
@@ -51,13 +50,11 @@ h2.typing,  h4.typing, h5.typing, h6.typing {font-size: 1.5rem;}
 ul {list-style: none;padding: 0;text-align: left;}
 ul li {opacity: 0;transition: .5s;padding: 10px;transform: translateX(-20px);border-bottom: 1px solid #ccc;cursor: pointer;}
 ul li.visible {opacity: 1;transform: translateX(0);}
-ul li:hover { background: rgba(255,0,0,0.1);}
 ul#servizi-list li::after {display: none;}
 
 /* ----------------- CONTATTI ----------------- */
 .contatti ul, .contatti ul li {text-align: center; border: none;transform: none;opacity: 1;}
 .contatti a {color: #faf7f7;text-decoration: none;font-weight: bold;transition: color .3s ease;}
-.contatti a:hover {color: #ff0000;}
 .contatti i {margin-right: 8px;font-size: 1.3em;vertical-align: middle;}
 .instagram-icon {color: #000;background: radial-gradient(circle at 30% 110%, #FDF497 0%, #FD5949 45%, #D6249F 60%, #285AEB 90%);border-radius: 20%;padding: 3px;}
 .facebook-icon { color: #1877F3; }
@@ -65,13 +62,13 @@ ul#servizi-list li::after {display: none;}
 
 /* ----------------- FOOTER & COPYRIGHT ----------------- */
 #copyright {position: relative;background: radial-gradient(circle at center, rgba(255,0,0,0.2), rgba(0,0,0,0.8));color: #fff;text-align: center;padding: 30px 20px;font-size: 1rem;font-family: 'Orbitron', sans-serif;text-shadow: 0 0 5px red, 0 0 10px red;background-attachment: fixed;backdrop-filter: blur(4px);box-shadow: inset 0 0 40px rgba(255,0,0,0.3);border-top: 1px solid rgba(255,0,0,0.4);animation: fadeInUp 2s ease-out;z-index: 10;cursor: pointer;text-decoration: underline;transition: color 0.3s;}
-#copyright:hover {color: #0ff;}
 .copyright-bar {position: fixed;bottom: 0;left: 0;width: 100vw;height: 32px;background: #111;color: #fff;text-align: center;line-height: 32px;font-size: 1rem;z-index: 10000;box-shadow: 0 -1px 6px rgba(255,0,0,0.09);}
 @keyframes fadeInUp {from { opacity: 0; transform: translateY(30px); }to { opacity: 1; transform: translateY(0); }}
 
 /* ----------------- PARTICELLE, GLOW E NEBBIA ----------------- */
-@keyframes pulseRadial {0%, 100% { transform: scale(1); opacity: .5; }50% { transform: scale(1.1); opacity: .8; }}
 #particles-js {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;pointer-events: none;}
+
+
 /* ----------------- NAVBAR E AUDIO ----------------- */
 #audio-toggle,#menu-toggle {margin-left: auto;background: rgb(0, 0, 0);color: rgb(199, 12, 12);border: none;padding: 5px 15px;font-weight: bold;border-radius: 6px;cursor: pointer;margin-right:10px;}
 .hidden {display: none;}
