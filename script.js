@@ -1,10 +1,10 @@
-// === ELEMENTI GLOBALI POPUP E CHIUSURA ===
+// === ELEMENTI POPUP ===
 const popup = document.getElementById('popup'),
-popupTitle = document.getElementById('popup-title'),
-popupText = document.getElementById('popup-text'),
-closeBtn = document.querySelector('.close-btn');
+      popupTitle = document.getElementById('popup-title'),
+      popupText = document.getElementById('popup-text'),
+      closeBtn = document.querySelector('.close-btn');
 
-// === PARALLAX SU SCROLL ===
+// === PARALLAX SCROLL ===
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.parallax').forEach(el => {
     const speed = el.getAttribute('data-speed');
@@ -12,7 +12,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// === PARTICELLE ANIMATE (particles.js) ===
+// === PARTICLES.JS CONFIG ===
 particlesJS("particles-js", {
   particles: {
     number: { value: 80 },
@@ -29,23 +29,22 @@ particlesJS("particles-js", {
   }
 });
 
-// === SCRIPT PRINCIPALE AL CARICAMENTO DEL DOM ===
+// === DOM READY ===
 document.addEventListener("DOMContentLoaded", () => {
   const faqItems = document.querySelectorAll('.faq-item'),
-    audio = document.getElementById("bg-music"),
-    audioOverlay = document.getElementById("audio-overlay"),
-    audioToggle = document.getElementById("audio-toggle");
+        audio = document.getElementById("bg-music"),
+        audioOverlay = document.getElementById("audio-overlay"),
+        audioToggle = document.getElementById("audio-toggle");
+
   let isPlaying = false;
 
-   // === MESSAGGIO SE PAGAMENTO PAYPAL È STATO ANNULLATO ===
+  // Mostra popup se pagamento annullato
   if (localStorage.getItem('paypalCancel') === '1') {
     localStorage.removeItem('paypalCancel');
-    popupTitle.textContent = "❌ Pagamento annullato";
-    popupText.innerHTML = "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.";
-    popup.style.display = 'flex';
+    showPopup("❌ Pagamento annullato", "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.");
   }
 
-  // === FAQ TOGGLE ===
+  // === TOGGLE FAQ ===
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === GESTIONE AUDIO DI SFONDO ===
+  // === AUDIO CONTROLLER ===
   const startAudio = () => {
     if (!isPlaying) {
       audio.play();
@@ -68,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   audioOverlay.addEventListener("click", startAudio);
   audioOverlay.addEventListener("keydown", e => {
-    if (e.key === "Enter" || e.key === " ") startAudio();
+    if (["Enter", " "].includes(e.key)) startAudio();
   });
 
   audioToggle.addEventListener("click", () => {
@@ -81,131 +80,115 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-   // === POPUP SU CLICK SERVIZI ===
-  const items = document.querySelectorAll('#servizi-list li');
-  items.forEach(item => {
+  // === POPUP SERVIZI ===
+  document.querySelectorAll('#servizi-list li').forEach(item => {
     item.addEventListener('click', () => {
-      popupTitle.textContent = item.textContent;
-      popupText.textContent = item.getAttribute('data-desc');
-      popup.style.display = 'flex';
+      showPopup(item.textContent, item.getAttribute('data-desc'));
     });
   });
 
-  // === ANIMAZIONI DI ENTRATA LISTE SERVIZI, TITOLI, CONTATTI ===
-  document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li').forEach((item, i) => setTimeout(() => item.classList.add('visible'), 1000 + i * 300));
-
-  // === FUNZIONE CHIUSURA POPUP ===
- function closePopup() {
-  popup.classList.add('fade-out');
-  setTimeout(() => {
-    popup.style.display = 'none';
-    popup.classList.remove('fade-out');
-  }, 500);
-}
-
-  closeBtn.addEventListener('click', closePopup);
-  closeBtn.addEventListener('keydown', function(e) {
-    if (e.key === "Enter" || e.key === " ") closePopup();
+  // === ANIMAZIONI INGRESSO ===
+  document.querySelectorAll('#servizi-list li, #titoli-list li, .contatti ul li').forEach((item, i) => {
+    setTimeout(() => item.classList.add('visible'), 1000 + i * 300);
   });
 
-  window.onclick = function(event) {
-    if (event.target === popup) closePopup();
+  // === CHIUSURA POPUP ===
+  const closePopup = () => {
+    popup.classList.add('fade-out');
+    setTimeout(() => {
+      popup.style.display = 'none';
+      popup.classList.remove('fade-out');
+    }, 500);
   };
 
-  document.addEventListener('keydown', function(e) {
+  closeBtn.addEventListener('click', closePopup);
+  closeBtn.addEventListener('keydown', e => {
+    if (["Enter", " "].includes(e.key)) closePopup();
+  });
+
+  window.addEventListener('click', e => {
+    if (e.target === popup) closePopup();
+  });
+
+  document.addEventListener('keydown', e => {
     if (e.key === "Escape" && popup.style.display === 'flex') closePopup();
   });
 });
 
-// === FUNZIONE DI UTILITÀ PER MOSTRARE IL POPUP ===
+// === MOSTRA POPUP PERSONALIZZATO ===
 function showPopup(title, htmlText) {
   popupTitle.textContent = title;
   popupText.innerHTML = htmlText;
   popup.style.display = 'flex';
 }
 
-// === VALIDAZIONE PAYPAL: SE DURATA NON SELEZIONATA ===
+// === VERIFICA DURATA SELEZIONATA ===
 function isValidDurata() {
   const durata = document.getElementById("durata");
   return !!durata.value;
 }
 
-// === CONFIGURAZIONE PAYPAL BUTTON ===
+// === CONFIG PAYPAL BUTTON ===
 if (document.getElementById('paypal-button-container')) {
   paypal.Buttons({
-    createOrder: function(data, actions) {
-      const amount = document.getElementById("durata").value;
+    createOrder: (data, actions) => {
       if (!isValidDurata()) {
         alert("Seleziona una durata valida prima di procedere all'acquisto.");
         throw new Error("Durata non selezionata");
       }
       return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: amount
-          }
-        }]
+        purchase_units: [{ amount: { value: document.getElementById("durata").value } }]
       });
     },
     onApprove: (data, actions) => actions.order.capture().then(details => {
-      const name = details.payer.name.given_name;
-      popupTitle.textContent = "✅ Pagamento completato";
-      popupText.innerHTML = `Grazie per il tuo acquisto, <strong>${name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`;
-      popup.style.display = 'flex';
+      showPopup("✅ Pagamento completato", `Grazie per il tuo acquisto, <strong>${details.payer.name.given_name}</strong>!<br>Verrai contattato a breve per iniziare il tuo percorso. 💪🔥`);
     }),
-    onCancel: function(data) {
-      try {
-        localStorage.setItem('paypalCancel', '1');
-      } catch (e) {}
+    onCancel: () => {
+      try { localStorage.setItem('paypalCancel', '1'); } catch (e) {}
       location.reload();
     },
-    onError: function(err) {
-      popupTitle.textContent = "⚠️ Errore durante il pagamento";
-      popupText.innerHTML = "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.";
-      popup.style.display = 'flex';
+    onError: () => {
+      showPopup("⚠️ Errore durante il pagamento", "Si è verificato un errore tecnico durante il pagamento. Ti consigliamo di riprovare tra qualche minuto.<br><br>Se il problema persiste, contattaci per assistenza.");
     }
   }).render('#paypal-button-container');
 }
 
-// === FORM FEEDBACK (INVIO VIA APPS SCRIPT) ===
+// === INVIO FEEDBACK (GOOGLE APPS SCRIPT) ===
 document.getElementById('feedbackForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  var msgBox = document.getElementById('msg-feedback');
+  const msgBox = document.getElementById('msg-feedback');
   msgBox.textContent = 'Invio in corso...';
+
   fetch('https://script.google.com/macros/s/AKfycbwlJaaj_Fg2Bw2Ilhfb9HCiid-xlKOTC2_TA0h2cHO5ROnC_MpmwKsuygY-rrt5UeLZgQ/exec', {
     method: 'POST',
     mode: 'cors',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
       nome: document.getElementById('nome').value,
       commento: document.getElementById('commento').value
     })
-  }).then(function() {
+  }).then(() => {
     msgBox.textContent = 'Grazie per il tuo feedback!';
     document.getElementById('feedbackForm').reset();
-  }).catch(function() {
+  }).catch(() => {
     msgBox.textContent = "Errore nell'invio. Riprova più tardi.";
   });
 });
 
-// === GESTIONE COPYRIGHT POPUP ===
+// === COPYRIGHT POPUP ===
 function openCopyrightPopup() {
   document.getElementById("copyrightPopup").style.display = "flex";
 }
-
 function closeCopyrightPopup() {
   document.getElementById("copyrightPopup").style.display = "none";
 }
-
 function closeCopyrightPopupOnClick(event) {
   if (event.target.id === "copyrightPopup") {
     closeCopyrightPopup();
   }
 }
 
-// === MENU A TENDINA: TOGGLE E AUDIO ===
+// === TOGGLE MENU MOBILE ===
 document.querySelectorAll('#menu-list a').forEach(link => {
   link.addEventListener('click', () => {
     document.getElementById('menu-list').classList.remove('show');
@@ -213,15 +196,9 @@ document.querySelectorAll('#menu-list a').forEach(link => {
   });
 });
 
-document.getElementById('menu-toggle').addEventListener('click', function() {
-  var menuList = document.getElementById('menu-list');
-  var audioToggle = document.getElementById('audio-toggle');
-
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  const menuList = document.getElementById('menu-list');
+  const audioToggle = document.getElementById('audio-toggle');
   menuList.classList.toggle('show');
-
-  if (menuList.classList.contains('show')) {
-    audioToggle.style.display = 'none';
-  } else {
-    audioToggle.style.display = 'block';
-  }
+  audioToggle.style.display = menuList.classList.contains('show') ? 'none' : 'block';
 });
