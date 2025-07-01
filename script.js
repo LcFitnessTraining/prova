@@ -43,7 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem('paypalCancel');
     showPopup("❌ Pagamento annullato", "Hai annullato il processo di pagamento. Se vuoi riprovare, seleziona il piano e clicca su Paga.");
   }
+const durataSelect = document.getElementById("durata");
+const paypalWrapper = document.getElementById("paypal-button-wrapper");
 
+durataSelect.addEventListener("change", () => {
+  if (isValidDurata()) {
+    paypalWrapper.style.display = "block";
+  } else {
+    paypalWrapper.style.display = "none";
+  }
+});
   // === TOGGLE FAQ ===
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
