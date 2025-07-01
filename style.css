@@ -417,3 +417,49 @@ ul#servizi-list li::after {
 #menu-list.show {
   display: block;
 }
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 40px auto;
+  padding-left: 20px;
+  border-left: 3px solid #ff0033; /* linea verticale rossa */
+}
+
+.timeline-item {
+  position: relative;
+  margin: 20px 0;
+  padding-left: 40px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #ff0033;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 8px #ff0033aa;
+}
+
+.timeline-item h3 {
+  margin: 0 0 6px;
+  color: #ff0033;
+  font-weight: 700;
+}
+
+.timeline-item p {
+  margin: 0;
+  color: #eee;
+  font-size: 0.9em;
+}
