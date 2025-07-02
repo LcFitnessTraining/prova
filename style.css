@@ -5,6 +5,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+.badge-container {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.badge-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -145,28 +157,31 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 3rem;
-    color: #ff0000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgb(253, 2, 2);
     margin-bottom: 30px;
 }
 
 h2 {
     font-size: 2.5rem;
-    color: #ff0000;
+    color: #ffffff;
     text-align: center;
+    text-shadow: 2px 2px 4px rgb(253, 2, 2);
     margin-bottom: 40px;
 }
 
 h3 {
     font-size: 2rem;
-    color: #ff0000;
+    color: #ffffff;
     text-align: center;
+    text-shadow: 2px 2px 4px rgb(253, 2, 2);
 }
 
 h4, h5, h6 {
     font-size: 1.8rem;
-    color: #ff0000;
+    color: #ffffff;
     text-align: center;
+    text-shadow: 2px 2px 4px rgb(253, 2, 2);
 }
 
 /* Typing Animation */
@@ -213,14 +228,14 @@ h4, h5, h6 {
 #durata {
     width: 100%;
     padding: 15px;
-    border: 2px solid #ff0000;
+    border: 2px solid #ff0000fd;
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.8s ease;
 }
 
 #durata:focus {
@@ -259,13 +274,13 @@ h4, h5, h6 {
 }
 
 #servizi-list li {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-    border: 2px solid #ff0000;
+    background: linear-gradient(135deg, rgba(0, 0), rgba(255, 0, 0, 0.1));
+    border: 2px solid #ff000000;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.8s ease;
     position: relative;
     overflow: hidden;
 }
@@ -286,7 +301,7 @@ h4, h5, h6 {
 }
 
 #servizi-list li:hover {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 0, 0, 0.2));
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
 }
@@ -304,18 +319,18 @@ h4, h5, h6 {
 }
 
 #titoli-list li {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.8));
-    border: 2px solid #ffd700;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.1));
+    border: 2px solid #ff000000;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.8s ease;
 }
 
 #titoli-list li:hover {
     transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+   box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
 }
 
 /* Contacts Section */
@@ -336,7 +351,7 @@ h4, h5, h6 {
     color: white;
     text-decoration: none;
     padding: 15px 25px;
-    border: 2px solid #ff0000;
+    border: 2px solid #ff000000;
     border-radius: 8px;
     transition: all 0.3s ease;
     display: inline-flex;
@@ -346,9 +361,9 @@ h4, h5, h6 {
 }
 
 .contatti a:hover {
-    background: #ff0000;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 0, 0, 0.2));
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
 }
 
 .gmail-icon { color: #ea4335; }
@@ -368,7 +383,6 @@ h4, h5, h6 {
     max-width: 150px;
     border-radius: 50%;
     margin-bottom: 20px;
-    border: 4px solid #ff0000;
     box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
@@ -406,7 +420,7 @@ h4, h5, h6 {
 
 #feedbackForm label {
     display: block;
-    color: #ff0000;
+    color: #ffffff;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -415,7 +429,6 @@ h4, h5, h6 {
 #feedbackForm textarea {
     width: 100%;
     padding: 12px;
-    border: 2px solid #ff0000;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
@@ -460,8 +473,7 @@ h4, h5, h6 {
 }
 
 #msg-feedback.success {
-    background: rgba(0, 255, 0, 0.2);
-    border: 1px solid #00ff00;
+    background: rgb(0, 2, 0);
     color: #00ff00;
 }
 
@@ -483,7 +495,6 @@ h4, h5, h6 {
 
 .faq-item {
     margin-bottom: 15px;
-    border: 2px solid #ff0000;
     border-radius: 8px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.8);
@@ -504,7 +515,7 @@ h4, h5, h6 {
 }
 
 .faq-question:hover {
-    background: rgba(255, 0, 0, 0.1);
+    background: rgba(90, 7, 7, 0.349);
 }
 
 .faq-question:after {
@@ -524,7 +535,7 @@ h4, h5, h6 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background: rgba(255, 0, 0, 0.05);
+    background: rgb(0, 0, 0);
 }
 
 .faq-answer.active {
@@ -542,34 +553,13 @@ h4, h5, h6 {
     margin: 80px 0;
 }
 
-.feedback-marquee-container {
-    overflow: hidden;
-    position: relative;
-    margin-top: 40px;
-}
+.feedback input,
+.feedback textarea {width: 100%;margin-bottom: 10px;border: 2px solid #ff0000;border-radius: 5px;background: #1c1c1c;color: #fff;box-sizing: border-box;}
+.feedback-marquee-container {width: 100%;overflow: hidden;background: rgba(0, 0, 0, 0.3);padding: 10px 0;white-space: nowrap;}
+.feedback-marquee-track {display: inline-block;min-width: 200%;animation: scrollFeedback 70s linear infinite;}
+.feedback-item {display: inline-block;margin: 0 50px;font-size: 1.1rem;color: #fff;}
+@keyframes scrollFeedback {0% { transform: translateX(0%); }100% { transform: translateX(-100%); }}
 
-.feedback-marquee-track {
-    display: flex;
-    animation: marquee 60s linear infinite;
-    gap: 30px;
-}
-
-.feedback-item {
-    flex-shrink: 0;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-    border: 2px solid #ff0000;
-    border-radius: 10px;
-    padding: 20px;
-    min-width: 300px;
-    white-space: nowrap;
-    color: white;
-    font-style: italic;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
 
 /* Separator */
 .separator {
@@ -596,12 +586,11 @@ h4, h5, h6 {
     background: linear-gradient(135deg, #000000, #1a1a1a);
     margin: 10% auto;
     padding: 30px;
-    border: 3px solid #ff0000;
     border-radius: 15px;
     width: 90%;
     max-width: 600px;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 40px rgba(143, 4, 4, 0.795);
 }
 
 .close-btn {
@@ -654,7 +643,6 @@ footer {
     text-align: center;
     padding: 30px;
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
-    border-top: 2px solid #ff0000;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -662,7 +650,7 @@ footer {
 }
 
 #copyright:hover {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(0, 0, 0, 1));
+    background: linear-gradient(135deg,rgba(255, 0, 0, 0.329),  rgba(0, 0, 0, 1));
 }
 
 /* Audio Overlay */
