@@ -5,18 +5,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-.badge-container {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.badge-container img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -274,7 +262,7 @@ h4, h5, h6 {
 }
 
 #servizi-list li {
-    background: linear-gradient(135deg, rgba(0, 0), rgba(255, 0, 0, 0.1));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.1));
     border: 2px solid #ff000000;
     border-radius: 10px;
     padding: 20px;
@@ -632,6 +620,29 @@ h4, h5, h6 {
 
 .popup-close:hover {
     background: #cc0000;
+}
+
+/* Badge */
+.central-badge {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: flex;
+  gap: 30px; /* distanza tra i due badge */
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-small {
+  width: 70px;
+  height: 120px;
+}
+
+.badge-large {
+  width: 120px;
+  height: 120px;
 }
 
 /* Footer */
