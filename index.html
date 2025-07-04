@@ -184,21 +184,16 @@
             </section>
 
             <!-- Feedback Section -->
-            <section class="feedbackclient" id="feedbackclient">
-                <div class="separator"></div>
-                <h6 class="feedback-title">Lascia un feedback per migliorare i nostri servizi</h6>
-                
-                <form id="feedbackForm">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                    
-                    <label for="commento">Feedback:</label>
-                    <textarea id="commento" name="commento" required></textarea>
-                    
-                    <button type="submit">Invia</button>
-                    <div id="msg-feedback"></div>
-                </form>
-            </section>
+            <form id="feedbackForm" action="https://formspree.io/f/xwpbzggz" method="POST">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" required>
+
+  <label for="commento">Feedback:</label>
+  <textarea id="commento" name="commento" required></textarea>
+
+  <button type="submit">Invia</button>
+  <div id="msg-feedback"></div>
+</form>
 
             <!-- FAQ Section -->
             <section class="faqNEW" id="faqNEW">
@@ -275,12 +270,10 @@
                         <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
                         <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
                     </div>
-                </div>
-      
+                </div>     
             </section>
      <div class="central-badge">
   <img src="https://i.imgur.com/346Ppq0.png" alt="Badge 100% soddisfatti" class="badge-large"/>
-  <img src="https://imgur.com/jIVTj0m.png" alt="Badge Primo Posto" class="badge-small"/>
 </div>
    </main>
        <!-- Footer -->
@@ -362,7 +355,29 @@
             }
         })();
     </script>
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nome = this.nome.value;
+  const feedback = this.commento.value; // <-- qui uso commento, non feedback
 
+  fetch('https://script.google.com/macros/s/AKfycbzX3A8XydDKewRly1ulijjgd_KUdWDMmpsUewMdlEPMTOFQVdPR2llOfOY3zQ3NPd1B/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ nome: nome, feedback: feedback })
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('msg-feedback').innerText = 'Grazie per il feedback!';
+    this.reset();
+  })
+  .catch(error => {
+    document.getElementById('msg-feedback').innerText = 'Errore durante l\'invio!';
+  });
+});
+</script>
     <!-- PayPal Amount Update -->
     <script>
         document.getElementById('durata').addEventListener('change', function() {
