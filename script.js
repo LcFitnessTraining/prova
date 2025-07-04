@@ -357,29 +357,27 @@ function initializeFeedbackForm() {
     }
 }
 
-function handleFeedbackSubmit(event) {
-    event.preventDefault();
-    
-    const nome = document.getElementById('nome').value.trim();
-    const commento = document.getElementById('commento').value.trim();
-    
-    if (!nome || !commento) {
-        showFeedbackMessage('Per favore, compila tutti i campi.', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    showFeedbackMessage('Invio in corso...', 'info');
-    
-    setTimeout(() => {
-        // In a real application, you would send this to your backend
-        console.log('Feedback submitted:', { nome, commento });
-        
-        showFeedbackMessage('Grazie per il tuo feedback! È stato inviato con successo.', 'success');
-        feedbackForm.reset();
-    }, 1500);
-}
+   document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
 
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+if (response.ok) {
+    document.getElementById('msg-feedback').innerText = "Grazie per il tuo feedback!";
+    form.reset();
+  } else {
+    document.getElementById('msg-feedback').innerText = "Si è verificato un errore. Riprova più tardi.";
+  }
+});
+  
 function showFeedbackMessage(message, type) {
     if (msgFeedback) {
         msgFeedback.textContent = message;
