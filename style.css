@@ -625,25 +625,18 @@ h4, h5, h6 {
 /* Badge */
 .central-badge {
   position: relative;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  display: flex;
-  gap: 30px; /* distanza tra i due badge */
-  align-items: center;
-  justify-content: center;
 }
 
-.badge-small {
-  width: 70px;
-  height: 120px;
+.central-badge img {
+  width: 130px;
+  height: 130px;
 }
 
-.badge-large {
-  width: 120px;
-  height: 120px;
-}
 
 /* Footer */
 footer {
