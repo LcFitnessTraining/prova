@@ -1,4 +1,3 @@
-
 // DOM Elements
 const menuToggle = document.getElementById('menu-toggle');
 const menuList = document.getElementById('menu-list');
@@ -94,13 +93,13 @@ function initializeParticles() {
 function initializeMenu() {
     if (menuToggle && menuList) {
         menuToggle.addEventListener('click', toggleMenu);
-        
+
         // Close menu when clicking on links
         const menuLinks = menuList.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!menuToggle.contains(event.target) && !menuList.contains(event.target)) {
@@ -132,7 +131,7 @@ function initializeAudio() {
     if (audioToggle && bgMusic && audioOverlay) {
         audioToggle.addEventListener('click', toggleAudio);
         audioOverlay.addEventListener('click', initializeAudioOnMobile);
-        
+
         // Show overlay on mobile devices
         if (isMobileDevice()) {
             audioOverlay.style.display = 'block';
@@ -203,7 +202,7 @@ function initializePayPal() {
 
 function handleDurationChange() {
     const amount = durataSelect.value;
-    
+
     if (amount) {
         showPayPalButton();
         updatePayPalMessage(amount);
@@ -239,7 +238,7 @@ function renderPayPalButton(amount) {
         if (container) {
             container.innerHTML = '';
         }
-        
+
         paypal.Buttons({
             createOrder: function(data, actions) {
                 return actions.order.create({
@@ -268,7 +267,7 @@ function renderPayPalButton(amount) {
 function sendOrderConfirmation(details) {
     // Here you would typically send the order details to your backend
     console.log('Order Details:', details);
-    
+
     // For now, just show a success message
     showSuccessMessage(`Grazie ${details.payer.name.given_name}! Il tuo ordine è stato processato.`);
 }
@@ -277,18 +276,18 @@ function sendOrderConfirmation(details) {
 function initializeServicePopups() {
     const servicesList = document.getElementById('servizi-list');
     const closeBtn = document.querySelector('.close-btn');
-    
+
     if (servicesList) {
         const serviceItems = servicesList.querySelectorAll('li');
         serviceItems.forEach(item => {
             item.addEventListener('click', () => showServicePopup(item));
         });
     }
-    
+
     if (closeBtn) {
         closeBtn.addEventListener('click', closeServicePopup);
     }
-    
+
     if (popup) {
         popup.addEventListener('click', function(event) {
             if (event.target === popup) {
@@ -301,15 +300,15 @@ function initializeServicePopups() {
 function showServicePopup(serviceItem) {
     const title = serviceItem.textContent;
     const description = serviceItem.getAttribute('data-desc');
-    
+
     const popupTitle = document.getElementById('popup-title');
     const popupText = document.getElementById('popup-text');
-    
+
     if (popupTitle && popupText && popup) {
         popupTitle.textContent = title;
         popupText.textContent = description;
         popup.style.display = 'block';
-        
+
         // Add animation
         setTimeout(() => {
             popup.style.opacity = '1';
@@ -329,18 +328,18 @@ function closeServicePopup() {
 // FAQ functionality
 function initializeFAQ() {
     const faqQuestions = document.querySelectorAll('.faq-question');
-    
+
     faqQuestions.forEach(question => {
         question.addEventListener('click', function() {
             const answer = this.nextElementSibling;
             const isActive = this.classList.contains('active');
-            
+
             // Close all FAQ items
             faqQuestions.forEach(q => {
                 q.classList.remove('active');
                 q.nextElementSibling.classList.remove('active');
             });
-            
+
             // Open clicked item if it wasn't active
             if (!isActive) {
                 this.classList.add('active');
@@ -353,42 +352,36 @@ function initializeFAQ() {
 // Feedback form
 function initializeFeedbackForm() {
     if (feedbackForm) {
-        feedbackForm.addEventListener('submit', handleFeedbackSubmit);
-    }
-}
+        feedbackForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
 
-   document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
 
-  const response = await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
-
-if (response.ok) {
-    document.getElementById('msg-feedback').innerText = "Grazie per il tuo feedback!";
-    form.reset();
-  } else {
-    document.getElementById('msg-feedback').innerText = "Si è verificato un errore. Riprova più tardi.";
-  }
-});
-  
-function showFeedbackMessage(message, type) {
-    if (msgFeedback) {
-        msgFeedback.textContent = message;
-        msgFeedback.className = type;
-        msgFeedback.style.display = 'block';
-        
-        if (type === 'success') {
-            setTimeout(() => {
-                msgFeedback.style.display = 'none';
-            }, 5000);
-        }
+                if (response.ok) {
+                    if (msgFeedback) {
+                        msgFeedback.innerText = "Grazie per il tuo feedback!";
+                    }
+                    form.reset();
+                } else {
+                    if (msgFeedback) {
+                        msgFeedback.innerText = "Si è verificato un errore. Riprova più tardi.";
+                    }
+                }
+            } catch (error) {
+                if (msgFeedback) {
+                    msgFeedback.innerText = "Errore di rete. Controlla la connessione.";
+                }
+            }
+        });
     }
 }
 
@@ -414,11 +407,11 @@ function closePopup(event) {
 // Typing effect
 function initializeTypingEffect() {
     const typingElements = document.querySelectorAll('.typing');
-    
+
     typingElements.forEach(element => {
         // Add typing animation class
         element.style.animation = 'blink 1s infinite';
-        
+
         // Remove animation after 3 seconds
         setTimeout(() => {
             element.style.animation = 'none';
@@ -432,7 +425,7 @@ function showSuccessMessage(message) {
     // Create and show success notification
     const notification = createNotification(message, 'success');
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.remove();
     }, 5000);
@@ -442,7 +435,7 @@ function showErrorMessage(message) {
     // Create and show error notification
     const notification = createNotification(message, 'error');
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.remove();
     }, 5000);
@@ -452,7 +445,7 @@ function createNotification(message, type) {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-    
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -467,7 +460,7 @@ function createNotification(message, type) {
         transform: translateX(100%);
         transition: all 0.3s ease;
     `;
-    
+
     if (type === 'success') {
         notification.style.background = '#28a745';
         notification.style.border = '2px solid #1e7e34';
@@ -475,19 +468,19 @@ function createNotification(message, type) {
         notification.style.background = '#dc3545';
         notification.style.border = '2px solid #bd2130';
     }
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 10);
-    
+
     // Animate out after 4.5 seconds
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100%)';
     }, 4500);
-    
+
     return notification;
 }
 
@@ -497,7 +490,7 @@ document.addEventListener('click', function(event) {
         event.preventDefault();
         const targetId = event.target.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
             const offsetTop = targetElement.offsetTop - 80; // Account for fixed nav
             window.scrollTo({
@@ -516,15 +509,15 @@ document.addEventListener('keydown', function(event) {
         closeCopyrightPopup();
         closeMenu();
     }
-    
+
     // Handle Enter key on focusable elements
     if (event.key === 'Enter') {
         const focusedElement = document.activeElement;
-        
+
         if (focusedElement.classList.contains('close-btn')) {
             closeServicePopup();
         }
-        
+
         if (focusedElement.id === 'audio-overlay') {
             initializeAudioOnMobile();
         }
@@ -537,7 +530,7 @@ window.addEventListener('scroll', function() {
     if (scrollTimeout) {
         clearTimeout(scrollTimeout);
     }
-    
+
     scrollTimeout = setTimeout(function() {
         // Add any scroll-based functionality here if needed
     }, 16); // ~60fps
