@@ -441,34 +441,20 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-function createNotification(message, type) {
+    function createNotification(message, type) {
     const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
+    notification.className = `msgfeedback ${type}`; // Cambiato qui!
     notification.textContent = message;
 
     notification.style.cssText = `
         position: fixed;
-        top: 20px;
+        bottom: 20px;
         right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        font-weight: bold;
-        z-index: 3000;
-        max-width: 300px;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.3s ease;
+        z-index: 9999;
     `;
 
-    if (type === 'success') {
-        notification.style.background = '#28a745';
-        notification.style.border = '2px solid #1e7e34';
-    } else if (type === 'error') {
-        notification.style.background = '#dc3545';
-        notification.style.border = '2px solid #bd2130';
+    return notification;
     }
-
     // Animate in
     setTimeout(() => {
         notification.style.opacity = '1';
