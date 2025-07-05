@@ -443,17 +443,30 @@ function showErrorMessage(message) {
 
     function createNotification(message, type) {
     const notification = document.createElement('div');
-    notification.className = `msgfeedback ${type}`; // Cambiato qui!
+    notification.className = `notification ${type}`;
     notification.textContent = message;
 
     notification.style.cssText = `
         position: fixed;
-        bottom: 20px;
+        top: 20px;
         right: 20px;
-        z-index: 9999;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 3000;
+        max-width: 300px;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
     `;
 
-    return notification;
+    if (type === 'success') {
+        notification.style.background = '#28a745';
+        notification.style.border = '2px solid #1e7e34';
+    } else if (type === 'error') {
+        notification.style.background = '#dc3545';
+        notification.style.border = '2px solid #bd2130';
     }
     // Animate in
     setTimeout(() => {
