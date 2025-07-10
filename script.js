@@ -17,16 +17,15 @@ let menuOpen = false;
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    initializeParticles();
-    initializeMenu();
-    initializeAudio();
-    initializePayPal();
-    initializeServicePopups();
-    initializeFAQ();
-    initializeFeedbackForm();
-    initializeTypingEffect();
+initializeParticles();
+initializeMenu();
+initializeAudio();
+initializePayPal();
+initializeServicePopups();
+initializeFAQ();
+initializeFeedbackForm();
+initializeTypingEffect();
 });
-
 // Particles.js initialization
 function initializeParticles() {
     if (typeof particlesJS !== 'undefined') {
@@ -108,7 +107,6 @@ function initializeMenu() {
         });
     }
 }
-
 function toggleMenu() {
     menuOpen = !menuOpen;
     if (menuOpen) {
@@ -119,7 +117,6 @@ function toggleMenu() {
         menuToggle.setAttribute('aria-expanded', 'false');
     }
 }
-
 function closeMenu() {
     menuOpen = false;
     menuList.classList.add('hidden');
@@ -138,7 +135,6 @@ function initializeAudio() {
         }
     }
 }
-
 function toggleAudio() {
     if (!audioInitialized) {
         initializeAudioPlayback();
@@ -150,12 +146,10 @@ function toggleAudio() {
         }
     }
 }
-
 function initializeAudioOnMobile() {
     initializeAudioPlayback();
     audioOverlay.style.display = 'none';
 }
-
 function initializeAudioPlayback() {
     bgMusic.play()
         .then(() => {
@@ -167,7 +161,6 @@ function initializeAudioPlayback() {
             updateAudioButton(true);
         });
 }
-
 function playAudio() {
     bgMusic.play()
         .then(() => {
@@ -177,40 +170,46 @@ function playAudio() {
             console.log('Audio play failed:', error);
         });
 }
-
 function pauseAudio() {
     bgMusic.pause();
     updateAudioButton(true);
 }
-
 function updateAudioButton(isPaused) {
     if (audioToggle) {
         audioToggle.textContent = isPaused ? '🔇 Off' : '🔊 On';
     }
 }
-
 function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
 // PayPal functionality
+
 function initializePayPal() {
-    if (durataSelect && paypalButtonWrapper) {
-        durataSelect.addEventListener('change', handleDurationChange);
-    }
+  if (durataSelect && paypalButtonWrapper) {
+    durataSelect.addEventListener('change', handleDurationChange);
+  }
 }
 
 function handleDurationChange() {
-    const amount = durataSelect.value;
-
-    if (amount) {
-        showPayPalButton();
-        updatePayPalMessage(amount);
-        renderPayPalButton(amount);
-    } else {
-        hidePayPalButton();
-    }
+  const amount = durataSelect.value;
+  if (amount) {
+    showPayPalButton();
+    updatePayPalMessage(amount);
+    loadPayPalScript(amount);
+  } else {
+    hidePayPalButton();
+  }
 }
+function loadPayPalScript(amount) {
+  const script = document.createElement('script');
+  script.src = 'https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR&components=buttons,messages';
+  script.onload = function() {
+    renderPayPalButton(amount);
+  };
+  document.body.appendChild(script);
+}
+
 
 function showPayPalButton() {
     paypalButtonWrapper.style.display = 'block';
@@ -218,19 +217,16 @@ function showPayPalButton() {
         paypalButtonWrapper.classList.add('fade');
     }, 10);
 }
-
 function hidePayPalButton() {
     paypalButtonWrapper.style.display = 'none';
     paypalButtonWrapper.classList.remove('fade');
 }
-
 function updatePayPalMessage(amount) {
     const paypalMessage = document.getElementById('paypal-message');
     if (paypalMessage) {
         paypalMessage.setAttribute('data-pp-amount', amount);
     }
 }
-
 function renderPayPalButton(amount) {
     if (typeof paypal !== 'undefined') {
         // Clear existing PayPal buttons
@@ -238,7 +234,6 @@ function renderPayPalButton(amount) {
         if (container) {
             container.innerHTML = '';
         }
-
         paypal.Buttons({
             createOrder: function(data, actions) {
                 return actions.order.create({
@@ -252,42 +247,34 @@ function renderPayPalButton(amount) {
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    showSuccessMessage('Pagamento completato con successo!');
+                    showPaymentPopup(`Grazie ${details.payer.name.given_name}! Il tuo ordine è stato processato.Sarai contattato a breve dal Coach per cominciare il tuo percorso!!!`, 'success');
                     sendOrderConfirmation(details);
                 });
             },
+            onCancel: function(data) {
+    showPaymentPopup('Il pagamento è stato annullato. Scegli il piano più adatto a te e riprova !!!', 'error');
+},
             onError: function(err) {
                 console.error('PayPal Error:', err);
-                showErrorMessage('Si è verificato un errore durante il pagamento.');
+                showPaymentPopup('Si è verificato un errore durante il pagamento. Utilizza un altro metodo o contattaci !!1', 'error');
             }
         }).render('#paypal-button-container');
     }
-}
-
-function sendOrderConfirmation(details) {
-    // Here you would typically send the order details to your backend
-    console.log('Order Details:', details);
-
-    // For now, just show a success message
-    showSuccessMessage(`Grazie ${details.payer.name.given_name}! Il tuo ordine è stato processato.`);
 }
 
 // Service popups
 function initializeServicePopups() {
     const servicesList = document.getElementById('servizi-list');
     const closeBtn = document.querySelector('.close-btn');
-
     if (servicesList) {
         const serviceItems = servicesList.querySelectorAll('li');
         serviceItems.forEach(item => {
             item.addEventListener('click', () => showServicePopup(item));
         });
     }
-
     if (closeBtn) {
         closeBtn.addEventListener('click', closeServicePopup);
     }
-
     if (popup) {
         popup.addEventListener('click', function(event) {
             if (event.target === popup) {
@@ -296,14 +283,11 @@ function initializeServicePopups() {
         });
     }
 }
-
 function showServicePopup(serviceItem) {
     const title = serviceItem.textContent;
     const description = serviceItem.getAttribute('data-desc');
-
     const popupTitle = document.getElementById('popup-title');
     const popupText = document.getElementById('popup-text');
-
     if (popupTitle && popupText && popup) {
         popupTitle.textContent = title;
         popupText.textContent = description;
@@ -315,7 +299,6 @@ function showServicePopup(serviceItem) {
         }, 10);
     }
 }
-
 function closeServicePopup() {
     if (popup) {
         popup.style.opacity = '0';
@@ -327,62 +310,51 @@ function closeServicePopup() {
 
 // FAQ functionality
 function initializeFAQ() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+question.addEventListener('click', function() {
+const answer = this.nextElementSibling;
+const isActive = this.classList.contains('active');
 
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const isActive = this.classList.contains('active');
+// Close all FAQ items
+faqQuestions.forEach(q => {
+q.classList.remove('active');
+q.nextElementSibling.classList.remove('active');
+ });
 
-            // Close all FAQ items
-            faqQuestions.forEach(q => {
-                q.classList.remove('active');
-                q.nextElementSibling.classList.remove('active');
-            });
-
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                this.classList.add('active');
-                answer.classList.add('active');
-            }
-        });
-    });
+ // Open clicked item if it wasn't active
+if (!isActive) {
+this.classList.add('active');
+answer.classList.add('active');
+}
+});
+ });
 }
 
 // Feedback form
 function initializeFeedbackForm() {
-    if (feedbackForm) {
-        feedbackForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    if (msgFeedback) {
-                        msgFeedback.innerText = "Grazie per il tuo feedback!";
-                    }
-                    form.reset();
-                } else {
-                    if (msgFeedback) {
-                        msgFeedback.innerText = "Si è verificato un errore. Riprova più tardi.";
-                    }
-                }
-            } catch (error) {
-                if (msgFeedback) {
-                    msgFeedback.innerText = "Errore di rete. Controlla la connessione.";
-                }
-            }
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
         });
-    }
+        if (response.ok) {
+          showSuccessMessage("Grazie per il tuo feedback!");
+          form.reset();
+        } else {
+          showErrorMessage("Si è verificato un errore. Riprova più tardi.");
+        }
+      } catch (error) {
+        showErrorMessage("Errore di rete. Controlla la connessione.");
+      }
+    });
+  }
 }
 
 // Copyright popup
@@ -391,33 +363,15 @@ function openCopyrightPopup() {
         copyrightPopup.style.display = 'block';
     }
 }
-
 function closeCopyrightPopup() {
     if (copyrightPopup) {
         copyrightPopup.style.display = 'none';
     }
 }
-
 function closePopup(event) {
     if (event.target === copyrightPopup) {
         closeCopyrightPopup();
     }
-}
-
-// Typing effect
-function initializeTypingEffect() {
-    const typingElements = document.querySelectorAll('.typing');
-
-    typingElements.forEach(element => {
-        // Add typing animation class
-        element.style.animation = 'blink 1s infinite';
-
-        // Remove animation after 3 seconds
-        setTimeout(() => {
-            element.style.animation = 'none';
-            element.style.borderRight = 'none';
-        }, 3000);
-    });
 }
 
 // Utility functions
@@ -430,22 +384,18 @@ function showSuccessMessage(message) {
         notification.remove();
     }, 5000);
 }
-
 function showErrorMessage(message) {
     // Create and show error notification
     const notification = createNotification(message, 'error');
     document.body.appendChild(notification);
-
     setTimeout(() => {
         notification.remove();
     }, 5000);
 }
-
     function createNotification(message, type) {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -460,7 +410,6 @@ function showErrorMessage(message) {
         transform: translateX(100%);
         transition: all 0.3s ease;
     `;
-
     if (type === 'success') {
         notification.style.background = '#28a745';
         notification.style.border = '2px solid #1e7e34';
@@ -479,7 +428,6 @@ function showErrorMessage(message) {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100%)';
     }, 4500);
-
     return notification;
 }
 
@@ -523,25 +471,38 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Performance optimization: Debounce scroll events
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+function showPaymentPopup(message, type) {
+    const popupTitle = document.getElementById('popup-title');
+    const popupText = document.getElementById('popup-text');
+    const popup = document.getElementById('popup');
+
+    if (popupTitle && popupText && popup) {
+        popupTitle.textContent = type === 'success' ? 'Pagamento completato' : 'Pagamento annullato';
+        popupText.textContent = message;
+        popup.style.display = 'block';
+
+        // Add animation
+        setTimeout(() => {
+            popup.style.opacity = '1';
+        }, 10);
+
+        // Close popup after 3 seconds
+        setTimeout(() => {
+            popup.style.opacity = '0';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300);
+        }, 3000);
     }
-
-    scrollTimeout = setTimeout(function() {
-        // Add any scroll-based functionality here if needed
-    }, 16); // ~60fps
-});
-
-// Global error handling
-window.addEventListener('error', function(event) {
-    console.error('JavaScript Error:', event.error);
-    // In production, you might want to send this to your error tracking service
-});
+}
 
 // Global functions for inline event handlers (to maintain compatibility)
 window.openCopyrightPopup = openCopyrightPopup;
 window.closeCopyrightPopup = closeCopyrightPopup;
 window.closePopup = closePopup;
+requestIdleCallback(function(deadline) {
+  // Codice da eseguire quando il browser è inattivo
+  while (deadline.timeRemaining() > 0) {
+    // Esegui il codice qui
+  }
+});
