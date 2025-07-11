@@ -46,7 +46,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .payment-section {margin: 60px 0;text-align: center;}
 .select-wrapper {max-width: 400px;margin: 0 auto 30px;}
 #durata {width: 100%;padding: 15px;border: 2px solid #ff0000fd;border-radius: 8px;background: rgba(0, 0, 0, 0.8);color: white;font-size: 16px;font-weight: bold;cursor: pointer;transition: all 0.8s ease;}
-#durata:focus {outline: none;border-color: #ff4444;box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);}
+#durata:focus {outline: none;border-color: #c00404;box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);}
 #durata option {background: #000;color: white;}
 #paypal-button-wrapper {margin-top: 20px;transition: opacity 0.3s ease;}
 
