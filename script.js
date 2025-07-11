@@ -24,7 +24,6 @@ initializePayPal();
 initializeServicePopups();
 initializeFAQ();
 initializeFeedbackForm();
-initializeTypingEffect();
 });
 // Particles.js initialization
 function initializeParticles() {
