@@ -1,507 +1,179 @@
-// DOM Elements
-const menuToggle = document.getElementById('menu-toggle');
-const menuList = document.getElementById('menu-list');
-const audioToggle = document.getElementById('audio-toggle');
-const bgMusic = document.getElementById('bg-music');
-const audioOverlay = document.getElementById('audio-overlay');
-const durataSelect = document.getElementById('durata');
-const paypalButtonWrapper = document.getElementById('paypal-button-wrapper');
-const popup = document.getElementById('popup');
-const copyrightPopup = document.getElementById('copyrightPopup');
-const feedbackForm = document.getElementById('feedbackForm');
-const msgFeedback = document.getElementById('msg-feedback');
+const fakeFoods = [
+  { name: "Riso", calories: 130, carbs: 28, protein: 2.7, fat: 0.3 },
+  { name: "Pollo", calories: 165, carbs: 0, protein: 31, fat: 3.6 },
+  { name: "Tonno", calories: 132, carbs: 0, protein: 28, fat: 1.3 },
+  { name: "Uova", calories: 155, carbs: 1.1, protein: 13, fat: 11 },
+  { name: "Fiocchi di latte", calories: 98, carbs: 3.4, protein: 11.1, fat: 4.3 }
+];
 
-// State
-let audioInitialized = false;
-let menuOpen = false;
+const meals = {
+  colazione: [],
+  pranzo: [],
+  cena: [],
+  spuntini: []
+};
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-initializeParticles();
-initializeMenu();
-initializeAudio();
-initializePayPal();
-initializeServicePopups();
-initializeFAQ();
-initializeFeedbackForm();
-});
-// Particles.js initialization
-function initializeParticles() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 50,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#ff0000'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#ff0000',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
-    }
+const goals = {
+  calories: 0,
+  carbs: 0,
+  protein: 0,
+  fat: 0
+};
+
+function updateGoals() {
+  goals.carbs = parseInt(document.getElementById("goal-carbs").value) || 0;
+  goals.protein = parseInt(document.getElementById("goal-protein").value) || 0;
+  goals.fat = parseInt(document.getElementById("goal-fat").value) || 0;
+
+  goals.calories = (goals.carbs * 4) + (goals.protein * 4) + (goals.fat * 9);
+  document.getElementById("goal-calories").value = goals.calories;
+
+  updateTotals();
 }
 
-// Menu functionality
-function initializeMenu() {
-    if (menuToggle && menuList) {
-        menuToggle.addEventListener('click', toggleMenu);
+function setProgressBar(id, value, max, warnId) {
+  const bar = document.getElementById(id);
+  const percent = max > 0 ? Math.min(100, (value / max) * 100) : 0;
+  bar.style.width = percent + "%";
+  bar.textContent = `${value.toFixed(1)}g / ${max}g`;
 
-        // Close menu when clicking on links
-        const menuLinks = menuList.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!menuToggle.contains(event.target) && !menuList.contains(event.target)) {
-                closeMenu();
-            }
-        });
-    }
-}
-function toggleMenu() {
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-        menuList.classList.remove('hidden');
-        menuToggle.setAttribute('aria-expanded', 'true');
-    } else {
-        menuList.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
-    }
-}
-function closeMenu() {
-    menuOpen = false;
-    menuList.classList.add('hidden');
-    menuToggle.setAttribute('aria-expanded', 'false');
-}
-
-// Audio functionality
-function initializeAudio() {
-    if (audioToggle && bgMusic && audioOverlay) {
-        audioToggle.addEventListener('click', toggleAudio);
-        audioOverlay.addEventListener('click', initializeAudioOnMobile);
-
-        // Show overlay on mobile devices
-        if (isMobileDevice()) {
-            audioOverlay.style.display = 'block';
-        }
-    }
-}
-function toggleAudio() {
-    if (!audioInitialized) {
-        initializeAudioPlayback();
-    } else {
-        if (bgMusic.paused) {
-            playAudio();
-        } else {
-            pauseAudio();
-        }
-    }
-}
-function initializeAudioOnMobile() {
-    initializeAudioPlayback();
-    audioOverlay.style.display = 'none';
-}
-function initializeAudioPlayback() {
-    bgMusic.play()
-        .then(() => {
-            audioInitialized = true;
-            updateAudioButton(false);
-        })
-        .catch(error => {
-            console.log('Audio autoplay prevented:', error);
-            updateAudioButton(true);
-        });
-}
-function playAudio() {
-    bgMusic.play()
-        .then(() => {
-            updateAudioButton(false);
-        })
-        .catch(error => {
-            console.log('Audio play failed:', error);
-        });
-}
-function pauseAudio() {
-    bgMusic.pause();
-    updateAudioButton(true);
-}
-function updateAudioButton(isPaused) {
-    if (audioToggle) {
-        audioToggle.textContent = isPaused ? '🔇 Off' : '🔊 On';
-    }
-}
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-// PayPal functionality
-
-function initializePayPal() {
-  if (durataSelect && paypalButtonWrapper) {
-    durataSelect.addEventListener('change', handleDurationChange);
-  }
-}
-
-function handleDurationChange() {
-  const amount = durataSelect.value;
-  if (amount) {
-    showPayPalButton();
-    updatePayPalMessage(amount);
-    loadPayPalScript(amount);
+  const warnEl = document.getElementById(warnId);
+  if (value > max) {
+    warnEl.textContent = "⚠️";
+    warnEl.title = "Hai superato il tuo obiettivo!";
   } else {
-    hidePayPalButton();
+    warnEl.textContent = "";
+    warnEl.removeAttribute("title");
   }
 }
-function loadPayPalScript(amount) {
-  const script = document.createElement('script');
-  script.src = 'https://www.paypal.com/sdk/js?client-id=AQY44jd2y1IUT-RpjuU79wngDCQGzJ7FXeESa7pJjKIQNRi2-z0jABKr-kLgQtqI6h3etMYdEKaa8_qT&currency=EUR&components=buttons,messages';
-  script.onload = function() {
-    renderPayPalButton(amount);
-  };
-  document.body.appendChild(script);
-}
 
+function searchFood() {
+  const query = document.getElementById("food-search").value.toLowerCase();
+  const results = fakeFoods.filter(f => f.name.toLowerCase().includes(query));
+  const container = document.getElementById("search-results");
+  container.innerHTML = "";
 
-function showPayPalButton() {
-    paypalButtonWrapper.style.display = 'block';
-    setTimeout(() => {
-        paypalButtonWrapper.classList.add('fade');
-    }, 10);
-}
-function hidePayPalButton() {
-    paypalButtonWrapper.style.display = 'none';
-    paypalButtonWrapper.classList.remove('fade');
-}
-function updatePayPalMessage(amount) {
-    const paypalMessage = document.getElementById('paypal-message');
-    if (paypalMessage) {
-        paypalMessage.setAttribute('data-pp-amount', amount);
-    }
-}
-function renderPayPalButton(amount) {
-    if (typeof paypal !== 'undefined') {
-        // Clear existing PayPal buttons
-        const container = document.getElementById('paypal-button-container');
-        if (container) {
-            container.innerHTML = '';
-        }
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: amount,
-                            currency_code: 'EUR'
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    showPaymentPopup(`Grazie ${details.payer.name.given_name}! Il tuo ordine è stato processato.Sarai contattato a breve dal Coach per cominciare il tuo percorso!!!`, 'success');
-                    sendOrderConfirmation(details);
-                });
-            },
-            onCancel: function(data) {
-    showPaymentPopup('Il pagamento è stato annullato. Scegli il piano più adatto a te e riprova !!!', 'error');
-},
-            onError: function(err) {
-                console.error('PayPal Error:', err);
-                showPaymentPopup('Si è verificato un errore durante il pagamento. Utilizza un altro metodo o contattaci !!1', 'error');
-            }
-        }).render('#paypal-button-container');
-    }
-}
+  results.forEach(food => {
+    const div = document.createElement("div");
+    div.classList.add("food-item");
 
-// Service popups
-function initializeServicePopups() {
-    const servicesList = document.getElementById('servizi-list');
-    const closeBtn = document.querySelector('.close-btn');
-    if (servicesList) {
-        const serviceItems = servicesList.querySelectorAll('li');
-        serviceItems.forEach(item => {
-            item.addEventListener('click', () => showServicePopup(item));
-        });
-    }
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeServicePopup);
-    }
-    if (popup) {
-        popup.addEventListener('click', function(event) {
-            if (event.target === popup) {
-                closeServicePopup();
-            }
-        });
-    }
-}
-function showServicePopup(serviceItem) {
-    const title = serviceItem.textContent;
-    const description = serviceItem.getAttribute('data-desc');
-    const popupTitle = document.getElementById('popup-title');
-    const popupText = document.getElementById('popup-text');
-    if (popupTitle && popupText && popup) {
-        popupTitle.textContent = title;
-        popupText.textContent = description;
-        popup.style.display = 'block';
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = food.name;
+    nameSpan.classList.add("food-name");
 
-        // Add animation
-        setTimeout(() => {
-            popup.style.opacity = '1';
-        }, 10);
-    }
-}
-function closeServicePopup() {
-    if (popup) {
-        popup.style.opacity = '0';
-        setTimeout(() => {
-            popup.style.display = 'none';
-        }, 300);
-    }
-}
+    const qtyInput = document.createElement("input");
+    qtyInput.type = "number";
+    qtyInput.min = "1";
+    qtyInput.value = "100";
+    qtyInput.classList.add("food-qty");
 
-// FAQ functionality
-function initializeFAQ() {
-const faqQuestions = document.querySelectorAll('.faq-question');
-faqQuestions.forEach(question => {
-question.addEventListener('click', function() {
-const answer = this.nextElementSibling;
-const isActive = this.classList.contains('active');
-
-// Close all FAQ items
-faqQuestions.forEach(q => {
-q.classList.remove('active');
-q.nextElementSibling.classList.remove('active');
- });
-
- // Open clicked item if it wasn't active
-if (!isActive) {
-this.classList.add('active');
-answer.classList.add('active');
-}
-});
- });
-}
-
-// Feedback form
-function initializeFeedbackForm() {
-  if (feedbackForm) {
-    feedbackForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          showSuccessMessage("Grazie per il tuo feedback!");
-          form.reset();
-        } else {
-          showErrorMessage("Si è verificato un errore. Riprova più tardi.");
-        }
-      } catch (error) {
-        showErrorMessage("Errore di rete. Controlla la connessione.");
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "Aggiungi";
+    addBtn.onclick = () => {
+      const qty = parseFloat(qtyInput.value);
+      if (isNaN(qty) || qty <= 0) {
+        alert("Inserisci una quantità valida");
+        return;
       }
+
+      const mealTypeSel = document.getElementById("meal-type").value;
+
+      const foodWithQty = {
+        name: food.name,
+        calories: (food.calories * qty) / 100,
+        carbs: (food.carbs * qty) / 100,
+        protein: (food.protein * qty) / 100,
+        fat: (food.fat * qty) / 100,
+        qty: qty
+      };
+
+      addFood(mealTypeSel, foodWithQty);
+    };
+
+    div.appendChild(nameSpan);
+    div.appendChild(qtyInput);
+    div.appendChild(addBtn);
+
+    container.appendChild(div);
+  });
+}
+
+function addFood(mealType, food) {
+  const foodCopy = { ...food };
+  meals[mealType].push(foodCopy);
+  updateMealTable(mealType);
+  updateTotals();
+}
+
+function removeFood(mealType, index) {
+  meals[mealType].splice(index, 1);
+  updateMealTable(mealType);
+  updateTotals();
+}
+
+function updateMealTable(mealType) {
+  const tbody = document.querySelector(`#${mealType}-table tbody`);
+  tbody.innerHTML = "";
+  let mealCalories = 0, mealCarbs = 0, mealProtein = 0, mealFat = 0;
+
+  meals[mealType].forEach((item, index) => {
+    mealCalories += item.calories;
+    mealCarbs += item.carbs;
+    mealProtein += item.protein;
+    mealFat += item.fat;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+<td>${item.name}</td>
+<td>${item.calories.toFixed(1)}</td>
+<td>${item.carbs.toFixed(1)}</td>
+<td>${item.protein.toFixed(1)}</td>
+<td>${item.fat.toFixed(1)}</td>
+<td>${(item.qty || 1)}g</td>
+<td><button onclick="removeFood('${mealType}', ${index})">✖</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  if (meals[mealType].length > 0) {
+    const totalRow = document.createElement("tr");
+    totalRow.style.fontWeight = "bold";
+    totalRow.innerHTML = `
+      <td>Totale</td>
+      <td>${mealCalories.toFixed(1)}</td>
+      <td>${mealCarbs.toFixed(1)}</td>
+      <td>${mealProtein.toFixed(1)}</td>
+      <td>${mealFat.toFixed(1)}</td>
+      <td></td>
+      <td></td>
+    `;
+    tbody.appendChild(totalRow);
+  }
+}
+
+function updateTotals() {
+  let totalCalories = 0, totalCarbs = 0, totalProtein = 0, totalFat = 0;
+  for (let type in meals) {
+    meals[type].forEach(item => {
+      totalCalories += item.calories;
+      totalCarbs += item.carbs;
+      totalProtein += item.protein;
+      totalFat += item.fat;
     });
   }
+
+  document.getElementById("total-calories").textContent = totalCalories.toFixed(1);
+  document.getElementById("total-carbs").textContent = totalCarbs.toFixed(1);
+  document.getElementById("total-protein").textContent = totalProtein.toFixed(1);
+  document.getElementById("total-fat").textContent = totalFat.toFixed(1);
+
+  setProgressBar("bar-carbs", totalCarbs, goals.carbs, "warn-carbs");
+  setProgressBar("bar-protein", totalProtein, goals.protein, "warn-protein");
+  setProgressBar("bar-fat", totalFat, goals.fat, "warn-fat");
 }
 
-// Copyright popup
-function openCopyrightPopup() {
-    if (copyrightPopup) {
-        copyrightPopup.style.display = 'block';
-    }
+function showSavedMessage() {
+  const msg = document.getElementById("goal-saved-msg");
+  msg.classList.add("show");
+  setTimeout(() => msg.classList.remove("show"), 3000);
 }
-function closeCopyrightPopup() {
-    if (copyrightPopup) {
-        copyrightPopup.style.display = 'none';
-    }
-}
-function closePopup(event) {
-    if (event.target === copyrightPopup) {
-        closeCopyrightPopup();
-    }
-}
-
-// Utility functions
-function showSuccessMessage(message) {
-    // Create and show success notification
-    const notification = createNotification(message, 'success');
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
-}
-function showErrorMessage(message) {
-    // Create and show error notification
-    const notification = createNotification(message, 'error');
-    document.body.appendChild(notification);
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
-}
-    function createNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        font-weight: bold;
-        z-index: 3000;
-        max-width: 300px;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.3s ease;
-    `;
-    if (type === 'success') {
-        notification.style.background = '#28a745';
-        notification.style.border = '2px solid #1e7e34';
-    } else if (type === 'error') {
-        notification.style.background = '#dc3545';
-        notification.style.border = '2px solid #bd2130';
-    }
-    // Animate in
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 10);
-
-    // Animate out after 4.5 seconds
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-    }, 4500);
-    return notification;
-}
-
-// Smooth scrolling for navigation links
-document.addEventListener('click', function(event) {
-    if (event.target.matches('a[href^="#"]')) {
-        event.preventDefault();
-        const targetId = event.target.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            const offsetTop = targetElement.offsetTop - 80; // Account for fixed nav
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    }
-});
-
-// Keyboard accessibility
-document.addEventListener('keydown', function(event) {
-    // Close popups with Escape key
-    if (event.key === 'Escape') {
-        closeServicePopup();
-        closeCopyrightPopup();
-        closeMenu();
-    }
-
-    // Handle Enter key on focusable elements
-    if (event.key === 'Enter') {
-        const focusedElement = document.activeElement;
-
-        if (focusedElement.classList.contains('close-btn')) {
-            closeServicePopup();
-        }
-
-        if (focusedElement.id === 'audio-overlay') {
-            initializeAudioOnMobile();
-        }
-    }
-});
-
-function showPaymentPopup(message, type) {
-    const popupTitle = document.getElementById('popup-title');
-    const popupText = document.getElementById('popup-text');
-    const popup = document.getElementById('popup');
-
-    if (popupTitle && popupText && popup) {
-        popupTitle.textContent = type === 'success' ? 'Pagamento completato' : 'Pagamento annullato';
-        popupText.textContent = message;
-        popup.style.display = 'block';
-
-        // Add animation
-        setTimeout(() => {
-            popup.style.opacity = '1';
-        }, 10);
-
-        // Close popup after 3 seconds
-        setTimeout(() => {
-            popup.style.opacity = '0';
-            setTimeout(() => {
-                popup.style.display = 'none';
-            }, 300);
-        }, 3000);
-    }
-}
-
-// Global functions for inline event handlers (to maintain compatibility)
-window.openCopyrightPopup = openCopyrightPopup;
-window.closeCopyrightPopup = closeCopyrightPopup;
-window.closePopup = closePopup;
-requestIdleCallback(function(deadline) {
-  // Codice da eseguire quando il browser è inattivo
-  while (deadline.timeRemaining() > 0) {
-    // Esegui il codice qui
-  }
-});
