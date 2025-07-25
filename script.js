@@ -71,3 +71,21 @@ const installBtn = document.getElementById('installBtn');
       });
     }
   });
+// Mostra messaggio iOS per installazione manuale
+function isIos() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent);
+}
+
+function isInStandaloneMode() {
+  return ('standalone' in window.navigator) && window.navigator.standalone;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (isIos() && !isInStandaloneMode()) {
+    const iosTip = document.getElementById('ios-install-tip');
+    if (iosTip) {
+      iosTip.style.display = 'block';
+    }
+  }
+});
+
