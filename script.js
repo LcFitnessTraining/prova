@@ -17,7 +17,7 @@ function showPayPalButton(){paypalButtonWrapper.style.display='block';setTimeout
 function hidePayPalButton(){paypalButtonWrapper.style.display='none';paypalButtonWrapper.classList.remove('fade')}
 function updatePayPalMessage(amount){const paypalMessage=document.getElementById('paypal-message');if(paypalMessage){paypalMessage.setAttribute('data-pp-amount',amount)}}
 function renderPayPalButton(amount){if(typeof paypal!=='undefined'){const container=document.getElementById('paypal-button-container');if(container){container.innerHTML=''}
-paypal.Buttons({createOrder:function(data,actions){return actions.order.create({purchase_units:[{amount:{value:amount,currency_code:'EUR'}}]})},onApprove:function(data,actions){return actions.order.capture().then(function(details){showPaymentPopup(`Grazie ${details.payer.name.given_name}! Il tuo ordine da ${amount}€ è stato processato.Sarai contattato a breve dal Coach per cominciare il tuo percorso!!!`,'success');sendOrderConfirmation(details)})},onCancel:function(data){showPaymentPopup('Il pagamento è stato annullato. Controlla se hai ricevuto un’email di conferma da PayPal, il pagamento potrebbe essere comunque andato a buon fine. In caso contrario scegli il piano più adatto a te e riprova !!!','error')},onError:function(err){console.error('PayPal Error:',err);showPaymentPopup('Si è verificato un errore durante il pagamento. Controlla se hai ricevuto un’email di conferma da PayPal, il pagamento potrebbe essere comunque andato a buon fine. In caso contrario utilizza un altro metodo di pagamento o contattaci !!1','error')}}).render('#paypal-button-container')}}
+paypal.Buttons({createOrder:function(data,actions){return actions.order.create({purchase_units:[{amount:{value:amount,currency_code:'EUR'}}]})},onApprove:function(data,actions){return actions.order.capture().then(function(details){showPaymentPopup(`Grazie ${details.payer.name.given_name}! Il tuo ordine è stato processato.Sarai contattato a breve dal Coach per cominciare il tuo percorso!!!`,'success');sendOrderConfirmation(details)})},onCancel:function(data){showPaymentPopup('Il pagamento è stato annullato. Scegli il piano più adatto a te e riprova !!!','error')},onError:function(err){console.error('PayPal Error:',err);showPaymentPopup('Si è verificato un errore durante il pagamento. Utilizza un altro metodo o contattaci !!1','error')}}).render('#paypal-button-container')}}
 function initializeServicePopups(){const servicesList=document.getElementById('servizi-list');const closeBtn=document.querySelector('.close-btn');if(servicesList){const serviceItems=servicesList.querySelectorAll('li');serviceItems.forEach(item=>{item.addEventListener('click',()=>showServicePopup(item))})}
 if(closeBtn){closeBtn.addEventListener('click',closeServicePopup)}
 if(popup){popup.addEventListener('click',function(event){if(event.target===popup){closeServicePopup()}})}}
@@ -48,26 +48,5 @@ function createNotification(message,type){const notification=document.createElem
 setTimeout(()=>{notification.style.opacity='1';notification.style.transform='translateX(0)'},10);setTimeout(()=>{notification.style.opacity='0';notification.style.transform='translateX(100%)'},4500);return notification}
 document.addEventListener('click',function(event){if(event.target.matches('a[href^="#"]')){event.preventDefault();const targetId=event.target.getAttribute('href').substring(1);const targetElement=document.getElementById(targetId);if(targetElement){const offsetTop=targetElement.offsetTop-80;window.scrollTo({top:offsetTop,behavior:'smooth'})}}});document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeServicePopup();closeCopyrightPopup();closeMenu()}
 if(event.key==='Enter'){const focusedElement=document.activeElement;if(focusedElement.classList.contains('close-btn')){closeServicePopup()}
-if(focusedElement.id==='audio-overlay'){initializeAudioOnMobile()}}});function showPaymentPopup(message,type){const popupTitle=document.getElementById('popup-title');const popupText=document.getElementById('popup-text');const popup=document.getElementById('popup');if(popupTitle&&popupText&&popup){popupTitle.textContent=type==='success'?'Pagamento completato':'Pagamento annullato';popupText.textContent=message;popup.style.display='block';setTimeout(()=>{popup.style.opacity='1'},10);setTimeout(()=>{popup.style.opacity='0';setTimeout(()=>{popup.style.display='none'},300)},15000)}}
+if(focusedElement.id==='audio-overlay'){initializeAudioOnMobile()}}});function showPaymentPopup(message,type){const popupTitle=document.getElementById('popup-title');const popupText=document.getElementById('popup-text');const popup=document.getElementById('popup');if(popupTitle&&popupText&&popup){popupTitle.textContent=type==='success'?'Pagamento completato':'Pagamento annullato';popupText.textContent=message;popup.style.display='block';setTimeout(()=>{popup.style.opacity='1'},10);setTimeout(()=>{popup.style.opacity='0';setTimeout(()=>{popup.style.display='none'},300)},3000)}}
 window.openCopyrightPopup=openCopyrightPopup;window.closeCopyrightPopup=closeCopyrightPopup;window.closePopup=closePopup;requestIdleCallback(function(deadline){while(deadline.timeRemaining()>0){}})
-    let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-
- window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'inline-block';
-  });
-
-  installBtn.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(choice => {
-        if (choice.outcome === 'accepted') {
-          console.log('App installata!');
-        }
-        deferredPrompt = null;
-        installBtn.style.display = 'none';
-      });
-    }
-  });
