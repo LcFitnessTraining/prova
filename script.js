@@ -11,7 +11,7 @@ function pauseAudio(){bgMusic.pause();updateAudioButton(!0)}
 function updateAudioButton(isPaused){if(audioToggle){audioToggle.textContent=isPaused?'🔇 Off':'🔊 On'}}
 function isMobileDevice(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)}
 function initializePayPal(){if(durataSelect&&paypalButtonWrapper){durataSelect.addEventListener('change',handleDurationChange)}}
-function handleDurationChange(){const amount=durataSelect.value;if(amount){showPayPalButton();updatePayPalMessage(amount);loadPayPalScript(amount)}else{hidePayPalButton()}}
+function handleDurationChange(){const amount = parseFloat(durataSelect.value).toFixed(2);if(amount){showPayPalButton();updatePayPalMessage(amount);loadPayPalScript(amount)}else{hidePayPalButton()}}
 function showPayPalButton(){paypalButtonWrapper.style.display='block';setTimeout(()=>{paypalButtonWrapper.classList.add('fade')},10)}
 function hidePayPalButton(){paypalButtonWrapper.style.display='none';paypalButtonWrapper.classList.remove('fade')}
 function updatePayPalMessage(amount){const paypalMessage=document.getElementById('paypal-message');if(paypalMessage){paypalMessage.setAttribute('data-pp-amount',amount)}}
