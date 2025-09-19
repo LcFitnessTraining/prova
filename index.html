@@ -1,198 +1,267 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <!-- SEO Meta Tags -->
-<title>L.C.FitnessTraining - Coaching e Nutrizione</title>
-<meta name="description" content="Piani personalizzati e coaching con LcFitnessTraining. Allenati con un professionista del fitness con titoli nazionali e internazionali">
-<meta name="keywords" content="Fitness, Coaching, Allenamento, Lcfitnesstraining, Alimentazione, Personal Trainer, Workout, App Allenamento">
-<meta name="robots" content="index, follow">
-<meta name="google-site-verification" content="6Yp9UjyQmrIC61l742Q3dNFu7TKtbgzwVgjvoXyhaKQ">
-<link rel="canonical" href="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/"> 
-    <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Coaching con LcFitnessTraining – Prenota ora">
-<meta property="og:description" content="Accedi a servizi professionali di coaching personalizzato con pagamento sicuro">
-<meta property="og:url" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">
-    <!-- Twitter Meta Tags -->
-<meta name="twitter:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">  
-    <!-- Favicon -->
-<link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#000000" />
-<link rel="icon" href="favicon.ico" type="image/x-icon">  
-    <!-- External Resources -->
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-<link rel="stylesheet" href="style.css?v=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.C.FitnessTraining - Coaching e Nutrizione</title>
+  <meta name="description" content="Piani personalizzati e coaching con LcFitnessTraining. Allenati con un professionista del fitness con titoli nazionali e internazionali">
+  <meta name="keywords" content="Fitness, Coaching, Allenamento, Lcfitnesstraining, Alimentazione, Personal Trainer, Workout, App Allenamento">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="6Yp9UjyQmrIC61l742Q3dNFu7TKtbgzwVgjvoXyhaKQ">
+  <link rel="canonical" href="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/">
+  <meta property="og:title" content="Coaching con LcFitnessTraining – Prenota ora">
+  <meta property="og:description" content="Accedi a servizi professionali di coaching personalizzato con pagamento sicuro">
+  <meta property="og:url" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">
+  <meta name="twitter:image" content="https://lcfitnesstraining.github.io/checkout-preparazione-fitness/anteprima.jpg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="style.css?v=1.0">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7607DXZ8MV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7607DXZ8MV');
+  </script>
 </head>
 <body id="top">
-    <!-- Menù a tendina -->
-    <nav class="dropdown-nav"> <div class="menu-container"><button id="menu-toggle" aria-label="Apri menu tendina">☰ Menu</button><div id="menu-list" class="hidden">
-<a href="#top">Home</a>
-<a href="#servizi">Servizi inclusi</a>
-<a href="#tit">Titoli vinti e contatti</a>
-<a href="#presentazione">Presentazione</a>
-<a href="#Feedbackclient">Lascia un feedback</a>
-<a href="#faqNEW">FAQ</a>
-<a href="#fine-pagina">Testimonianze e percorsi reali</a>
-</div>
-</div>
-<button id="audio-toggle" aria-label="Attiva/disattiva musica di sottofondo">🔇 Off</button>
-</nav>
-<!-- Particle Background -->
-<div id="particles-js"></div>
-<!-- Pagamenti -->
-<main>
-<div class="container">
-<section class="hero-section"><img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo" width="200" height="100">
-<button id="installBtn" style="display:none;">📲 Installa la pagina sul tuo smartphone</button>
-<h1 class="typing">Scegli il tuo piano</h1>
-<div class="payment-logos">
-<img src="https://img.icons8.com/color/48/visa.png" alt="Pagamento disponibile con carta Visa" height="30">
-<img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Pagamento disponibile con carta Mastercard" height="30">
-<img src="https://img.icons8.com/color/48/maestro.png" alt="Pagamento disponibile con carta Maestro" height="30">
-<img src="https://img.icons8.com/color/48/amex.png" alt="Pagamento disponibile con American Express" height="30">
-<img src="https://img.icons8.com/color/48/paypal.png" alt="Pagamento disponibile con PayPal" height="30">
-<img src="https://img.icons8.com/color/48/apple-pay.png" alt="Pagamento disponibile con Apple Pay" height="30">
-</div>
-<p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite !!</p>
-</section>
-<section class="payment-section"><div class="select-wrapper"><select id="durata" name="durata"><option value="" disabled selected>- Seleziona durata -</option>
-<option value="63">1 mese - €63</option><option value="115">2 mesi - €115</option><option value="160">3 mesi - €160</option><option value="270">6 mesi - €270</option>
-<option value="50">1 Individual Pt session - €50</option><option value="400">10 Individual Pt session - €400</option><option value="600">20 Individual Pt session - €600</option><option value="33.00">Workout - €33</option>
-</select>
-<div id="paypal-button-wrapper" class="fade" style="display: none;"><div id="paypal-button-container"></div>
-</div>
-</div>
-<div id="paypal-message" 
-data-pp-message 
-data-pp-style-layout="text" 
-data-pp-style-logo-type="inline" 
-data-pp-style-text-color="White" 
-data-pp-style-text-size="Large" 
-data-pp-amount="">
-</div>
-</section>
-<!-- Servizi -->
-<section class="servizi" id="servizi"><div class="separator"></div><h2 class="typing">I miei servizi</h2><small>clicca sul servizio per saperne di più</small>
-<ul id="servizi-list">
-<li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell'elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l'efficacia del programma e minimizzare il rischio di infortuni.">Scheda di allenamento personalizzata</li>
-<li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell'individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l'obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile, mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l'intento di supportare le prestazioni, il recupero e il benessere generale.">Piano alimentare personalizzato</li>
-<li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">Misurazioni antropometriche e plicometria</li>
-<li data-desc="LcFitnessTraining è un'app per l'allenamento, rappresenta un progetto avanzato per offrire programmi personalizzati, monitoraggio dei progressi, supporto e gestione integrata di allenamento, consentendo un approccio strutturato, flessibile e scientificamente validato all'ottimizzazione della performance e del benessere fisico.">App LcFitnessTraining
-</li>
-<li data-desc="App Coach Plus è un'app per l'alimentazione, uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l'integrazione con obiettivi fisici o sportivi, offrendo un supporto pratico e scientificamente fondato per l'ottimizzazione della salute e della composizione corporea.">App Coach Plus</li>
-<li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un'assistenza personalizzata in tempo reale per l'adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l'efficacia e la sostenibilità del piano individuale.">Supporto del Coach h24 7/7</li>
-<li data-desc="Un Individual Pt session è una lezione di coaching individuale; un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell'esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l'esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l'ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell'atleta.">Individual Pt session</li>
-</ul>
-</section>
-<!-- Titoli  -->
-<section class="tit" id="tit"><div class="separator"></div><h3 class="typing">Titoli vinti</h3><ul id="titoli-list">
-<li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
-<li>🏆 1° NAC ITALY Championship</li>
-<li>🥇 8° NAC WORLD Championship</li>
-</ul>
-</section><div class="separator"></div>
-<!-- Contatti -->
-<section class="contatti" id="contatti"><h4 class="typing">Contatti</h4><ul>
-<li><a href="mailto:LcFitnessTrainingPt@gmail.com" target="_blank" rel="noopener" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com"><i class="fa-solid fa-envelope gmail-icon"></i> Gmail</a></li>
-<li><a href="https://www.instagram.com/lcfitnesstraining?igsh=aXNINWI1MXp2amRn/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo"><i class="fab fa-instagram instagram-icon"></i> Instagram</a></li>
-<li><a href="https://www.facebook.com/L.C.Fitness.Training.pt/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo"><i class="fab fa-facebook facebook-icon"></i> Facebook</a></li>
-</ul></section>
-<!-- Presentazione -->
-<section class="presentazione" id="presentazione"><div class="separator"></div><h5 class="typing">Chi sono</h5><img src="luka-profilo.webp" alt="Luka, Personal Trainer" class="profilo-foto" loading="lazy">
-<p>Mi chiamo <strong>Luka</strong> e sono un <span class="highlight">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenza scientifica e passione per ottenere risultati concreti.</p><p>Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span class="highlight">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo sicuro e duraturo.</p>
-</section>
-<!-- Feedback  -->
-<section class="Feedbackclient" id="Feedbackclient"><h6 class="typing">Feedback</h6><form id="feedbackForm" action="https://formspree.io/f/xwpbzggz" method="POST">
-<label for="nome">Nome:</label><input type="text" id="nome" name="nome" required>
-<label for="commento">Feedback:</label><textarea id="commento" name="commento" required></textarea>
-<button type="submit">Invia</button><div id="msg-feedback"></div>
-</form>
-</section>
-<!-- FAQ  -->
-<section class="faqNEW" id="faqNEW"><div class="separator"></div><h2 class="typing" id="faq">Sezione FAQ</h2><div class="faq-container"><div class="faq-item">
-<button class="faq-question">Quanto dura ogni sessione di personal privato?</button><div class="faq-answer"><p>Ogni sessione avverrà in un centro a tua scelta (previo appuntamento con il Coach) ed ha una durata media di 60 minuti, inclusa la parte di riscaldamento e defaticamento. Il tutto però varia in base alla programmazione in corso</p></div></div>
-<div class="faq-item"><button class="faq-question">Devo avere attrezzature a casa?</button><div class="faq-answer"><p>No, i programmi sono adattabili anche a corpo libero. Se hai attrezzi, in casa o in una struttura, saranno integrati.</p></div></div>
-<div class="faq-item"><button class="faq-question">Come funziona dopo aver scelto il piano?</button><div class="faq-answer"><p>Verrai contattato via email, nella quale riceverai un modulo anamnestico da compilare.</p></div></div>
-<div class="faq-item"><button class="faq-question">Come viene strutturato un piano di allenamento e/o alimentazione?</button><div class="faq-answer"><p>Il piano alimentare e il programma di allenamento saranno formulati dopo aver compilato l'anamnesi secondo metodologie consolidate e protocolli evidence-based, personalizzati in base alle tue esigenze specifiche.</p></div></div>
-<div class="faq-item"><button class="faq-question">Cos'è un piano di integrazione?</button><div class="faq-answer"><p>L'integrazione sarà proposta in modo mirato, sulla base di eventuali carenze o necessità individuali emerse durante la valutazione.</p></div></div>
-<div class="faq-item"><button class="faq-question">Posso sospendere il mio piano?</button><div class="faq-answer"><p>Certo, hai la possibilità di sospendere il tuo piano a tua scelta ed in qualsiasi momento e di riattivarlo secondo le tue esigenze.</p></div></div>
-<div class="faq-item"><button class="faq-question">In cosa consiste "Acquista ora, paga dopo"?</button><div class="faq-answer">
-<p>"Acquista ora, paga dopo" è un servizio offerto da L.C.FitnessTraining tramite tecnologia Paypal. Consente di suddividere l'importo totale dell'acquisto in tre comode rate mensili, senza applicazione di interessi o costi aggiuntivi. Un metodo semplice, sicuro e trasparente.</p></div></div></div>
-</section>
-<div class="separator"></div>
-<!-- Testimonials -->
-<section class="testimonials-section"><h2 class="typing">Percorsi reali</h2><div class="feedback-marquee-container"><div class="feedback-marquee-track">
-<span class="feedback-item">💬Gabriele C. - Volevo lasciare un ringraziamento sincero per questa applicazione: è uno strumento davvero utile e ben fatto. Mi ha aiutato a restare focalizzato, a monitorare i miei progressi e, soprattutto, a sentirmi seguito anche quando non ero in sessione. Si vede che c'è cura e attenzione dietro, proprio come nel lavoro del coach. Intuitiva, motivante e sempre pronta a darmi quel piccolo spunto in più. Complimenti!</span>
-<span class="feedback-item">💬William - Semplicemente fantastico, vieni seguito da una persona professionale ottenendo grandi risultati, miglior coach in Italia 💪🏽</span>
-<span class="feedback-item">💬Francesco - Luca il re</span>
-<span class="feedback-item">💬Michael - Luka è un professionista in quello che fa e ne parlano i risultati! Sempre disponibile e attento alle nostre domande e esigenze. Mi sto trovando davvero bene, già consigliato ad amici!</span>
-<span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span>
-<span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span>
-<span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span>
-<span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span>
-<span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span>
-<span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
-</div>
-</div>     
-</section>
-<div class="central-badge"><img src="https://i.imgur.com/346Ppq0.png" alt="Badge 100% soddisfatti" class="badge-large">
-</div>
-</div>
-</main>
-<!-- Copyright -->
-<footer><div id="copyright" class="parallax" onclick="openCopyrightPopup()"> © 2025 L.C.FitnessTraining. Tutti i diritti riservati. + info</div></footer>
-<!-- Popup  -->
-<div id="popup" class="popup" aria-modal="true" role="dialog"><div class="popup-content"><span class="close-btn" tabindex="0" role="button" aria-label="Chiudi popup">&times;</span><h3 id="popup-title">Titolo popup</h3><p id="popup-text"></p></div></div>
-<!-- Copyright Popup -->
-<div id="fine-pagina"><div id="copyrightPopup" class="popup-overlay" onclick="closePopup(event)"><div class="popup-content">
-<h2>Diritti e Copyright</h2>
-<p>LcFitnessTraining nasce dalla passione per il fitness e la trasformazione personale. Fondata nel 2022 da Luka, ha aiutato decine di atleti a raggiungere i propri obiettivi. 💪<br>
-Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, sono proprietà esclusiva di L.C.FitnessTraining e sono protetti dalle leggi sul diritto d'autore. È vietata la riproduzione, distribuzione o modifica senza autorizzazione scritta.</p>
-<button class="popup-close" onclick="closeCopyrightPopup()">Chiudi</button></div></div></div>
- <!-- Audio -->
-<audio id="bg-music" loop preload="auto"><source src="musica.mp3" type="audio/mpeg">Il tuo browser non supporta l'audio HTML5.</audio>
-<!-- Audio Overlay for Mobile -->
-<div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
-<!-- sfondo e chat virtuale -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-(function(){
-if(!window.chatbase || window.chatbase("getState") !== "initialized") {
-window.chatbase = (...arguments) => {
-if(!window.chatbase.q) {
-window.chatbase.q = [];
- }
-window.chatbase.q.push(arguments);
-};
- window.chatbase = new Proxy(window.chatbase, {
-get(target, prop) {
-if(prop === "q") {
-return target.q;
-}
-return (...args) => target(prop, ...args);
-}
-});
-}
-const onLoad = function() {
-const script = document.createElement("script");
-script.src = "https://www.chatbase.co/embed.min.js";
-script.id = "e9I3gYRt7ypSDk28xJely";
-script.domain = "www.chatbase.co";
-document.body.appendChild(script);
-};
-if(document.readyState === "complete") {
-onLoad();
-} else {
-window.addEventListener("load", onLoad);
-}
-})();
-</script>
-<!-- Main JavaScript -->
- <script>
+  <div id="privacy-banner" class="privacy-banner">
+    <div class="privacy-content">
+      <h2>Privacy & Cookie Policy</h2>
+      <p>Utilizziamo cookie e raccogliamo dati personali solo per garantire il corretto funzionamento del sito e per i servizi di pagamento.Questo sito utilizza Google Analytics per monitorare il traffico. Cliccando su <strong>Accetta</strong>, confermi di aver letto e accettato la nostra <a href="privacy.html" target="_blank">Privacy Policy</a>.</p><button id="accept-privacy">Accetta</button>
+    </div>
+  </div>
+  <nav class="dropdown-nav">
+    <div class="menu-container">
+      <button id="menu-toggle" aria-label="Apri menu tendina">☰ Menu</button>
+      <div id="menu-list" class="hidden">
+        <a href="#top">Home</a> <a href="#servizi">Servizi inclusi</a> <a href="#tit">Titoli vinti e contatti</a> <a href="#presentazione">Presentazione</a> <a href="#Feedbackclient">Lascia un feedback</a> <a href="#faqNEW">FAQ</a> <a href="#fine-pagina">Testimonianze e percorsi reali</a>
+      </div>
+    </div><button id="audio-toggle" aria-label="Attiva/disattiva musica di sottofondo">🔇 Off</button>
+  </nav>
+  <div id="particles-js"></div>
+  <main>
+    <div class="container">
+      <section class="hero-section">
+        <img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo" width="200" height="100"> <button id="installBtn" style="display:none;">📲 Installa la pagina sul tuo smartphone</button>
+        <h1 class="typing">Scegli il tuo piano</h1>
+        <div class="payment-logos"><img src="https://img.icons8.com/color/48/visa.png" alt="Pagamento disponibile con carta Visa" height="30"> <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Pagamento disponibile con carta Mastercard" height="30"> <img src="https://img.icons8.com/color/48/maestro.png" alt="Pagamento disponibile con carta Maestro" height="30"> <img src="https://img.icons8.com/color/48/amex.png" alt="Pagamento disponibile con American Express" height="30"> <img src="https://img.icons8.com/color/48/paypal.png" alt="Pagamento disponibile con PayPal" height="30"> <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Pagamento disponibile con Apple Pay" height="30"></div>
+        <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite !!</p>
+      </section>
+      <section class="payment-section">
+        <div class="select-wrapper">
+          <select id="durata" name="durata">
+            <option value="" disabled selected>
+              - Seleziona durata -
+            </option>
+            <option value="63">
+              1 mese - €63
+            </option>
+            <option value="115">
+              2 mesi - €115
+            </option>
+            <option value="160">
+              3 mesi - €160
+            </option>
+            <option value="270">
+              6 mesi - €270
+            </option>
+            <option value="50">
+              1 Individual Pt session - €50
+            </option>
+            <option value="400">
+              10 Individual Pt session - €400
+            </option>
+            <option value="600">
+              20 Individual Pt session - €600
+            </option>
+            <option value="33.00">
+              Workout - €33
+            </option>
+          </select>
+          <div id="paypal-button-wrapper" class="fade" style="display: none;">
+            <div id="paypal-button-container"></div>
+          </div>
+        </div>
+        <div id="paypal-message" data-pp-message="" data-pp-style-layout="text" data-pp-style-logo-type="inline" data-pp-style-text-color="White" data-pp-style-text-size="Large" data-pp-amount=""></div>
+      </section>
+      <section class="servizi" id="servizi">
+        <div class="separator"></div>
+        <h2 class="typing">I miei servizi</h2><small>clicca sul servizio per saperne di più</small>
+        <ul id="servizi-list">
+          <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell'elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l'efficacia del programma e minimizzare il rischio di infortuni.">Scheda di allenamento personalizzata</li>
+          <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell'individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l'obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile, mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l'intento di supportare le prestazioni, il recupero e il benessere generale.">Piano alimentare personalizzato</li>
+          <li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">Misurazioni antropometriche e plicometria</li>
+          <li data-desc="LcFitnessTraining è un'app per l'allenamento, rappresenta un progetto avanzato per offrire programmi personalizzati, monitoraggio dei progressi, supporto e gestione integrata di allenamento, consentendo un approccio strutturato, flessibile e scientificamente validato all'ottimizzazione della performance e del benessere fisico.">App LcFitnessTraining</li>
+          <li data-desc="App Coach Plus è un'app per l'alimentazione, uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l'integrazione con obiettivi fisici o sportivi, offrendo un supporto pratico e scientificamente fondato per l'ottimizzazione della salute e della composizione corporea.">App Coach Plus</li>
+          <li data-desc="Il supporto continuo del coach, disponibile H24 e 7 giorni su 7, garantisce un'assistenza personalizzata in tempo reale per l'adattamento dei programmi, la risoluzione di dubbi tecnici o nutrizionali e il monitoraggio costante del percorso, offrendo un punto di riferimento qualificato per massimizzare l'efficacia e la sostenibilità del piano individuale.">Supporto del Coach h24 7/7</li>
+          <li data-desc="Un Individual Pt session è una lezione di coaching individuale; un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell'esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l'esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l'ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell'atleta.">Individual Pt session</li>
+        </ul>
+      </section>
+      <section class="tit" id="tit">
+        <div class="separator"></div>
+        <h3 class="typing">Titoli vinti</h3>
+        <ul id="titoli-list">
+          <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
+          <li>🏆 1° NAC ITALY Championship</li>
+          <li>🥇 8° NAC WORLD Championship</li>
+        </ul>
+      </section>
+      <div class="separator"></div>
+      <section class="contatti" id="contatti">
+        <h4 class="typing">Contatti</h4>
+        <ul>
+          <li>
+            <a href="mailto:LcFitnessTrainingPt@gmail.com" target="_blank" rel="noopener" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com">Gmail</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/lcfitnesstraining?igsh=aXNINWI1MXp2amRn/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo">Instagram</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/L.C.Fitness.Training.pt/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo">Facebook</a>
+          </li>
+        </ul>
+      </section>
+      <section class="presentazione" id="presentazione">
+        <div class="separator"></div>
+        <h5 class="typing">Chi sono</h5><img src="luka-profilo.webp" alt="Luka, Personal Trainer" class="profilo-foto" loading="lazy">
+        <p>Mi chiamo <strong>Luka</strong> e sono un <span class="highlight">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenza scientifica e passione per ottenere risultati concreti.</p>
+        <p>Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span class="highlight">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo sicuro e duraturo.</p>
+      </section>
+      <section class="Feedbackclient" id="Feedbackclient">
+        <h6 class="typing">Feedback</h6>
+        <form id="feedbackForm" action="https://formspree.io/f/xwpbzggz" method="post" name="feedbackForm">
+          <label for="nome">Nome:</label><input type="text" id="nome" name="nome" required=""> <label for="commento">Feedback:</label> 
+          <textarea id="commento" name="commento" required=""></textarea> <button type="submit">Invia</button>
+          <div id="msg-feedback"></div>
+        </form>
+      </section>
+      <section class="faqNEW" id="faqNEW">
+        <div class="separator"></div>
+        <h2 class="typing" id="faq">Sezione FAQ</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">Quanto dura ogni sessione di personal privato?</button>
+            <div class="faq-answer">
+              <p>Ogni sessione avverrà in un centro a tua scelta (previo appuntamento con il Coach) ed ha una durata media di 60 minuti, inclusa la parte di riscaldamento e defaticamento. Il tutto però varia in base alla programmazione in corso</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Devo avere attrezzature a casa?</button>
+            <div class="faq-answer">
+              <p>No, i programmi sono adattabili anche a corpo libero. Se hai attrezzi, in casa o in una struttura, saranno integrati.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Come funziona dopo aver scelto il piano?</button>
+            <div class="faq-answer">
+              <p>Verrai contattato via email, nella quale riceverai un modulo anamnestico da compilare.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Come viene strutturato un piano di allenamento e/o alimentazione?</button>
+            <div class="faq-answer">
+              <p>Il piano alimentare e il programma di allenamento saranno formulati dopo aver compilato l'anamnesi secondo metodologie consolidate e protocolli evidence-based, personalizzati in base alle tue esigenze specifiche.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Cos'è un piano di integrazione?</button>
+            <div class="faq-answer">
+              <p>L'integrazione sarà proposta in modo mirato, sulla base di eventuali carenze o necessità individuali emerse durante la valutazione.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Posso sospendere il mio piano?</button>
+            <div class="faq-answer">
+              <p>Certo, hai la possibilità di sospendere il tuo piano a tua scelta ed in qualsiasi momento e di riattivarlo secondo le tue esigenze.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">In cosa consiste "Acquista ora, paga dopo"?</button>
+            <div class="faq-answer">
+              <p>"Acquista ora, paga dopo" è un servizio offerto da L.C.FitnessTraining tramite tecnologia Paypal. Consente di suddividere l'importo totale dell'acquisto in tre comode rate mensili, senza applicazione di interessi o costi aggiuntivi. Un metodo semplice, sicuro e trasparente.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="separator"></div>
+      <section class="testimonials-section">
+        <h2 class="typing">Percorsi reali</h2>
+        <div class="feedback-marquee-container">
+          <div class="feedback-marquee-track">
+            <span class="feedback-item">💬Gabriele C. - Volevo lasciare un ringraziamento sincero per questa applicazione: è uno strumento davvero utile e ben fatto. Mi ha aiutato a restare focalizzato, a monitorare i miei progressi e, soprattutto, a sentirmi seguito anche quando non ero in sessione. Si vede che c'è cura e attenzione dietro, proprio come nel lavoro del coach. Intuitiva, motivante e sempre pronta a darmi quel piccolo spunto in più. Complimenti!</span> <span class="feedback-item">💬William - Semplicemente fantastico, vieni seguito da una persona professionale ottenendo grandi risultati, miglior coach in Italia 💪🏽</span> <span class="feedback-item">💬Francesco - Luca il re</span> <span class="feedback-item">💬Michael - Luka è un professionista in quello che fa e ne parlano i risultati! Sempre disponibile e attento alle nostre domande e esigenze. Mi sto trovando davvero bene, già consigliato ad amici!</span> <span class="feedback-item">💬Laura - Grazie a Luka ho raggiunto i miei obiettivi in pochissimo tempo</span> <span class="feedback-item">💬Simona - Consigliatissimo, super preparato e sempre disponibile</span> <span class="feedback-item">💬Daniele - Un coach molto preparato dal punto di vista alimentare e di integrazione</span> <span class="feedback-item">💬Miky - Grande Coach ogni allenamento è sempre più devastante ahahah</span> <span class="feedback-item">💬Sery - È la prima volta che riesco a superare i miei limiti</span> <span class="feedback-item">💬Dany - Amo la spiegazione scientifica di ogni singolo piano</span>
+          </div>
+        </div>
+      </section>
+      <div class="central-badge"><img src="https://i.imgur.com/346Ppq0.png" alt="Badge 100% soddisfatti" class="badge-large"></div>
+    </div>
+  </main>
+  <footer>
+    <div id="copyright" class="parallax" onclick="openCopyrightPopup()">
+      © 2025 L.C.FitnessTraining. Tutti i diritti riservati. + info
+    </div>
+  </footer>
+  <div id="popup" class="popup" aria-modal="true" role="dialog">
+    <div class="popup-content">
+      <span class="close-btn" tabindex="0" role="button" aria-label="Chiudi popup">×</span>
+      <h3 id="popup-title">Titolo popup</h3>
+      <p id="popup-text"></p>
+    </div>
+  </div>
+  <div id="fine-pagina">
+    <div id="copyrightPopup" class="popup-overlay" onclick="closePopup(event)">
+      <div class="popup-content">
+        <h2>Diritti e Copyright</h2>
+        <p>LcFitnessTraining nasce dalla passione per il fitness e la trasformazione personale. Fondata nel 2022 da Luka, ha aiutato decine di atleti a raggiungere i propri obiettivi. 💪<br>
+        Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, sono proprietà esclusiva di L.C.FitnessTraining e sono protetti dalle leggi sul diritto d'autore. È vietata la riproduzione, distribuzione o modifica senza autorizzazione scritta.</p><button class="popup-close" onclick="closeCopyrightPopup()">Chiudi</button>
+      </div>
+    </div>
+  </div><audio id="bg-music" loop="" preload="auto"><source src="musica.mp3" type="audio/mpeg">Il tuo browser non supporta l'audio HTML5.</audio>
+  <div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> 
+  <script>
+
+
+  (function(){
+  if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+  window.chatbase = (...arguments) => {
+  if(!window.chatbase.q) {
+  window.chatbase.q = [];
+  }
+  window.chatbase.q.push(arguments);
+  };
+  window.chatbase = new Proxy(window.chatbase, {
+  get(target, prop) {
+  if(prop === "q") {
+  return target.q;
+  }
+  return (...args) => target(prop, ...args);
+  }
+  });
+  }
+  const onLoad = function() {
+  const script = document.createElement("script");
+  script.src = "https://www.chatbase.co/embed.min.js";
+  script.id = "e9I3gYRt7ypSDk28xJely";
+  script.domain = "www.chatbase.co";
+  document.body.appendChild(script);
+  };
+  if(document.readyState === "complete") {
+  onLoad();
+  } else {
+  window.addEventListener("load", onLoad);
+  }
+  })();
+  </script> 
+  <script>
+
+
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('sw.js')
@@ -200,10 +269,7 @@ window.addEventListener("load", onLoad);
         .catch(err => console.error('Service Worker errore', err));
     });
   }
-</script>
-
-
-  
-<script src="script.js?v=1.0" defer></script>
+  </script> 
+  <script src="script.js?v=1.0" defer></script>
 </body>
 </html>
