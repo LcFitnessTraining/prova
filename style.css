@@ -1,4 +1,4 @@
-/* stile base */
+/* style base */
 * {margin: 0;padding: 0;box-sizing: border-box;}
 body {font-family: 'Montserrat', sans-serif;background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);color: #ffffff;line-height: 1.6;overflow-x: hidden;}
 @font-face {
@@ -10,7 +10,7 @@ body {font-family: 'Montserrat', sans-serif;background: linear-gradient(135deg, 
 /* Particle Background */
 #particles-js {position: fixed;width: 100%;height: 100%;top: 0;left: 0;z-index: -1;}
 
-/* Menù a tendina */
+/* Menù Hamburger */
 .dropdown-nav {position: fixed;top: 0;left: 0;right: 0;background: rgba(0, 0, 0, 0.9);backdrop-filter: blur(10px);z-index: 1000;padding: 15px 20px;display: flex;justify-content: space-between;align-items: center;border-bottom: 2px solid #ff0000;}
 .menu-container {position: relative;}
 #menu-toggle {background: #ff0000;color: white;border: none;padding: 10px 15px;border-radius: 5px;cursor: pointer;font-weight: bold;transition: all 0.3s ease;}
@@ -23,10 +23,10 @@ body {font-family: 'Montserrat', sans-serif;background: linear-gradient(135deg, 
 #audio-toggle {background: transparent;color: white;border: 2px solid #ff0000;padding: 8px 12px;border-radius: 5px;cursor: pointer;transition: all 0.3s ease;}
 #audio-toggle:hover {background: #ff0000;color: white;}
 
-/* Contenitore */
+/* Container */
 .container {max-width: 1200px;margin: 0 auto;padding: 100px 20px 20px;}
 
-/* Titoli e Animazioni */
+/* Title & Animation */
 .hero-section {text-align: center;margin-bottom: 60px;}
 .logo {max-width: 200px;height: auto;border-radius: 15px;margin-bottom: 30px;border: 3px solid #ff0000;box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);transition: transform 0.3s ease;}
 .logo:hover {transform: scale(1.05);}
@@ -38,7 +38,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .typing {border-right: 3px solid #ff0000;animation: blink 1s infinite;}
 @keyframes blink {0%, 50% { border-color: #ff0000; }51%, 100% { border-color: transparent; }}
 
-/* Loghi e pagamento */
+/* Loghi e payment */
 .payment-logos {display: flex;justify-content: center;align-items: center;gap: 15px;
     margin: 30px 0;flex-wrap: wrap;}
 .payment-logos img {transition: transform 0.3s ease;filter: brightness(1.1);}
@@ -59,13 +59,13 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 #servizi-list li:hover:before {left: 100%;}
 #servizi-list li:hover {background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 0, 0, 0.2));transform: translateY(-5px);box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);}
 
-/* Titoli */
+/* Title servizi */
 .tit {margin: 80px 0;text-align: center;}
 #titoli-list {list-style: none;max-width: 600px;margin: 0 auto;}
 #titoli-list li {background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.1));border: none;border-radius: 10px;padding: 15px;margin-bottom: 15px;font-weight: bold;transition: all 0.8s ease;}
 #titoli-list li:hover {transform: translateX(10px);box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);}
 
-/* Contatti */
+/* Contact */
 .contatti {margin: 80px 0;text-align: center;}
 .contatti ul {list-style: none;display: flex;justify-content: center;gap: 30px;flex-wrap: wrap;}
 .contatti a {color: white;text-decoration: none;padding: 15px 25px;border: none;border-radius: 8px;transition: all 0.3s ease;display: inline-flex;align-items: center;gap: 10px;background: rgba(0, 0, 0, 0.5);}
@@ -74,7 +74,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .instagram-icon { color: #e4405f; }
 .facebook-icon { color: #1877f2; }
 
-/* Presentazione */
+/* Presentation */
 .presentazione {margin: 80px 0;text-align: center;max-width: 800px;margin-left: auto;margin-right: auto;}
 .profilo-foto {max-width: 150px;border-radius: 50%;margin-bottom: 20px;box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);transition: transform 0.3s ease;}
 .profilo-foto:hover {transform: scale(1.1);}
@@ -109,7 +109,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .faq-answer.active {max-height: 200px;}
 .faq-answer p {padding: 20px;margin: 0;line-height: 1.6;}
 
-/* Percorsi reali */
+/* Testimonial */
 .testimonials-section {margin: 80px 0;}
 .feedback input,
 .feedback textarea {width: 100%;margin-bottom: 10px;border: 2px solid #ff0000;border-radius: 5px;background: #1c1c1c;color: #fff;box-sizing: border-box;}
@@ -118,7 +118,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .feedback-item {display: inline-block;margin: 0 50px;font-size: 1.1rem;color: #fff;}
 @keyframes scrollFeedback {0% { transform: translateX(0%); }100% { transform: translateX(-100%); }}
 
-/* Stili popup e separatore */
+/* Popup e separator */
 .separator {height: 2px;background: linear-gradient(90deg, transparent, #ff0000, transparent);margin: 40px 0;opacity: 0.7;}
 .popup {display: none;position: fixed;z-index: 2000;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.8);backdrop-filter: blur(5px);}
 .popup-content {background: linear-gradient(135deg, #000000, #1a1a1a);margin: 10% auto;padding: 30px;border-radius: 15px;width: 90%;max-width: 600px;position: relative;box-shadow: 0 20px 40px rgba(143, 4, 4, 0.795);}
@@ -128,9 +128,7 @@ h4, h5, h6 {font-size: 1.8rem;color: #ffffff;text-align: center;text-shadow: 2px
 .popup-close {background: #ff0000;color: white;border: none;padding: 10px 20px;border-radius: 5px;cursor: pointer;margin-top: 20px;transition: background 0.3s ease;}
 .popup-close:hover {background: #cc0000;}
 
-/* Badge e copyright */
-.central-badge {position: relative;text-align: center;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 900; pointer-events: none;}
-.central-badge img {width: 130px;height: 130px;}
+/* copyright */
 footer {margin-top: 100px;}
 #copyright {text-align: center;padding: 30px;background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 0, 0.9));cursor: pointer;transition: all 0.3s ease;position: relative;overflow: hidden;}
 #copyright:hover {background: linear-gradient(135deg,rgba(255, 0, 0, 0.329),  rgba(0, 0, 0, 1));}
@@ -144,8 +142,7 @@ footer {margin-top: 100px;}
 .payment-logos {gap: 10px;}
 .payment-logos img {height: 25px;}
 .feedback-item { min-width: 250px; padding: 15px;}
-.popup-content {margin: 15% auto;padding: 20px;width: 95%;}
-}
+.popup-content {margin: 15% auto;padding: 20px;width: 95%;}}
 @media (max-width: 480px) {
 h1 {font-size: 1.8rem;}
 .logo {max-width: 150px;}
@@ -154,20 +151,37 @@ h1 {font-size: 1.8rem;}
 .faq-question {padding: 15px;font-size: 14px;} .faq-answer p {padding: 15px;}
 }
 
-/* Animazioni */
+/* Animation */
 .fade {opacity: 1;transition: opacity 1s ease;}
 .fade:not([style*="display: none"]) {opacity: 1;}
 
-/* non lo so */
+/* Text */
 .hidden {display: none !important;}
 .text-center {text-align: center;}
 .mb-20 {margin-bottom: 20px;}
 .mt-20 {margin-top: 20px;}
 
-#installBtn{background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.1));
-border: none;
-border-radius: 10px;padding: 20px;margin-bottom: 15px;cursor: pointer;transition: all 0.8s ease;position: relative;overflow: hidden;
-  color: #ccc;
-  font-weight: bold;
-  font-size: 1rem; 
- }
+/* Install Button */
+#installBtn{background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.1));border: none;border-radius: 10px;padding: 20px;margin-bottom: 15px;cursor: pointer;transition: all 0.8s ease;position: relative;overflow: hidden;color: #ccc;font-weight: bold;font-size: 1rem; }
+
+ /* Rating */
+.rating-container {text-align: center;margin: 30px auto;font-family: Arial, sans-serif;}
+.stars {display: inline-flex;cursor: pointer;}
+.stars span {font-size: 40px;color: #ccc;transition: color 0.2s;}
+.stars span.selected {color: gold;}
+#ratingValue {margin-top: 10px;font-size: 18px;font-weight: bold;color: #ddd;}
+#send-rating {margin-top: 15px;padding: 9px 22px;border: none;background: #e50914; /* red Netflix-style */color: #fff;font-size: 18px;font-weight: bold;border-radius: 6px;cursor: pointer;transition: 0.3s;}
+#send-rating:hover {background: #b20710; /* rosso più scuro al passaggio */}
+
+/* ⭐ Rating Fixed */
+.fixed-rating {margin-top: 25px;}
+.fixed-rating .fixed-title {font-size: 20px;font-weight: bold;margin-bottom: 6px;color: #ddd; /* change color */}
+.fixed-rating .fixed-stars {font-size: 28px;display: flex;justify-content: center;align-items: center;gap: 6px;}
+.fixed-rating .star.full {color: gold;}
+.fixed-rating .star.half {background: linear-gradient(90deg, gold 50%, #ccc 50%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+.fixed-rating .rating-text {font-size: 18px;font-weight: bold;color: #ddd; /* change color se il tuo tema è chiaro */}
+
+/* Upsell Banner */
+#upsell-banner,#upsell-banner1 {display: none;position: fixed;bottom: 20px;right: 20px;background: linear-gradient(135deg, #860000, #000000);color: white;padding: 15px 25px;border-radius: 10px;box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);font-weight: bold;cursor: pointer;opacity: 0;transform: translateY(50px);transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);z-index: 3000;}
+#upsell-banner.show,#upsell-banner1.show {display: block;opacity: 1;transform: translateY(0);}
+#upsell-banner:hover,#upsell-banner1:hover {transform: translateY(-5px);box-shadow: 0 8px 20px rgba(255, 0, 0, 0.7);}
