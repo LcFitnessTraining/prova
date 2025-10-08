@@ -498,5 +498,3 @@ upsellBanner1.addEventListener('click', () => {
   durataSelect.dispatchEvent(new Event('change')); // trigger PayPal update
   upsellBanner1.classList.remove('show');
 });
-// service-worker.js
-
