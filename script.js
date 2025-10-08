@@ -499,10 +499,4 @@ upsellBanner1.addEventListener('click', () => {
   upsellBanner1.classList.remove('show');
 });
 // service-worker.js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('Service Worker registrato', reg))
-      .catch(err => console.error('Service Worker errore', err));
-  });
-}
+
