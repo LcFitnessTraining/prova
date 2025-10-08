@@ -205,41 +205,6 @@ Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, so
 <div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
 <!-- Background and ChatBase -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-(function(){
-if(!window.chatbase || window.chatbase("getState") !== "initialized") {
-window.chatbase = (...arguments) => {
-if(!window.chatbase.q) {
-window.chatbase.q = [];
- }
-window.chatbase.q.push(arguments);
-};
- window.chatbase = new Proxy(window.chatbase, {
-get(target, prop) {
-if(prop === "q") {
-return target.q;
-}
-return (...args) => target(prop, ...args);
-}
-});
-}
-const onLoad = function() {
-const script = document.createElement("script");
-script.src = "https://www.chatbase.co/embed.min.js";
-script.id = "e9I3gYRt7ypSDk28xJely";
-script.domain = "www.chatbase.co";
-document.body.appendChild(script);
-};
-if(document.readyState === "complete") {
-onLoad();
-} else {
-window.addEventListener("load", onLoad);
-}
-})();
-</script>
-
-<!-- Main JavaScript -->
- <script src="service-worker.js" defer></script>
 </body>
 </html>
 <!-- I'm updating the site twice a month -->
