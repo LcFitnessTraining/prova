@@ -26,11 +26,11 @@
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
 <link rel="stylesheet" href="style.css?v=1.0">
-    <script src="script.js?v=1.0" defer></script>
+<script src="script.js?v=1.0" defer></script>
 </head>
 <body id="top">
 
-    <!-- Menù a tendina -->
+    <!-- Menù Hambrurger -->
     <nav class="dropdown-nav"> <div class="menu-container"><button id="menu-toggle" aria-label="Apri menu tendina">☰ Menu</button><div id="menu-list" class="hidden">
 <a href="#top">Home</a>
 <a href="#servizi">Servizi inclusi</a>
@@ -41,34 +41,25 @@
 <a href="#feedback">Testimonianze e percorsi reali</a>
 <a href="#valutazione">Lascia una valutazione</a>
 <a href="#fine-pagina">Checkout</a>
+<li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
 </div>
 </div>
 <button id="audio-toggle" aria-label="Attiva/disattiva musica di sottofondo">🔇 Off</button>
 </nav>
+
 <!-- Particle Background -->
 <div id="particles-js"></div>
-<!--privacy e policy-->
-    <div id="privacy-banner" class="privacy-banner">
-  <div class="privacy-content">
-    <h2>Privacy & Cookie Policy</h2>
-    <p>
-      Utilizziamo cookie e raccogliamo dati personali solo per garantire il corretto funzionamento del sito
-      e per i servizi di pagamento. Cliccando su <strong>Accetta</strong>, confermi di aver letto e accettato la nostra
-      <a href="privacy.html" target="_blank">Privacy Policy</a>.
-    </p>
-    <button id="accept-privacy">Accetta</button>
-  </div>
-    </div>
 <main>
 <div class="container">
 <section class="hero-section"><img src="logo.jpg" alt="Logo di LcFitnessTraining" class="logo" width="200" height="100">
 <button id="installBtn" style="display:none;">📲 Installa la pagina sul tuo smartphone</button>
+
 <!-- Servizi -->
 <section class="servizi" id="servizi"><div class="separator"></div><h2 class="typing">I miei servizi</h2><small>clicca sul servizio per saperne di più</small>
 <ul id="servizi-list">
 <li data-desc="La stesura di una scheda di allenamento personalizzata consiste nell'elaborazione di un protocollo di esercizi strutturato in base a parametri individuali quali obiettivi specifici, livello di fitness, anamnesi motoria, composizione corporea e disponibilità temporale, al fine di massimizzare l'efficacia del programma e minimizzare il rischio di infortuni.">Workout personalizzati</li>
 <li data-desc="La formulazione di un piano alimentare personalizzato prevede la definizione di un regime nutrizionale calibrato sulle esigenze fisiologiche e metaboliche dell'individuo, tenendo conto di fattori quali obiettivi (dimagrimento, ipertrofia, performance), stato di salute, composizione corporea, abitudini alimentari, eventuali intolleranze o patologie, con l'obiettivo di ottimizzare l'apporto di macro e micronutrienti in modo funzionale e sostenibile, mentre La strutturazione di un piano di integrazione personalizzato implica la selezione e il dosaggio mirato di supplementi nutrizionali in funzione del profilo individuale, delle carenze riscontrate, del carico di allenamento e degli obiettivi specifici, nel rispetto delle evidenze scientifiche e delle normative vigenti, con l'intento di supportare le prestazioni, il recupero e il benessere generale.">Strategie alimentari personalizzate</li>
-<li data-desc="Le misurazioni antropometriche e la plicometria costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">Analisi corporea: misurazioni antropometriche e plicometria</li>
+<li data-desc="Costituiscono strumenti fondamentali per la valutazione della composizione corporea, attraverso il rilevamento di dati quali peso, altezza, circonferenze corporee e spessore delle pliche cutanee. Tali analisi permettono di stimare con maggiore precisione la massa grassa e la massa magra, monitorare i progressi nel tempo e personalizzare in modo più efficace i protocolli di allenamento e nutrizione.">Misurazioni antropometriche e plicometria</li>
 <li data-desc="LcFitnessTraining è un'app per l'allenamento, rappresenta un progetto avanzato per offrire programmi personalizzati, monitoraggio dei progressi, supporto e gestione integrata di allenamento, consentendo un approccio strutturato, flessibile e scientificamente validato all'ottimizzazione della performance e del benessere fisico.">App LcFitnessTraining
 </li>
 <li data-desc="App Coach Plus è un'app per l'alimentazione, uno strumento digitale progettato per la gestione personalizzata del piano nutrizionale, con funzionalità che includono il calcolo dei fabbisogni, il monitoraggio dei macronutrienti, la gestione dei pasti e delle intolleranze, e l'integrazione con obiettivi fisici o sportivi, offrendo un supporto pratico e scientificamente fondato per l'ottimizzazione della salute e della composizione corporea.">App Coach Plus</li>
@@ -76,20 +67,23 @@
 <li data-desc="Un Individual Pt session è una lezione di coaching individuale; un programma di allenamento personalizzato e mirato, che integra principi di fisiologia dell'esercizio e biomeccanica per ottimizzare la performance muscolare e la tecnica di sollevamento. Durante la sessione, il coach valuta e corregge in tempo reale la postura e l'esecuzione dei movimenti, pianificando progressioni di carico calibrate per favorire l'ipertrofia, la forza massimale e la resistenza muscolare, minimizzando il rischio di infortuni attraverso un controllo continuo della tecnica e un adattamento funzionale alle esigenze specifiche dell'atleta.">Individual Pt session</li>
 </ul>
 </section>
-<!-- Titoli  -->
+
+<!-- Title Win and certification  -->
 <section class="tit" id="tit"><div class="separator"></div><h3 class="typing">Titoli vinti</h3><ul id="titoli-list">
 <li>🥈 Istruttore Fitness & Powerlifting specializzato nella ricomposizione corporea</li>
 <li>🏆 1° NAC ITALY Championship</li>
 <li>🥇 8° NAC WORLD Championship</li>
 </ul>
 </section><div class="separator"></div>
-<!-- Contatti -->
+
+<!-- Contact -->
 <section class="contatti" id="contatti"><h4 class="typing">Contatti</h4><ul>
 <li><a href="mailto:LcFitnessTrainingPt@gmail.com" target="_blank" rel="noopener" aria-label="Invia una mail a LcFitnessTrainingPt@gmail.com"><i class="fa-solid fa-envelope gmail-icon"></i> Gmail</a></li>
 <li><a href="https://www.instagram.com/lcfitnesstraining?igsh=aXNINWI1MXp2amRn/" target="_blank" rel="noopener" aria-label="Profilo Instagram di Luka Cupo"><i class="fab fa-instagram instagram-icon"></i> Instagram</a></li>
 <li><a href="https://www.facebook.com/L.C.Fitness.Training.pt/" target="_blank" rel="noopener" aria-label="Profilo Facebook di Luka Cupo"><i class="fab fa-facebook facebook-icon"></i> Facebook</a></li>
 </ul></section>
-<!-- Presentazione -->
+
+<!-- Presentation -->
 <section class="presentazione" id="presentazione"><div class="separator"></div><h5 class="typing">Chi sono</h5><img src="luka-profilo.webp" alt="Luka, Personal Trainer" class="profilo-foto" loading="lazy">
 <p>Mi chiamo <strong>Luka</strong> e sono un <span class="highlight">Coach Certificato</span> con anni di esperienza nel settore fitness e preparazione atletica. Il mio approccio unisce competenza scientifica e passione per ottenere risultati concreti.</p><p>Con titoli nazionali e internazionali, e centinaia di clienti soddisfatti, il mio obiettivo è offrirti un <span class="highlight">percorso su misura</span> che ti permetta di raggiungere i tuoi traguardi in modo sicuro e duraturo.</p>
 </section>
@@ -100,6 +94,7 @@
 <button type="submit">Invia</button><div id="msg-feedback"></div>
 </form>
 </section>
+
 <!-- FAQ  -->
 <section class="faqNEW" id="faqNEW"><div class="separator"></div><h2 class="typing" id="faq">Sezione FAQ</h2><div class="faq-container"><div class="faq-item">
 <button class="faq-question">Quanto dura ogni sessione di personal privato?</button><div class="faq-answer"><p>Ogni sessione avverrà in un centro a tua scelta (previo appuntamento con il Coach) ed ha una durata media di 60 minuti, inclusa la parte di riscaldamento e defaticamento. Il tutto però varia in base alla programmazione in corso</p></div></div>
@@ -113,6 +108,7 @@
 </section>
 <section class="testimonials-section" id="feedback">
 <div class="separator"></div>
+
 <!-- Testimonials -->
 <h2 class="typing">Percorsi reali</h2><div class="feedback-marquee-container"><div class="feedback-marquee-track">
 <span class="feedback-item">💬Gabriele C. - Volevo lasciare un ringraziamento sincero per questa applicazione: è uno strumento davvero utile e ben fatto. Mi ha aiutato a restare focalizzato, a monitorare i miei progressi e, soprattutto, a sentirmi seguito anche quando non ero in sessione. Si vede che c'è cura e attenzione dietro, proprio come nel lavoro del coach. Intuitiva, motivante e sempre pronta a darmi quel piccolo spunto in più. Complimenti!</span>
@@ -130,10 +126,11 @@
 </section>
 <section class="rating" id="valutazione">
 <div class="separator"></div>
-<!-- ⭐ Sezione Feedback con Stelle -->
+
+<!-- ⭐ Rating -->
 <div class="rating-container">
   <h2>Lascia la tua valutazione</h2>
-  <!-- ⭐ Stelle interattive -->
+
   <div class="stars" id="starRating">
     <span data-value="1">★</span>
     <span data-value="2">★</span>
@@ -142,10 +139,14 @@
     <span data-value="5">★</span>
   </div>
   <p id="ratingValue">Nessuna valutazione</p>
-  <!-- ⭐ Valutazione media fissa -->
-  <div class="fixed-rating">
-    <p class="fixed-title">Valutazione media clienti:</p>
-    <div class="fixed-stars">
+  <p id="ratingValue"></p>
+  <button id="send-rating">Invia</button>
+</div>
+
+<!-- ⭐ Rating Fixed -->
+<div class="fixed-rating">
+  <p class="fixed-title">Valutazione media clienti:</p>
+  <div class="fixed-stars">
     <span class="star full">★</span>
     <span class="star full">★</span>
     <span class="star full">★</span>
@@ -155,6 +156,8 @@
   </div>
 </div>
 <div class="separator"></div>
+
+<!-- Payment -->
 <h1 class="typing">Scegli il tuo piano</h1>
 <div class="payment-logos">
 <img src="https://img.icons8.com/color/48/visa.png" alt="Pagamento disponibile con carta Visa" height="30">
@@ -170,19 +173,22 @@
 <option value="63">1 mese - €63</option><option value="115">2 mesi - €115</option><option value="160">3 mesi - €160</option><option value="270">6 mesi - €270</option>
 <option value="50">1 Individual Pt session - €50</option><option value="400">10 Individual Pt session - €400</option><option value="600">20 Individual Pt session - €600</option><option value="33.00">Workout - €33</option>
 </select>
-<div id="paypal-button-wrapper" class="fade" style="display: none;"><div id="paypal-button-container"></div>
+<!-- Bottone PayPal -->
+<div id="paypal-button-wrapper" class="fade" style="display: none;">
+  <div id="paypal-button-container"></div>
 </div>
+
+<!-- Messaggio PayPal -->
+<div id="paypal-message"
+  data-pp-message
+  data-pp-style-layout="text"
+  data-pp-style-logo-type="inline"
+  data-pp-style-text-color="white"
+  data-pp-style-text-size="16"
+  data-pp-amount="">
 </div>
-<div id="paypal-message" 
-data-pp-message 
-data-pp-style-layout="text" 
-data-pp-style-logo-type="inline" 
-data-pp-style-text-color="White" 
-data-pp-style-text-size="Large" 
-data-pp-amount="">
-</div>
-</section>
 </main>
+
 <!-- Copyright -->
 <footer><div id="copyright" class="parallax" onclick="openCopyrightPopup()"> © 2025 L.C.FitnessTraining. Tutti i diritti riservati. + info</div></footer>
 <!-- Popup  -->
@@ -197,7 +203,7 @@ Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, so
 <audio id="bg-music" loop preload="auto"><source src="musica.mp3" type="audio/mpeg">Il tuo browser non supporta l'audio HTML5.</audio>
 <!-- Audio Overlay for Mobile -->
 <div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
-<!-- sfondo e chat virtuale -->
+<!-- Background and ChatBase -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
 (function(){
@@ -231,18 +237,9 @@ window.addEventListener("load", onLoad);
 }
 })();
 </script>
+
 <!-- Main JavaScript -->
- <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker registrato', reg))
-        .catch(err => console.error('Service Worker errore', err));
-    });
-  }
-</script>
+ <script src="service-worker.js" defer></script>
 </body>
 </html>
-
-
 <!-- I'm updating the site twice a month -->
