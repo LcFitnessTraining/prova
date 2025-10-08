@@ -129,23 +129,6 @@ function initializePayPal() {
   if (durataSelect && paypalButtonWrapper) {
     durataSelect.addEventListener('change', handleDurationChange);
   }
-  // Carica la SDK PayPal UNA SOLA VOLTA
-  loadPayPalSdk();
-}
-
-function loadPayPalSdk() {
-  if (!document.querySelector('script[src*="paypal.com/sdk/js"]')) {
-    const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=AbTBBct2Vk495loQAh7L-ud7YPKLhZg3r-SgoipFANdxEbLnZBcMoTwj3BKARmrfO650wfPoNb08JjPI&currency=EUR&components=buttons,messages';
-    script.onload = function () {
-      // Renderizza il bottone con importo iniziale
-      renderPayPalButton(durataSelect.value);
-    };
-    document.body.appendChild(script);
-  } else {
-    // SDK già caricata, renderizza il bottone
-    renderPayPalButton(durataSelect.value);
-  }
 }
 
 function handleDurationChange() {
@@ -153,21 +136,46 @@ function handleDurationChange() {
   if (amount) {
     showPayPalButton();
     updatePayPalMessage(amount);
-    // NON ricaricare la SDK, solo re-render del bottone
-    renderPayPalButton(amount);
-  } else {
-    hidePayPalButton();
-  }
+    loadPayPalScript(amount);
+  } else { hidePayPalButton() }
+}
+
+function loadPayPalScript(amount) {
+  // Rimuovi eventuali script PayPal già presenti
+  const oldScript = document.querySelector('script[src*="paypal.com/sdk/js"]');
+  if (oldScript) oldScript.remove();
+
+  // Svuota il container PayPal
+  const container = document.getElementById('paypal-button-container');
+  if (container) container.innerHTML = '';
+
+  const script = document.createElement('script');
+  script.src = 'https://www.paypal.com/sdk/js?client-id=AbTBBct2Vk495loQAh7L-ud7YPKLhZg3r-SgoipFANdxEbLnZBcMoTwj3BKARmrfO650wfPoNb08JjPI&currency=EUR&components=buttons,messages';
+  script.onload = function () { renderPayPalButton(amount) };
+  document.body.appendChild(script);
+}
+
+function showPayPalButton() {
+  paypalButtonWrapper.style.display = 'block';
+  setTimeout(() => { paypalButtonWrapper.classList.add('fade') }, 10)
+}
+
+function hidePayPalButton() {
+  paypalButtonWrapper.style.display = 'none';
+  paypalButtonWrapper.classList.remove('fade');
+}
+
+function updatePayPalMessage(amount) {
+  const paypalMessage = document.getElementById('paypal-message');
+  if (paypalMessage) { paypalMessage.setAttribute('data-pp-amount', amount) }
 }
 
 function renderPayPalButton(amount) {
   if (typeof paypal !== 'undefined') {
     const container = document.getElementById('paypal-button-container');
-    if (container) container.innerHTML = '';
+    if (container) { container.innerHTML = '' }
     paypal.Buttons({
-      createOrder: (data, actions) => actions.order.create({
-        purchase_units: [{ amount: { value: amount, currency_code: 'EUR' } }]
-      }),
+      createOrder: (data, actions) => actions.order.create({ purchase_units: [{ amount: { value: amount, currency_code: 'EUR' } }] }),
       onApprove: (data, actions) => actions.order.capture().then(details => {
         showPaymentPopup(
           `Grazie ${details.payer.name.given_name}! Il tuo ordine da ${amount}€ è stato processato. Sarai contattato a breve dal Coach per cominciare il tuo percorso!`,
@@ -175,17 +183,14 @@ function renderPayPalButton(amount) {
         );
         sendOrderConfirmation(details);
       }),
-      onCancel: () => {
-        showPaymentPopup('Il pagamento è stato annullato.', 'error')
-      },
-      onError: (err) => {
-        showPaymentPopup('Si è verificato un errore con PayPal. Riprova.', 'error');
-        console.error('PayPal Error:', err);
-      }
-    }).render('#paypal-button-container');
+          onCancel: () => { showPaymentPopup('Il pagamento è stato annullato.', 'error') },
+onError: function(err) {
+    console.error("PayPal Error:", err);
+    showPaymentPopup("Si è verificato un errore durante il pagamento. Riprova o contattaci.");
+  }
+}).render('#paypal-button-container');
   }
 }
- 
 
 /* Popup Servizi */
 function initializeServicePopups() {
