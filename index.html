@@ -169,9 +169,12 @@
 <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Pagamento disponibile con Apple Pay" height="30">
 </div>
 <p>Scegli i tuoi obiettivi e porta il tuo corpo sopra ogni limite !!</p>
+<div id="promo-countdown" class="promo-countdown">
+    PROMO ANNUALE — Scade in: <span id="promo-timer"></span>
+</div>
 </section>
 <section class="payment-section"><div class="select-wrapper"><select id="durata" name="durata"><option value="" disabled selected>- Seleziona durata -</option>
-<option value="63">1 mese - €63</option><option value="115">2 mesi - €115</option><option value="160">3 mesi - €160</option><option value="270">6 mesi - €270</option>
+<option value="63">1 mese - €63</option><option value="115">2 mesi - €115</option><option value="160">3 mesi - €160</option><option value="270">6 mesi - €270</option><option value="510">12 mesi - €510</option>
 <option value="50">1 Individual Pt session - €50</option><option value="400">10 Individual Pt session - €400</option><option value="600">20 Individual Pt session - €600</option><option value="33.00">Workout - €33</option>
 </select>
 <!-- Bottone PayPal -->
@@ -206,6 +209,39 @@ Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, so
 <div id="audio-overlay" tabindex="0" aria-label="Attiva audio di sottofondo"></div>
 <!-- Background and ChatBase -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+(function(){
+if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+window.chatbase = (...arguments) => {
+if(!window.chatbase.q) {
+window.chatbase.q = [];
+ }
+window.chatbase.q.push(arguments);
+};
+ window.chatbase = new Proxy(window.chatbase, {
+get(target, prop) {
+if(prop === "q") {
+return target.q;
+}
+return (...args) => target(prop, ...args);
+}
+});
+}
+const onLoad = function() {
+const script = document.createElement("script");
+script.src = "https://www.chatbase.co/embed.min.js";
+script.id = "e9I3gYRt7ypSDk28xJely";
+script.domain = "www.chatbase.co";
+document.body.appendChild(script);
+};
+if(document.readyState === "complete") {
+onLoad();
+} else {
+window.addEventListener("load", onLoad);
+}
+})();
+</script>
+
 <!-- Main JavaScript -->
  <script>
   if ('serviceWorker' in navigator) {
@@ -215,7 +251,9 @@ Tutti i contenuti di questo sito, inclusi loghi, grafica, immagini, e codice, so
         .catch(err => console.error('Service Worker errore', err));
     });
   }
-</script>   
+</script> 
+
+
 </body>
 </html>
 <!-- I'm updating the site twice a month -->
