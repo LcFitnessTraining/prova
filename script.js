@@ -181,13 +181,7 @@ function renderPayPalButton(amount) {
           `Grazie ${details.payer.name.given_name}! Il tuo ordine da ${amount}€ è stato processato. Sarai contattato a breve dal Coach per cominciare il tuo percorso!`,
           'success'
         );
-        sendOrderConfirmation(details);
       }),
-          onCancel: () => { showPaymentPopup('Il pagamento è stato annullato.', 'error') },
-onError: function(err) {
-    console.error("PayPal Error:", err);
-    showPaymentPopup("Si è verificato un errore durante il pagamento. Riprova o contattaci.");
-  }
 }).render('#paypal-button-container');
   }
 }
@@ -452,4 +446,88 @@ sendBtn.addEventListener('click', () => {
   }
 });
 
+/* Upsell Cross-Selling PayPal */
+const upsellBanner = document.createElement('div');const upsellBanner1 = document.createElement('div');
+upsellBanner.id = 'upsell-banner';upsellBanner1.id = 'upsell-banner1';
+upsellBanner.textContent = '🔥 Considera il piano da 3 mesi per ottenere più sconti!';
+upsellBanner1.textContent = '🔥 Considera il piano da 6 mesi per ottenere più sconti!';
+document.body.appendChild(upsellBanner);document.body.appendChild(upsellBanner1);
 
+let upsellTimeout;let upsell1Timeout;
+
+  // 3 Months upsell //
+if (durataSelect) {
+  durataSelect.addEventListener('change', () => {
+    const selectedValue = parseInt(durataSelect.value);
+
+    clearTimeout(upsellTimeout);
+    upsellBanner.classList.remove('show');
+
+    if (selectedValue < 155) { 
+      upsellTimeout = setTimeout(() => {
+        upsellBanner.classList.add('show');
+      }, 500); // leggero delay per animazione
+    }
+  });
+}
+upsellBanner.addEventListener('click', () => {
+  // Cambia la selezione al piano superiore
+  durataSelect.value = '160'; // esempio: piano superiore 3 mesi
+  durataSelect.dispatchEvent(new Event('change')); // trigger PayPal update
+  upsellBanner.classList.remove('show');
+});
+// 6 Months upsell //
+if (durataSelect) {
+  durataSelect.addEventListener('change', () => {
+    const selectedValue = parseInt(durataSelect.value);
+
+    clearTimeout(upsell1Timeout);
+    upsellBanner1.classList.remove('show');
+
+    if (selectedValue >= 120 && selectedValue < 180) { 
+      upsell1Timeout = setTimeout(() => {
+        upsellBanner1.classList.add('show');
+      }, 500); // leggero delay per animazione
+    }
+  });
+}
+upsellBanner1.addEventListener('click', () => {
+  // Cambia la selezione al piano superiore
+  durataSelect.value = '270'; // esempio: piano superiore 3 mesi
+  durataSelect.dispatchEvent(new Event('change')); // trigger PayPal update
+  upsellBanner1.classList.remove('show');
+});
+
+
+/* COUNTDOWN PROMO FINO AL 25 DICEMBRE */
+
+function startPromoCountdown() {
+  const promoEndDate = new Date("2025-12-25T23:59:59");
+  const timerEl = document.getElementById("promo-timer");
+  const countdownBox = document.getElementById("promo-countdown");
+
+  if (!timerEl || !countdownBox) return;
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = promoEndDate - now;
+
+    // Promo scaduta
+    if (diff <= 0) {
+      countdownBox.textContent = "PROMO SCADUTA";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    timerEl.textContent = `${days}g ${hours}h ${mins}m ${secs}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+startPromoCountdown();
