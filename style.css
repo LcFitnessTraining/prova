@@ -181,3 +181,23 @@ h1 {font-size: 1.8rem;}
 .fixed-rating .star.half {background: linear-gradient(90deg, gold 50%, #ccc 50%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 .fixed-rating .rating-text {font-size: 18px;font-weight: bold;color: #ddd; /* change color se il tuo tema è chiaro */}
 
+/* Upsell Banner */
+#upsell-banner,#upsell-banner1 {display: none;position: fixed;bottom: 20px;right: 20px;background: linear-gradient(135deg, #860000, #000000);color: white;padding: 10px 20px;border-radius: 10px;box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);font-weight: bold;cursor: pointer;opacity: 0;transform: translateY(50px);transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);z-index: 3000;}
+#upsell-banner.show,#upsell-banner1.show {display: block;opacity: 1;transform: translateY(0);}
+#upsell-banner:hover,#upsell-banner1:hover {transform: translateY(-5px);box-shadow: 0 8px 20px rgba(255, 0, 0, 0.7);}
+
+/* COUNTDOWN PROMO ANNUALE */
+.promo-countdown {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff3b3b;
+    text-shadow: 0 0 10px #ff0000;
+    text-align: center;
+    animation: pulsePromo 2s infinite;
+}
+
+@keyframes pulsePromo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
